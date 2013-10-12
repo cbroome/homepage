@@ -1,0 +1,129 @@
+
+/**
+ * http://colorschemedesigner.com/#3u21TeJiO-5ZC
+ */
+
+@font-face {
+    font-family: LeagueGothic;
+    src: url('../lib/LeagueGothic-Regular.otf');
+}
+
+body {
+    font-family: LeagueGothic, Tahoma, sans-serif;
+    font-size: 35px;
+    width: 1024px;
+    margin: 0 auto;
+    color: #2E1A00;
+    background: #EFF7FC;
+}
+
+a {
+    color: #967751;
+    text-decoration: none;
+}
+
+
+h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 100px;
+    text-align: left;
+}
+
+h2 {
+    font-size: 50px;
+    margin-top: 25px;
+}
+
+
+
+.clearit {
+    clear: both;
+}
+
+
+
+/* portrait
+ * ================================================= */
+
+.portrait {
+    width: 125px;
+    overflow: hidden;
+    margin: 0 auto;
+    float: left;
+}
+
+.portrait .portrait-image {
+    width: 150px;
+    position: relative;
+    left: -25px;
+}
+
+
+
+
+/* Links
+ * ================================================= */
+
+ul.links {
+    padding: 0;
+    margin: 0;
+}
+
+ul.links li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul.links .description {
+    font-size: 27px;
+}
+
+
+/* Header
+ * ================================================= */
+
+
+h1.head {
+    float: left;
+    width: auto;
+}
+
+.head {
+    height: 110px;
+    line-height: 110px;
+}
+
+
+/* social media
+ * ================================================= */
+.social-media .button {
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+    line-height: 5px;
+}
+
+/* scant-bio
+ * ================================================= */
+
+ul.scant-bio {
+    width: auto;
+    float:right;
+    margin: 22px 0 0;
+    padding: 0;
+    color: #967751;
+}
+
+.scant-bio li {
+    font-size: 30px;
+    text-align: right;
+    list-style: none;
+}
+
+
