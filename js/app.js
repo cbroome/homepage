@@ -6,21 +6,29 @@ define(
         
         'model/Experience',
         
-        'view/Base'
+        'view/Base',
+        
+        'controller/MainController'
     
     ],
     function ( Backbone, Experience ) {
         
-        
+        /**
+         *
+         *
+         */
         app = Backbone.View.extend( {
         
         
             initialize: function() {
-              
-              console.log( 'initializing');
-              
-              var e = new model.Experience();
                 
+                // var e = new model.Experience();
+                
+                
+                console.log( controller.MainController );
+                var c = new controller.MainController();
+                
+            
             }
         
 

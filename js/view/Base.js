@@ -2,7 +2,9 @@ define(
     [
         'jquery',
         'backbone',
-        'handlebars'
+        'handlebars',
+        
+        'view'
     
     ],
     function ( $, Backbone, Handlebars ) {
@@ -32,6 +34,6 @@ define(
 
         } );
         
-        return app;
+        return view;
     }
 );
