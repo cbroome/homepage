@@ -4,9 +4,14 @@ require.config( {
     paths: {
       
         jquery: 'lib/jquery-1.10.2.min',
+        
         underscore: 'lib/underscore-min',
+        
         backbone: 'lib/backbone-min',
-        handlebars: 'lib/handlebars'
+        
+        handlebars: 'lib/handlebars',
+        
+        marionette: 'lib/backbone.marionette.min.js'
         
     },
 
@@ -23,11 +28,16 @@ require.config( {
     
         backbone: {
             deps: [ 'underscore', 'jquery' ],
-            exports:'Backbone'
+            exports: 'Backbone'
         },
         
         handlebars: {
             exports: 'handlebars'
+        },
+        
+        marionette : {
+            deps: [ 'jquery', 'underscore', 'backbone' ],
+            exports: 'Marionette'
         }
     }
     
