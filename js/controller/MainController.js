@@ -10,9 +10,8 @@ define(
     ],
     function ( $, Backbone, _ ) {
         
-        controller.MainController = function() {
-            
-        }
+        controller.MainController = function() {}
+        
         
         /**
          *
