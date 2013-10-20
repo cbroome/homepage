@@ -11,7 +11,7 @@ require.config( {
         
         handlebars: 'lib/handlebars',
         
-        marionette: 'lib/backbone.marionette.min.js'
+        marionette: 'lib/backbone.marionette.min'
         
     },
 
@@ -47,17 +47,11 @@ require.config( {
 require(
     [
         'app',
-        
-        'jquery',
-        'underscore',
-        'backbone'
 
     ],
-    function ( ) {
+    function ( app ) {
         
-        // var m = new model.Experience(); 
-        
-        var a = new app();
+        app.start();
         
     }
 );
