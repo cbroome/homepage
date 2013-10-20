@@ -1,38 +1,11 @@
 define(
     [
-        'backbone',
-        
-        
-        
-        'model/Experience',
-        
-        'view/Base',
-        
-        'controller/MainController'
-    
+        'marionette'
     ],
-    function ( Backbone, Experience ) {
-        
-        /**
-         *
-         *
-         */
-        app = Backbone.View.extend( {
-        
-        
-            initialize: function() {
-                
-                // var e = new model.Experience();
-                
-                
-                console.log( controller.MainController );
-                var c = new controller.MainController();
-                
-            
-            }
+    function ( Marionette ) {
         
 
-        } );
+        var app = new Marionette.Application();
         
         return app;
     }

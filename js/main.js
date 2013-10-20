@@ -4,10 +4,14 @@ require.config( {
     paths: {
       
         jquery: 'lib/jquery-1.10.2.min',
+        
         underscore: 'lib/underscore-min',
+        
         backbone: 'lib/backbone-min',
+        
         handlebars: 'lib/handlebars',
-        marionette: 'lib/backbone.marionette.min.js'
+        
+        marionette: 'lib/backbone.marionette.min'
         
     },
 
@@ -24,7 +28,7 @@ require.config( {
     
         backbone: {
             deps: [ 'underscore', 'jquery' ],
-            exports:'Backbone'
+            exports: 'Backbone'
         },
         
         handlebars: {
@@ -32,8 +36,8 @@ require.config( {
         },
         
         marionette : {
-            deps : ['jquery', 'underscore', 'backbone'],
-            exports : 'Marionette'
+            deps: [ 'jquery', 'underscore', 'backbone' ],
+            exports: 'Marionette'
         }
     }
     
@@ -43,17 +47,11 @@ require.config( {
 require(
     [
         'app',
-        
-        'jquery',
-        'underscore',
-        'backbone'
 
     ],
-    function ( ) {
+    function ( app ) {
         
-        // var m = new model.Experience(); 
-        
-        var a = new app();
+        app.start();
         
     }
 );
