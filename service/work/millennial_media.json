@@ -1,0 +1,18 @@
+{
+    title: "Millennial Media",
+    url: "http://www.millennialmedia.com",
+    skills: [
+        "javascript",
+        "php",
+        "prototype",
+        "cakephp",
+        "mvc",
+        "dhtmlx",
+        "sencha",
+        "capistrano",
+        "mysql",
+        "css",
+        "html5"
+    ],
+    description: ""
+}

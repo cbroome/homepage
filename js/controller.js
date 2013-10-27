@@ -1,10 +1,5 @@
 define(
-    [
-    
-        'model',
-        'view',
-     
-    ],
+    [ ],
     function ( ) {
         
         
