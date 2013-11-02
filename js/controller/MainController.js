@@ -8,7 +8,9 @@ define(
         'controller',
 
         'controller/BaseController',
-        'model/Experience/Work'
+        'model/Experience/Work',
+
+		'view/Skills'
 
     ],
     function ( $, Backbone, _, Marionette, controller ) {
@@ -78,8 +80,21 @@ define(
             _processJobs: function() {
 
 				this.jobs.each( this._processSkills,  this );
+				this._buildSkillList();
 
-            }
+            },
+
+
+			_buildSkillList: function() {
+
+				var skillView = new view.Skills( {
+					skills: this.skills
+				} );
+
+			}
+
+
+
 
 
         } );
