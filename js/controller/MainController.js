@@ -19,9 +19,27 @@ define(
         controller.MainController = Marionette.Controller.extend( {
 
             /**
-             * @property    {Backbone.Collection}
+             * @property    {Backbone.Collection}	jobs
              */
             jobs: undefined,
+
+
+			/**
+			 * @property	{Backbone.Collection}	projects
+			 */
+			projects: undefined,
+
+
+			/**
+			 * @property	{Backbone.View}		skillView
+			 */
+			skillView: undefined,
+
+
+			/**
+			 * @property	{Backbone.View}		workView
+			 */
+			workView: undefined,
 
 
 			skills: undefined,
@@ -32,16 +50,29 @@ define(
              */
             initialize: function() {
 
-                var JobsCollection = Backbone.Collection.extend( {
+                var app = require( 'app' ),
+					JobsCollection = Backbone.Collection.extend( {
                         model: model.Experience.Work,
                         url: './service/work.json'
-                    } );
+                    } ),
+					ProjectsCollection = Backbone.Collection.extend( {
+						model: model.Experience.Project
+					} );
 
 				this.skills = {};
                 this.jobs = new JobsCollection();
+				this.projects = new ProjectsCollection();
+
+				this.skillView = new view.Skills( {
+					jobs: this.jobs,
+					projects: this.projects
+				} );
 
                 this.listenTo( this.jobs, 'sync', this._processJobs );
                 this.buildLists();
+
+
+				app.skillList.show( this.skillView );
             },
 
 
@@ -50,49 +81,8 @@ define(
 			 *
 			 */
             buildLists: function() {
-                this.jobs.fetch();
-            },
-
-
-
-
-			/**
-			 * @param	{model.Work.Experience}	experience
-			 */
-			_processSkills: function( experience ) {
-
-				_.each(
-					experience.get( 'skills' ),
-					function ( skill ) {
-						if ( !( skill in this.skills ) ) {
-							this.skills[ skill ] = 1;
-						}
-						else {
-							this.skills[ skill ]++;
-						}
-					},
-					this
-				);
-
-			},
-
-
-            _processJobs: function() {
-
-				this.jobs.each( this._processSkills,  this );
-				this._buildSkillList();
-
-            },
-
-
-			_buildSkillList: function() {
-
-				var skillView = new view.Skills( {
-					skills: this.skills
-				} );
-
-			}
-
+                this.jobs.fetch( { reset: true } );
+            }
 
 
 
