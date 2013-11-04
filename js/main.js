@@ -11,7 +11,11 @@ require.config( {
 
         handlebars: 'lib/handlebars',
 
-        marionette: 'lib/backbone.marionette.min'
+        marionette: 'lib/backbone.marionette.min',
+
+        text: 'lib/requirejs_text/text'
+
+
 
     },
 
@@ -32,12 +36,16 @@ require.config( {
         },
 
         handlebars: {
-            exports: 'handlebars'
+            exports: 'Handlebars'
         },
 
         marionette : {
             deps: [ 'jquery', 'underscore', 'backbone' ],
             exports: 'Marionette'
+        },
+
+        text: {
+            exports: 'text'
         }
     }
 

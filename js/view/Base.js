@@ -35,8 +35,6 @@ define(
              * @returns {String}
              */
             template: function( html, options ) {
-
-
                 var template = Handlebars.compile( html );
                 return template( options );
 
