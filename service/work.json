@@ -7,7 +7,8 @@
             "php",
             "javascript",
             "perl"
-        ]
+        ],
+        "description": "worked here..."
     },
 
     {
@@ -23,7 +24,8 @@
             "css",
             "html5",
             "agile"
-        ]
+        ],
+        "description": "financial stuff"
     },
 
     {
@@ -36,7 +38,7 @@
             "postgres",
             "perl"
         ],
-        "description": ""
+        "description": "mistake"
     },
 
     {
@@ -55,7 +57,7 @@
             "css",
             "html5"
         ],
-        "description": ""
+        "description": "startup!"
     },
 
     {
@@ -67,6 +69,6 @@
             "sass",
             "agile"
         ],
-        "description": ""
+        "description": "another startup"
     }
 ]

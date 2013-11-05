@@ -2,14 +2,13 @@ define(
     [
         'jquery',
         'backbone',
-        'handlebars',
 		'text!view/SkillsTemplate.html',
 
         'view',
 		'view/Base'
 
     ],
-    function ( $, Backbone, Handlebars, SkillsTemplate ) {
+    function ( $, Backbone, SkillsTemplate ) {
 
 
         view.Skills = view.Base.extend( {
@@ -28,7 +27,7 @@ define(
 
 
 			/**
-			 *
+			 * @property	{Object}	skills
 			 */
 			skills: undefined,
 
@@ -45,10 +44,11 @@ define(
 				this.listenTo( this.projects, 'reset', this._processExperience );
 
 				this.skills = {};
+
             },
 
 
-			render: function() {},
+			// render: function() {},
 
 
 			_processSkill: function( skill ) {

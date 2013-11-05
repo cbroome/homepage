@@ -10,7 +10,8 @@ define(
         'controller/BaseController',
         'model/Experience/Work',
 
-		'view/Skills'
+		'view/Skills',
+		'view/Work'
 
     ],
     function ( $, Backbone, _, Marionette, controller ) {
@@ -68,11 +69,16 @@ define(
 					projects: this.projects
 				} );
 
+				this.workView = new view.Work( {
+					collection: this.jobs
+				} );
+
                 this.listenTo( this.jobs, 'sync', this._processJobs );
                 this.buildLists();
 
 
 				app.skillList.show( this.skillView );
+				app.experienceWork.show( this.workView );
             },
 
 
