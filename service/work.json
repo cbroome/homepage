@@ -1,0 +1,74 @@
+[
+
+    {
+        "title": "Advertising.com",
+        "url": "http://www.advertising.com",
+        "skills": [
+            "php",
+            "javascript",
+            "perl"
+        ],
+        "description": "worked here..."
+    },
+
+    {
+        "title": "DST Brokerage Solutions",
+        "url": "http://www.dstbs.com",
+        "skills": [
+            "php",
+            "jquery",
+            "puppet",
+            "mvc",
+            "mysql",
+            "javascript",
+            "css",
+            "html5",
+            "agile"
+        ],
+        "description": "financial stuff"
+    },
+
+    {
+        "title": "Message Systems",
+        "url": "http://www.messagesystems.com",
+        "skills": [
+            "php",
+            "python",
+            "ruby",
+            "postgres",
+            "perl"
+        ],
+        "description": "mistake"
+    },
+
+    {
+        "title": "Millennial Media",
+        "url": "http://www.millennialmedia.com",
+        "skills": [
+            "javascript",
+            "php",
+            "prototype",
+            "cakephp",
+            "mvc",
+            "dhtmlx",
+            "sencha",
+            "capistrano",
+            "mysql",
+            "css",
+            "html5"
+        ],
+        "description": "startup!"
+    },
+
+    {
+        "title": "Tenable",
+        "url": "http://www.tenable.com",
+        "skills": [
+            "backbone.js",
+            "jasmine.js",
+            "sass",
+            "agile"
+        ],
+        "description": "another startup"
+    }
+]
