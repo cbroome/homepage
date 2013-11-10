@@ -126,4 +126,21 @@ ul.scant-bio {
     list-style: none;
 }
 
+/* skill-list
+ * ================================================= */
+.skill-list {
+    margin: 0;
+    padding: 0;
+}
 
+.skill-list li {
+    list-style: none;
+}
+
+
+/* experience
+ * ================================================= */
+
+.experience {
+    margin-bottom: 25px;
+}
