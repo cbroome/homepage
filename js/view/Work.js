@@ -22,7 +22,8 @@ define(
 
 
 			/**
-			 *
+			 * @chainable
+			 * @returns	{view.Work}
 			 */
 			render: function() {
 
@@ -30,6 +31,10 @@ define(
 
 				this.collection.each( function( job ) {
 					jobs.push( job.attributes );
+				} );
+
+				jobs = _.sortBy( jobs, function( job ) {
+					return ( -1 * parseInt( job.dates.start ) );
 				} );
 
 				html = this.template( WorkTemplate, { jobs: jobs } );

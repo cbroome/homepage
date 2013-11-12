@@ -6,6 +6,16 @@
 
 		<div class="name">{{title}}</div>
 
+		<div class="dates">
+			{{#if dates.start}}
+				from {{dates.start}}
+			{{/if}}
+
+			{{#if dates.end}}
+				to {{dates.end}}
+			{{/if}}
+		</div>
+
 		<div class="description">
 			{{ description }}
 		</div>
