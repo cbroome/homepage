@@ -7,7 +7,9 @@ require.config( {
 
         underscore: 'lib/underscore-min',
 
-        backbone: 'lib/backbone-min',
+        //backbone: 'lib/backbone-min',
+
+        backbone: 'lib/backbone-debug',
 
         handlebars: 'lib/handlebars',
 

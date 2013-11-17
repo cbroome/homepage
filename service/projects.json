@@ -1,0 +1,25 @@
+[
+	{
+		"title": "This Site!",
+		"url": "http://www.christopherbroome.com",
+		"skills": [ "javascript", "backbone.js", "marionette.js", "jquery" ],
+		"status": "active",
+		"description": ""
+	},
+
+	{
+		"title": "Mobile Device Browser",
+		"url": "http://www.mobiledevicebrowser.com",
+		"skills": [ "javascript", "dhtmlx", "xml", "prototype.js", "mysql", "php" ],
+		"status": "inactive",
+		"description": "Attempt at a Web 2.0 browser of the open source WURFL database.  Worked stopped after WURFL licensing changed."
+	},
+
+	{
+		"title": "Dither and Bicker",
+		"url": "http://www.ditherandbicker.com",
+		"skills": [ "jekyll" ],
+		"status": "active",
+		"description": "Tech Blog"
+	}
+]

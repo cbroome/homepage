@@ -1,6 +1,7 @@
 define(
     [
         'jquery',
+		'underscore',
         'backbone',
 		'text!view/SkillsTemplate.html',
 
@@ -8,7 +9,7 @@ define(
 		'view/Base'
 
     ],
-    function ( $, Backbone, SkillsTemplate ) {
+    function ( $, _, Backbone, SkillsTemplate ) {
 
 
         view.Skills = view.Base.extend( {
@@ -46,9 +47,10 @@ define(
 				this.app = require( 'app' );
 				this.jobs = this.options.jobs;
 				this.projects = this.options.projects;
+				this.skills = {};
 
-				this.listenTo( this.jobs, 'reset', this._processExperience );
-				this.listenTo( this.projects, 'reset', this._processExperience );
+				this.listenTo( this.jobs, 'reset', this._processExperience, this );
+				this.listenTo( this.projects, 'reset', this._processExperience, this );
 
 				this.app.vent.on(
 					EVENTS.EXPERIENCE.CLICK,
@@ -58,35 +60,38 @@ define(
 
 				this.app.vent.on(
 					EVENTS.SKILL.RESET,
-					this._resetSkillList,
+					this.resetSkillList,
 					this
 				);
 
-				this.skills = {};
 
 
 
             },
 
 
-			_resetSkillList: function() {
+			/**
+			 * Removes the selected class...
+			 *
+			 */
+			resetSkillList: function() {
 
-				this.$el.find( 'li' ).show();
+				this.$el.find( 'li' ).removeClass( 'selected' );
 
 			},
 
 
 			/**
 			 *
+			 * @param	{Array}	skills
 			 */
 			_highlightSkills: function( skills ) {
 
-				this.$el.find( 'li' ).hide();
-
+				this.resetSkillList();
 				var skillIDs = _.each(
 					skills,
 					function( skill ){
-						this.$el.find( '#' + this._skillID( skill ) ).show();
+						this.$el.find( '#' + this._skillID( skill ) ).addClass( 'selected' );
 					},
 					this
 				);
@@ -139,7 +144,8 @@ define(
 					this
 				);
 
-				this.skills = _.sortBy( this.skills, 'count' ).reverse();
+				// this.skills = _.sortBy( this.skills, 'count' ).reverse();
+
 				this._renderSkills();
 
 			},
@@ -149,16 +155,12 @@ define(
 			 *
 			 */
 			_renderSkills: function() {
+				var html, sortedSkills;
 
-
-
-				var html;
+				sortedSkills = _.sortBy( this.skills, 'count' ).reverse();
 
 				html = this.template( SkillsTemplate, { skills: this.skills } );
-
-				$( this.el ).append( html );
-
-
+				this.$el.empty().append( html );
 			}
 
 

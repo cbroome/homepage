@@ -131,16 +131,46 @@ ul.scant-bio {
 .skill-list {
     margin: 0;
     padding: 0;
+
+    font-family: Inconsolata;
+    font-size: 25px;
 }
 
 .skill-list li {
     list-style: none;
+    width: auto;
+    padding: 4px;
+    margin: 2px;
+    border: 1px solid none;
+    display: inline-block;
+}
+
+.skill-list .selected {
+    border: 1px solid;
+    padding: 3px;
 }
 
 
 /* experience
  * ================================================= */
 
+.experience-section .exp-list {
+    padding: 0;
+    margin: 0;
+}
+
+.experience-section .exp-list li {
+    list-style: none;
+}
+
 .experience {
     margin-bottom: 25px;
+}
+
+.experience .subinfo {
+    display: none;
+}
+
+.experience.selected .subinfo {
+    display: block;
 }

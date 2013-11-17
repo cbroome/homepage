@@ -9,9 +9,11 @@ define(
 
         'controller/BaseController',
         'model/Experience/Work',
+		'model/Experience/Project',
 
 		'view/Skills',
-		'view/WorkList'
+		'view/ExperienceList/WorkList',
+		'view/ExperienceList/ProjectList'
 
     ],
     function ( $, Backbone, _, Marionette, controller ) {
@@ -38,9 +40,14 @@ define(
 
 
 			/**
-			 * @property	{Backbone.View}		workList
+			 * @property	{view.ExperienceList.WorkList}		workList
 			 */
 			workList: undefined,
+
+			/**
+			 * @property	{view.ExperienceList.ProjectList}	projectList
+			 */
+			projectList: undefined,
 
 
 			skills: undefined,
@@ -57,7 +64,8 @@ define(
                         url: './service/work.json'
                     } ),
 					ProjectsCollection = Backbone.Collection.extend( {
-						model: model.Experience.Project
+						model: model.Experience.Project,
+						url: './service/projects.json'
 					} );
 
 				this.skills = {};
@@ -69,8 +77,12 @@ define(
 					projects: this.projects
 				} );
 
-				this.workList = new view.WorkList( {
+				this.workList = new view.ExperienceList.WorkList( {
 					collection: this.jobs
+				} );
+
+				this.projectList = new view.ExperienceList.ProjectList( {
+					collection: this.projects
 				} );
 
                 this.listenTo( this.jobs, 'sync', this._processJobs );
@@ -79,6 +91,7 @@ define(
 
 				app.skillList.show( this.skillView );
 				app.experienceWork.show( this.workList );
+				app.experienceProjects.show( this.projectList );
             },
 
 
@@ -88,6 +101,7 @@ define(
 			 */
             buildLists: function() {
                 this.jobs.fetch( { reset: true } );
+				this.projects.fetch( { reset: true } );
             }
 
 
