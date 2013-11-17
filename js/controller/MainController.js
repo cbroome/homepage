@@ -11,7 +11,7 @@ define(
         'model/Experience/Work',
 
 		'view/Skills',
-		'view/Work'
+		'view/WorkList'
 
     ],
     function ( $, Backbone, _, Marionette, controller ) {
@@ -38,9 +38,9 @@ define(
 
 
 			/**
-			 * @property	{Backbone.View}		workView
+			 * @property	{Backbone.View}		workList
 			 */
-			workView: undefined,
+			workList: undefined,
 
 
 			skills: undefined,
@@ -69,7 +69,7 @@ define(
 					projects: this.projects
 				} );
 
-				this.workView = new view.Work( {
+				this.workList = new view.WorkList( {
 					collection: this.jobs
 				} );
 
@@ -78,7 +78,7 @@ define(
 
 
 				app.skillList.show( this.skillView );
-				app.experienceWork.show( this.workView );
+				app.experienceWork.show( this.workList );
             },
 
 

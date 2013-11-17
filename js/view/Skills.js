@@ -15,6 +15,12 @@ define(
 
 
 			/**
+			 * @property	{Marionette.Application}	app
+			 */
+			app: undefined,
+
+
+			/**
 			 * @property	{Backbone.Collection}	jobs
 			 */
 			jobs: undefined,
@@ -37,24 +43,79 @@ define(
 			 */
             initialize: function( ) {
 
+				this.app = require( 'app' );
 				this.jobs = this.options.jobs;
 				this.projects = this.options.projects;
 
 				this.listenTo( this.jobs, 'reset', this._processExperience );
 				this.listenTo( this.projects, 'reset', this._processExperience );
 
+				this.app.vent.on(
+					EVENTS.EXPERIENCE.CLICK,
+					this._highlightSkills,
+					this
+				);
+
+				this.app.vent.on(
+					EVENTS.SKILL.RESET,
+					this._resetSkillList,
+					this
+				);
+
 				this.skills = {};
+
+
 
             },
 
 
-			// render: function() {},
+			_resetSkillList: function() {
+
+				this.$el.find( 'li' ).show();
+
+			},
 
 
+			/**
+			 *
+			 */
+			_highlightSkills: function( skills ) {
+
+				this.$el.find( 'li' ).hide();
+
+				var skillIDs = _.each(
+					skills,
+					function( skill ){
+						this.$el.find( '#' + this._skillID( skill ) ).show();
+					},
+					this
+				);
+
+
+			},
+
+
+			/**
+			 *
+			 * @param	{String}	skill
+			 * @returns	{String}
+			 */
+			_skillID: function( skill ) {
+				var s = skill.toLowerCase().replace( /\s/g, '' );
+				return 'skill-' + s.replace( /\./g, '_' );
+			},
+
+
+			/**
+			 * Inserts the skill into this.skills or increments its count.
+			 *
+			 * @param	{String}	skill
+			 */
 			_processSkill: function( skill ) {
 				if ( !( skill in this.skills ) ) {
 					this.skills[ skill ] = {
 						name: skill,
+						htmlID: this._skillID( skill ),
 						count: 1
 					};
 				}
