@@ -13,7 +13,8 @@ body {
     font-size: 35px;
     width: 1024px;
     margin: 0 auto;
-    color: #2E1A00;
+    /*color: #2E1A00;*/
+    color: #262C30;
     background: #EFF7FC;
 }
 
@@ -133,7 +134,7 @@ ul.scant-bio {
     padding: 0;
 
     font-family: Inconsolata;
-    font-size: 25px;
+    font-size: .6em;
 }
 
 .skill-list li {
@@ -164,13 +165,43 @@ ul.scant-bio {
 }
 
 .experience {
-    margin-bottom: 25px;
+    margin: 10px 0;
+    padding: 0 5px;
 }
 
 .experience .subinfo {
     display: none;
 }
 
+/*
 .experience.selected .subinfo {
     display: block;
+}
+*/
+
+.experience .header {
+    cursor: pointer;
+}
+
+.experience .header .name,
+.experience .header .dates {
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+}
+
+.experience .header .name {
+    margin-right: 15px;
+}
+
+.experience .header .dates {
+    font-size: .65em;
+}
+
+/* Selected */
+
+.experience.selected {
+    background: #F9FCFE;
+    color: #00131E;
 }

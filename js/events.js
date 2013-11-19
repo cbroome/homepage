@@ -17,7 +17,9 @@ define(
 
 				HOVER: 'experieceHover',
 
-				CLICK: 'experienceClick'
+				CLICK: 'experienceClick',
+
+				SELECTED: 'experienceSelected'
 
 			}
 
