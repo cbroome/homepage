@@ -144,12 +144,22 @@ ul.scant-bio {
     margin: 2px;
     border: 1px solid none;
     display: inline-block;
+
+    color: #36505F;
 }
 
 .skill-list .selected {
-    border: 1px solid;
+    border: 1px solid #00131E;
     padding: 3px;
+    color: #00131E;
 }
+
+.skill-list .highlighted {
+    /* color: #00131E; */
+    border: 1px solid #36505F;
+}
+
+
 
 
 /* experience

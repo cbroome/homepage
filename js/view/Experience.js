@@ -33,7 +33,8 @@ define(
 			 */
 			events: {
 				'click .name': 'onNameClick',
-				'mouseover': 'onMouseover'
+				'mouseover': 'onMouseover',
+				'mouseout': 'onMouseout'
 			},
 
 
@@ -95,6 +96,14 @@ define(
 				this.app.vent.trigger(
 					EVENTS.EXPERIENCE.HOVER,
 					this.model.get( 'skills' )
+				);
+			},
+
+
+			onMouseout: function() {
+
+				this.app.vent.trigger(
+					EVENTS.EXPERIENCE.HOVER_END
 				);
 			}
 

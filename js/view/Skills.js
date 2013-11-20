@@ -54,7 +54,19 @@ define(
 
 				this.app.vent.on(
 					EVENTS.EXPERIENCE.CLICK,
+					this._selectSkills,
+					this
+				);
+
+				this.app.vent.on(
+					EVENTS.EXPERIENCE.HOVER,
 					this._highlightSkills,
+					this
+				);
+
+				this.app.vent.on(
+					EVENTS.EXPERIENCE.HOVER_END,
+					this._highlightOff,
 					this
 				);
 
@@ -81,11 +93,36 @@ define(
 			},
 
 
+			_highlightOff: function() {
+				// console.log( 'removing highlighted', this.$el.find( '.highlighted' ) );
+
+				this.$el.find( '.highlighted' )
+					.removeClass( 'highlighted' );
+			},
+
+
+			/**
+			 *
+			 */
+			_highlightSkills: function( skills )  {
+
+				this._highlightOff();
+
+				if ( skills ) {
+					var skillIDs = _.map( skills, function( skill ) {
+						return '#' + this._skillID( skill );
+					}, this );
+					this.$el.find( skillIDs.toString() ).addClass( 'highlighted' );
+				}
+
+			},
+
+
 			/**
 			 *
 			 * @param	{Array}	skills
 			 */
-			_highlightSkills: function( skills ) {
+			_selectSkills: function( skills ) {
 
 				this.resetSkillList();
 				var skillIDs = _.each(
@@ -143,8 +180,6 @@ define(
 					},
 					this
 				);
-
-				// this.skills = _.sortBy( this.skills, 'count' ).reverse();
 
 				this._renderSkills();
 
