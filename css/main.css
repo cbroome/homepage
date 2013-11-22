@@ -1,6 +1,7 @@
 
 /**
  * http://colorschemedesigner.com/#3u21TeJiO-5ZC
+ * https://kuler.adobe.com/Clustered-color-theme-3230414/
  */
 
 @font-face {
@@ -14,12 +15,13 @@ body {
     width: 1024px;
     margin: 0 auto;
     /*color: #2E1A00;*/
-    color: #262C30;
-    background: #EFF7FC;
+    color: #060046;
+    /* background: #EFF7FC; */
+    background: #faf9ff;
 }
 
 a {
-    color: #967751;
+    color: #1700FF;
     text-decoration: none;
 }
 
@@ -67,23 +69,23 @@ h2 {
 
 
 
-/* Links
+/* Linkbar
  * ================================================= */
 
-ul.links {
+ul.linkbar {
     padding: 0;
     margin: 0;
 }
 
-ul.links li {
+ul.linkbar li {
     padding: 0;
     margin: 0;
     list-style: none;
+    display: inline-block;
+    font-size: .8em;
+    margin-right: 25px;
 }
 
-ul.links .description {
-    font-size: 27px;
-}
 
 
 /* Header
@@ -118,7 +120,6 @@ ul.scant-bio {
     float:right;
     margin: 22px 0 0;
     padding: 0;
-    color: #967751;
 }
 
 .scant-bio li {
@@ -145,21 +146,24 @@ ul.scant-bio {
     border: 1px solid none;
     display: inline-block;
 
-    color: #36505F;
+    color: #555465;
 }
 
 .skill-list .selected {
-    border: 1px solid #00131E;
+    border: 1px solid #CE00FE;
     padding: 3px;
-    color: #00131E;
+    color: #CE00FE;
 }
 
 .skill-list .highlighted {
-    /* color: #00131E; */
-    border: 1px solid #36505F;
+    color: #8f70b3;
 }
 
-
+.skill-list .selected {
+    border: 1px solid #CE00FE;
+    padding: 3px;
+    color: #CE00FE;
+}
 
 
 /* experience
@@ -177,21 +181,26 @@ ul.scant-bio {
 .experience {
     margin: 10px 0;
     padding: 0 5px;
+    position: relative;
 }
+
 
 .experience .subinfo {
     display: none;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    padding-right:10px
 }
 
-/*
 .experience.selected .subinfo {
     display: block;
 }
-*/
 
 .experience .header {
     cursor: pointer;
 }
+
 
 .experience .header .name,
 .experience .header .dates {
@@ -212,6 +221,15 @@ ul.scant-bio {
 /* Selected */
 
 .experience.selected {
-    background: #F9FCFE;
+    background: #fefcff;
     color: #00131E;
+    border: 1px solid #8f70b3;
+}
+
+.experience.selected .subinfo {
+    display: block;
+    border: 1px solid #8f70b3;
+    border-left: none;
+    background: #fefcff;
+
 }

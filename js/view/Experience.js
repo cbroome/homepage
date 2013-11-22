@@ -46,6 +46,7 @@ define(
 
 				this.$el.removeClass( 'selected' );
 				if ( this.model.cid === model.cid ) {
+
 					if ( this.highlighted ) {
 						this.app.vent.trigger( EVENTS.SKILL.RESET );
 					}
@@ -55,6 +56,7 @@ define(
 							this.model.get( 'skills' )
 						);
 						this.$el.addClass( 'selected' );
+
 					}
 					this.highlighted = !this.highlighted;
 				}
