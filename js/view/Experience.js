@@ -32,7 +32,7 @@ define(
 			 * @property	{Object}	events
 			 */
 			events: {
-				'click .name': 'onNameClick',
+				'click .header': 'onNameClick',
 				'mouseover': 'onMouseover',
 				'mouseout': 'onMouseout'
 			},

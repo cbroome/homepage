@@ -10,18 +10,25 @@
 }
 
 body {
-    font-family: LeagueGothic, Tahoma, sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 35px;
-    width: 1024px;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
     /*color: #2E1A00;*/
     color: #060046;
     /* background: #EFF7FC; */
-    background: #faf9ff;
+    /* background: #faf9ff; */
+    background: #f5f7ff;
+}
+
+.section {
+    width: 1024px;
+    margin: 0 auto;
 }
 
 a {
-    color: #1700FF;
+    /* color: #1700FF; */
+    color: #0D9FFE;
     text-decoration: none;
 }
 
@@ -29,25 +36,38 @@ a {
 h1, h2, h3, h4 {
     margin: 0;
     padding: 0;
+    font-family: LeagueGothic, Tahoma, sans-serif;
 }
 
 h1 {
     font-weight: normal;
-    font-size: 100px;
+    font-size: 2.75em;
     text-align: left;
 }
 
 h2 {
-    font-size: 50px;
-    margin-top: 25px;
+    font-size: 1.5em;
 }
 
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
 
+header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid  #acb7de;
+
+}
 
 .clearit {
     clear: both;
 }
 
+
+.heading-font {
+    font-family: LeagueGothic, Tahoma, sans-serif;
+}
 
 
 /* portrait
@@ -68,13 +88,19 @@ h2 {
 
 
 
+/* Right
+ * ================================================= */
+.right-header-menu {
+    line-height: 33px;
+    padding-top: 10px;
+}
 
 /* Linkbar
  * ================================================= */
 
 ul.linkbar {
-    padding: 0;
-    margin: 0;
+
+    text-align: right;
 }
 
 ul.linkbar li {
@@ -83,7 +109,7 @@ ul.linkbar li {
     list-style: none;
     display: inline-block;
     font-size: .8em;
-    margin-right: 25px;
+    margin-left: 10px;
 }
 
 
@@ -103,29 +129,19 @@ h1.head {
 }
 
 
-/* social media
- * ================================================= */
-.social-media .button {
-    display: inline-block;
-    width: auto;
-    vertical-align: top;
-    line-height: 5px;
-}
 
 /* scant-bio
  * ================================================= */
 
 ul.scant-bio {
     width: auto;
-    float:right;
-    margin: 22px 0 0;
-    padding: 0;
+    text-align: right;
 }
 
 .scant-bio li {
-    font-size: 30px;
     text-align: right;
     list-style: none;
+    font-size: .9em;
 }
 
 /* skill-list
@@ -180,42 +196,50 @@ ul.scant-bio {
 
 .experience {
     margin: 10px 0;
-    padding: 0 5px;
     position: relative;
+    min-height: 35px;
 }
-
 
 .experience .subinfo {
     display: none;
     position: absolute;
     right: -1px;
     top: -1px;
-    padding-right:10px
+    padding-right:10px;
+    z-index: 20;
 }
 
-.experience.selected .subinfo {
-    display: block;
+.experience .subinfo .description,
+.experience .subinfo .url {
+    padding: 10px;
+}
+
+.experience .description {
+    color: #555173;
 }
 
 .experience .header {
     cursor: pointer;
+    font-size: .85em;
+    position: relative;
+    z-index: 40;
+    padding-right: 2px;
 }
 
 
 .experience .header .name,
 .experience .header .dates {
-    display: inline-block;
-    width: auto;
-    height: 30px;
-    line-height: 30px;
+
 }
 
 .experience .header .name {
-    margin-right: 15px;
+    margin: 0 15px 0 5px;
+
 }
 
 .experience .header .dates {
     font-size: .65em;
+    margin-left: 25px;
 }
 
 /* Selected */
@@ -224,12 +248,18 @@ ul.scant-bio {
     background: #fefcff;
     color: #00131E;
     border: 1px solid #8f70b3;
+    min-height: 35px;
+}
+
+.experience.selected .header {
+    background: #FEFCFF;
 }
 
 .experience.selected .subinfo {
     display: block;
     border: 1px solid #8f70b3;
-    border-left: none;
     background: #fefcff;
-
+    font-size: .5em;
+    display: block;
+    min-height: 60px;
 }
