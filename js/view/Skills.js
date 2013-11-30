@@ -3,13 +3,14 @@ define(
         'jquery',
 		'underscore',
         'backbone',
+		'd3',
 		'text!view/SkillsTemplate.html',
 
         'view',
 		'view/Base'
 
     ],
-    function ( $, _, Backbone, SkillsTemplate ) {
+    function ( $, _, Backbone, d3, SkillsTemplate ) {
 
 
         view.Skills = view.Base.extend( {

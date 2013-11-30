@@ -7,15 +7,17 @@ require.config( {
 
         underscore: 'lib/underscore-min',
 
-        //backbone: 'lib/backbone-min',
+        backbone: 'lib/backbone-min',
 
-        backbone: 'lib/backbone-debug',
+        // backbone: 'lib/backbone-debug',
 
         handlebars: 'lib/handlebars',
 
         marionette: 'lib/backbone.marionette.min',
 
-        text: 'lib/requirejs_text/text'
+        text: 'lib/requirejs_text/text',
+
+        d3: 'lib/d3.v3.min'
 
 
 
@@ -48,6 +50,10 @@ require.config( {
 
         text: {
             exports: 'text'
+        },
+
+        d3: {
+            exports: 'd3'
         }
     }
 
