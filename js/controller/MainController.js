@@ -13,7 +13,12 @@ define(
 
 		'view/Skills',
 		'view/ExperienceList/WorkList',
-		'view/ExperienceList/ProjectList'
+		'view/ExperienceList/ProjectList',
+
+		'collection/Experience/ProjectCollection',
+		'collection/Experience/WorkCollection',
+
+		'view/ExperienceSVG'
 
     ],
     function ( $, Backbone, _, Marionette, controller ) {
@@ -50,7 +55,16 @@ define(
 			projectList: undefined,
 
 
+			/**
+			 * @property	{Object}	skills
+			 */
 			skills: undefined,
+
+
+			/**
+			 * @property	{view.ExperienceSVG}	expSVG
+			 */
+			experienceSVG: undefined,
 
 
             /**
@@ -58,19 +72,13 @@ define(
              */
             initialize: function() {
 
-                var app = require( 'app' ),
-					JobsCollection = Backbone.Collection.extend( {
-                        model: model.Experience.Work,
-                        url: './service/work.json'
-                    } ),
-					ProjectsCollection = Backbone.Collection.extend( {
-						model: model.Experience.Project,
-						url: './service/projects.json'
-					} );
+                var app = require( 'app' );
 
 				this.skills = {};
-                this.jobs = new JobsCollection();
-				this.projects = new ProjectsCollection();
+
+
+				this.jobs = new collection.Experience.WorkCollection();
+				this.projects = new collection.Experience.ProjectCollection();
 
 				this.skillView = new view.Skills( {
 					jobs: this.jobs,
@@ -85,9 +93,17 @@ define(
 					collection: this.projects
 				} );
 
-                this.listenTo( this.jobs, 'sync', this._processJobs );
-                this.buildLists();
 
+				this.experienceSVG = new view.ExperienceSVG( {
+
+					expWork: this.jobs,
+
+					expProjects: this.projects
+
+				} );
+
+				this.listenTo( this.jobs, 'sync', this._processJobs );
+                this.buildLists();
 
 				app.skillList.show( this.skillView );
 				app.experienceWork.show( this.workList );

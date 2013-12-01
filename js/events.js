@@ -10,7 +10,10 @@ define(
 
 				CLICK: 'skillClick',
 
-				RESET: 'skillReset'
+				RESET: 'skillReset',
+
+				RENDER: 'skillRender'
+				
 			},
 
 			EXPERIENCE: {

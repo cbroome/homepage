@@ -73,6 +73,6 @@ define(
 
 		} );
 
-		return view.WorkList;
+		return view.ExperienceList;
 	}
 );

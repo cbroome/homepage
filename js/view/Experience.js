@@ -67,6 +67,9 @@ define(
 			},
 
 
+			/**
+			 *
+			 */
 			initialize: function() {
 
 				this.app = require( 'app' );
@@ -79,7 +82,6 @@ define(
 				);
 
 				view.Base.prototype.initialize.apply( this );
-
 			},
 
 

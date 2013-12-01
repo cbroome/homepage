@@ -50,6 +50,8 @@ define(
 			 */
             initialize: function( ) {
 
+				var renderSVG = _.debounce( _.bind( this._renderSkillsSVG, this ), 100 );
+
 				this.svg = d3.select( 'svg' );
 
 				this.app = require( 'app' );
@@ -59,6 +61,22 @@ define(
 
 				this.listenTo( this.jobs, 'reset', this._processExperience, this );
 				this.listenTo( this.projects, 'reset', this._processExperience, this );
+
+				this.listenTo(
+					this,
+					EVENTS.SKILL.RENDER,
+					renderSVG
+				);
+
+
+				// Temporary
+				this.listenTo(
+					this,
+					EVENTS.SKILL.RENDER,
+					_.debounce( _.bind( this._renderSkills, this ), 100 )
+				);
+				//end
+
 
 				this.app.vent.on(
 					EVENTS.EXPERIENCE.CLICK,
@@ -83,9 +101,6 @@ define(
 					this.resetSkillList,
 					this
 				);
-
-
-
 
             },
 
@@ -188,10 +203,7 @@ define(
 					},
 					this
 				);
-
-				this._renderSkills();
-				this._renderSkillsSVG();
-
+				this.trigger( EVENTS.SKILL.RENDER );
 			},
 
 
@@ -214,9 +226,6 @@ define(
 					sortedSkills;
 
 				sortedSkills = _.sortBy( this.skills, 'count' ).reverse();
-
-				console.log( sortedSkills );
-
 				this.svg.selectAll( 'text.skill-label' )
 					.remove()
 					.data( sortedSkills )
@@ -225,7 +234,7 @@ define(
 						.text( function( t ) { return t.name } )
 						.attr( 'class', 'skill-label' )
 						.attr( 'text-anchor', 'end' )
-						.attr( 'x', 200 )
+						.attr( 'x', 150 )
 						.attr( 'y', function() { return y+=height; } );
 
 			}

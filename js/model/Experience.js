@@ -24,6 +24,8 @@ define(
              */
             skills: undefined
 
+
+
         } );
 
         return model.Experience;
