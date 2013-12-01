@@ -39,11 +39,18 @@ define(
 			 */
 			skills: undefined,
 
+			/**
+			 * @property	{d3}	svg
+			 */
+			svg: d3,
+
 
 			/**
 			 *
 			 */
             initialize: function( ) {
+
+				this.svg = d3.select( 'svg' );
 
 				this.app = require( 'app' );
 				this.jobs = this.options.jobs;
@@ -183,6 +190,7 @@ define(
 				);
 
 				this._renderSkills();
+				this._renderSkillsSVG();
 
 			},
 
@@ -193,10 +201,33 @@ define(
 			_renderSkills: function() {
 				var html, sortedSkills;
 
+				// html...
 				sortedSkills = _.sortBy( this.skills, 'count' ).reverse();
-
 				html = this.template( SkillsTemplate, { skills: this.skills } );
 				this.$el.empty().append( html );
+
+			},
+
+
+			_renderSkillsSVG: function() {
+				var y = 20, height = 22,
+					sortedSkills;
+
+				sortedSkills = _.sortBy( this.skills, 'count' ).reverse();
+
+				console.log( sortedSkills );
+
+				this.svg.selectAll( 'text.skill-label' )
+					.remove()
+					.data( sortedSkills )
+					.enter( )
+					.append( 'text' )
+						.text( function( t ) { return t.name } )
+						.attr( 'class', 'skill-label' )
+						.attr( 'text-anchor', 'end' )
+						.attr( 'x', 200 )
+						.attr( 'y', function() { return y+=height; } );
+
 			}
 
 
