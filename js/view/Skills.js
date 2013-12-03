@@ -242,6 +242,6 @@ define(
 
         } );
 
-        return view;
+        return view.Skills;
     }
 );

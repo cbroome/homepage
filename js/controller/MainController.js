@@ -67,6 +67,12 @@ define(
 			experienceSVG: undefined,
 
 
+			/**
+			 * @property	{Array}		experienceViews
+			 */
+			experienceViews: undefined,
+
+
             /**
              *
              */
@@ -77,6 +83,7 @@ define(
 				this.skills = {};
 
 
+				this.experienceViews = [];
 				this.jobs = new collection.Experience.WorkCollection();
 				this.projects = new collection.Experience.ProjectCollection();
 
@@ -98,7 +105,9 @@ define(
 
 					expWork: this.jobs,
 
-					expProjects: this.projects
+					expProjects: this.projects,
+
+					experienceViews: this.experienceViews
 
 				} );
 
@@ -106,8 +115,8 @@ define(
                 this.buildLists();
 
 				app.skillList.show( this.skillView );
-				app.experienceWork.show( this.workList );
-				app.experienceProjects.show( this.projectList );
+				//app.experienceWork.show( this.workList );
+				//app.experienceProjects.show( this.projectList );
             },
 
 

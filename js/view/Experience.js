@@ -2,12 +2,14 @@ define(
     [
         'jquery',
         'backbone',
+		'd3',
+
         'view',
 		'view/Base',
 		'events'
 
     ],
-    function ( $, Backbone ) {
+    function ( $, Backbone, d3 ) {
 
         view.Experience = view.Base.extend( {
 
@@ -26,6 +28,11 @@ define(
 			 * @property	{Boolean}	highlighted
 			 */
 			highlighted: undefined,
+
+			/**
+			 * @property	{d3}		d3el
+			 */
+			d3el: undefined,
 
 
 			/**
@@ -74,6 +81,11 @@ define(
 
 				this.app = require( 'app' );
 				this.highlighted = false;
+
+
+				if ( this.options.d3el ) {
+					this.d3el = d3.select( this.options.d3el );
+				}
 
 				this.app.vent.on(
 					EVENTS.EXPERIENCE.SELECTED,

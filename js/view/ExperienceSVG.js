@@ -15,14 +15,18 @@ define(
 
         view.ExperienceSVG = view.Base.extend( {
 
+			/**
+			 * @property
+			 */
+			views: undefined,
 
 			/**
-			 * @property	{Backbone.Collection}	expWork
+			 * @property	{collection.Experience.WorkCollection}	expWork
 			 */
 			expWork: undefined,
 
 			/**
-			 * @property	{Backbone.Collection}	expProjects
+			 * @property	{collection.Experience.ProjectCollection}	expProjects
 			 */
 			expProjects: undefined,
 
@@ -62,6 +66,19 @@ define(
 			spacer: 25,
 
 
+			/**
+			 * @property	{Object}	options
+			 */
+			options: {
+
+				/**
+				 * @property	{Array}		experienceViews
+				 */
+				experienceViews: undefined
+
+			},
+
+
 			initialize: function() {
 
 				var render = _.debounce( _.bind( this.render, this ), 100 );
@@ -84,6 +101,7 @@ define(
 					'reset',
 					render
 				);
+
 
 
 
@@ -156,16 +174,28 @@ define(
 				var data = collection.getSorted(),
 					getY = _.bind( this._getY, this, this.heightLine );
 
+				_.each(
+					data,
 
-				var obj = this.svg
-					.selectAll(  )
-					.data( data )
-					.enter()
-					.append( 'text' )
-						.text( function( t ){ return t.get( 'title' ); } )
-						.attr( 'class', 'exp experience' )
-						.attr( 'x', this.xRegular )
-						.attr( 'y',  getY );
+					function( exp ) {
+
+						var viewClass = ( exp instanceof  model.Experience.Work ) ? view.Experience.Work : view.Experience.Project,
+							obj = this.svg.append( 'text' )
+								.text( function(){ return exp.get( 'title' ); } )
+								.attr( 'class', 'exp experience' )
+								.attr( 'x', this.xRegular )
+								.attr( 'y',  getY() );
+
+						this.options.experienceViews.push(
+							new viewClass( {
+								d3el: obj,
+								model: exp
+							} )
+						);
+					},
+					this
+				);
+
 
 				return this;
 
