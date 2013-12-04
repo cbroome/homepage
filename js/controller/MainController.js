@@ -8,6 +8,7 @@ define(
         'controller',
 
         'controller/BaseController',
+		'model/Skill',
         'model/Experience/Work',
 		'model/Experience/Project',
 
@@ -78,9 +79,12 @@ define(
              */
             initialize: function() {
 
-                var app = require( 'app' );
+                var app = require( 'app' ),
+					SkillCollection = Backbone.Collection.extend( {
+						model: model.Skill
+					} );
 
-				this.skills = {};
+				this.skills = new SkillCollection();
 
 
 				this.experienceViews = [];
@@ -89,7 +93,8 @@ define(
 
 				this.skillView = new view.Skills( {
 					jobs: this.jobs,
-					projects: this.projects
+					projects: this.projects,
+					collection: this.skills
 				} );
 
 				this.workList = new view.ExperienceList.WorkList( {
@@ -114,9 +119,11 @@ define(
 				this.listenTo( this.jobs, 'sync', this._processJobs );
                 this.buildLists();
 
-				app.skillList.show( this.skillView );
-				//app.experienceWork.show( this.workList );
-				//app.experienceProjects.show( this.projectList );
+
+				// @deprecated -- html stuff
+				// app.skillList.show( this.skillView );
+				// app.experienceWork.show( this.workList );
+				// app.experienceProjects.show( this.projectList );
             },
 
 

@@ -177,15 +177,19 @@ define(
 			 * @param	{String}	skill
 			 */
 			_processSkill: function( skill ) {
-				if ( !( skill in this.skills ) ) {
-					this.skills[ skill ] = {
+				var skillID = this._skillID( skill ),
+					count = 1;
+
+				if ( !( this.collection.get( skillID ) ) ) {
+					this.collection.add( {
 						name: skill,
-						htmlID: this._skillID( skill ),
-						count: 1
-					};
+						id: this._skillID( skill ),
+						count: count
+					} );
 				}
 				else {
-					this.skills[ skill ][ 'count' ]++;
+					count = this.collection.get( skillID ).get( 'count' );
+					this.collection.get( skillID ).set( 'count', ++count );
 				}
 			},
 
@@ -225,13 +229,13 @@ define(
 				var y = 20, height = 22,
 					sortedSkills;
 
-				sortedSkills = _.sortBy( this.skills, 'count' ).reverse();
+				sortedSkills = this.collection.sortBy( 'count' ).reverse();
 				this.svg.selectAll( 'text.skill-label' )
 					.remove()
 					.data( sortedSkills )
 					.enter( )
 					.append( 'text' )
-						.text( function( t ) { return t.name } )
+						.text( function( t ) { return t.get( 'name' ) } )
 						.attr( 'class', 'skill-label' )
 						.attr( 'text-anchor', 'end' )
 						.attr( 'x', 150 )
