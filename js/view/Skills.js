@@ -50,8 +50,7 @@ define(
 			 */
             initialize: function( ) {
 
-				var renderSVG = _.debounce( _.bind( this._renderSkillsSVG, this ), 100 );
-
+				var render = _.debounce( _.bind( this.render, this ), 100 );
 				this.svg = d3.select( 'svg' );
 
 				this.app = require( 'app' );
@@ -59,23 +58,11 @@ define(
 				this.projects = this.options.projects;
 				this.skills = {};
 
-				this.listenTo( this.jobs, 'reset', this._processExperience, this );
-				this.listenTo( this.projects, 'reset', this._processExperience, this );
-
 				this.listenTo(
 					this,
 					EVENTS.SKILL.RENDER,
-					renderSVG
+					this.render
 				);
-
-
-				// Temporary
-				this.listenTo(
-					this,
-					EVENTS.SKILL.RENDER,
-					_.debounce( _.bind( this._renderSkills, this ), 100 )
-				);
-				//end
 
 
 				this.app.vent.on(
@@ -99,6 +86,12 @@ define(
 				this.app.vent.on(
 					EVENTS.SKILL.RESET,
 					this.resetSkillList,
+					this
+				);
+
+				this.app.vent.on(
+					EVENTS.SKILL.RENDER,
+					render,
 					this
 				);
 
@@ -160,56 +153,6 @@ define(
 			},
 
 
-			/**
-			 *
-			 * @param	{String}	skill
-			 * @returns	{String}
-			 */
-			_skillID: function( skill ) {
-				var s = skill.toLowerCase().replace( /\s/g, '' );
-				return 'skill-' + s.replace( /\./g, '_' );
-			},
-
-
-			/**
-			 * Inserts the skill into this.skills or increments its count.
-			 *
-			 * @param	{String}	skill
-			 */
-			_processSkill: function( skill ) {
-				var skillID = this._skillID( skill ),
-					count = 1;
-
-				if ( !( this.collection.get( skillID ) ) ) {
-					this.collection.add( {
-						name: skill,
-						id: this._skillID( skill ),
-						count: count
-					} );
-				}
-				else {
-					count = this.collection.get( skillID ).get( 'count' );
-					this.collection.get( skillID ).set( 'count', ++count );
-				}
-			},
-
-
-
-			/**
-			 * @param	{model.Work.Experience}	experience
-			 */
-			_processExperience: function( experience ) {
-
-				experience.each(
-					function ( exp ) {
-						var skills = exp.get( 'skills' );
-						_.each( skills, this._processSkill, this );
-					},
-					this
-				);
-				this.trigger( EVENTS.SKILL.RENDER );
-			},
-
 
 			/**
 			 *
@@ -225,7 +168,14 @@ define(
 			},
 
 
-			_renderSkillsSVG: function() {
+
+			/**
+			 * @chainable
+			 * @returns	{view.Skills}
+			 */
+			render: function() {
+
+
 				var y = 20, height = 22,
 					sortedSkills;
 
@@ -240,6 +190,7 @@ define(
 						.attr( 'text-anchor', 'end' )
 						.attr( 'x', 150 )
 						.attr( 'y', function() { return y+=height; } );
+				return this;
 
 			}
 

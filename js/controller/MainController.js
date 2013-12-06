@@ -4,6 +4,7 @@ define(
         'backbone',
         'underscore',
         'marionette',
+		'app',
 
         'controller',
 
@@ -22,7 +23,7 @@ define(
 		'view/ExperienceSVG'
 
     ],
-    function ( $, Backbone, _, Marionette, controller ) {
+    function ( $, Backbone, _, Marionette, app, controller ) {
 
 
         controller.MainController = Marionette.Controller.extend( {
@@ -79,8 +80,7 @@ define(
              */
             initialize: function() {
 
-                var app = require( 'app' ),
-					SkillCollection = Backbone.Collection.extend( {
+                var SkillCollection = Backbone.Collection.extend( {
 						model: model.Skill
 					} );
 
@@ -91,11 +91,13 @@ define(
 				this.jobs = new collection.Experience.WorkCollection();
 				this.projects = new collection.Experience.ProjectCollection();
 
+
 				this.skillView = new view.Skills( {
 					jobs: this.jobs,
 					projects: this.projects,
 					collection: this.skills
 				} );
+
 
 				this.workList = new view.ExperienceList.WorkList( {
 					collection: this.jobs
@@ -120,6 +122,9 @@ define(
                 this.buildLists();
 
 
+
+
+
 				// @deprecated -- html stuff
 				// app.skillList.show( this.skillView );
 				// app.experienceWork.show( this.workList );
@@ -132,11 +137,70 @@ define(
 			 *
 			 */
             buildLists: function() {
-                this.jobs.fetch( { reset: true } );
-				this.projects.fetch( { reset: true } );
-            }
+
+				var params = {
+					reset: true,
+					success: _.bind( this._processExperience, this )
+				};
+
+                this.jobs.fetch( params );
+				this.projects.fetch( params );
+            },
+
+			/**
+			 *
+			 */
+			_buildLines: function() {
+
+			},
 
 
+			/**
+			 * @property	{String}	skill
+			 * @returns		{String}
+			 */
+			_skillID: function( skill ) {
+				return skill.toLowerCase().trim();
+			},
+
+			/**
+			 * Inserts the skill into this.skills or increments its count.
+			 *
+			 * @param	{String}	skill
+			 */
+			_processSkill: function( skill ) {
+				var skillID = this._skillID( skill ),
+					count = 1;
+
+				if ( !( this.skills.get( skillID ) ) ) {
+					this.skills.add( {
+						name: skill,
+						id: skillID,
+						count: count
+					} );
+				}
+				else {
+					count = this.skills.get( skillID ).get( 'count' );
+					this.skills.get( skillID ).set( 'count', ++count );
+				}
+			},
+
+
+			/**
+			 * @param	{collection.ExperienceCollection}	experience
+			 */
+			_processExperience: function( experience ) {
+
+				var app = require( 'app' );
+				
+				experience.each(
+					_.bind( function ( exp ) {
+						var skills = exp.get( 'skills' );
+						_.each( skills, this._processSkill, this );
+					}, this )
+				);
+				app.vent.trigger( EVENTS.SKILL.RENDER );
+			},
 
 
         } );

@@ -29,6 +29,15 @@ define(
 
         } );
 
+
+        // stupid IE < IE9
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim#Browser_compatibility
+        if (!String.prototype.trim) {
+          String.prototype.trim = function () {
+            return this.replace(/^\s+|\s+$/gm, '');
+          };
+        }
+
         return app;
     }
 );
