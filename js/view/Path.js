@@ -12,7 +12,7 @@ define(
     function ( $, _, Backbone, d3 ) {
 
 
-        view.Line = view.Base.extend( {
+        view.Path = view.Base.extend( {
 
 			/**
 			 * @property
@@ -34,6 +34,6 @@ define(
 
         } );
 
-        return view.Line;
+        return view.Path;
     }
 );

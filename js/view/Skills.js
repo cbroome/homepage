@@ -64,7 +64,6 @@ define(
 					this.render
 				);
 
-
 				this.app.vent.on(
 					EVENTS.EXPERIENCE.CLICK,
 					this._selectSkills,

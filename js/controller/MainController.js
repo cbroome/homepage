@@ -10,15 +10,18 @@ define(
 
         'controller/BaseController',
 		'model/Skill',
+		'model/Path',
         'model/Experience/Work',
 		'model/Experience/Project',
 
 		'view/Skills',
 		'view/ExperienceList/WorkList',
 		'view/ExperienceList/ProjectList',
+		'view/Path',
 
 		'collection/Experience/ProjectCollection',
 		'collection/Experience/WorkCollection',
+		'collection/PathCollection',
 
 		'view/ExperienceSVG'
 
@@ -58,6 +61,12 @@ define(
 
 
 			/**
+			 * @property	{Backbone.Collection}	pathList
+			 */
+			pathList: undefined,
+
+
+			/**
 			 * @property	{Object}	skills
 			 */
 			skills: undefined,
@@ -82,6 +91,9 @@ define(
 
                 var SkillCollection = Backbone.Collection.extend( {
 						model: model.Skill
+					} ),
+					PathCollection = Backbone.Collection.extend( {
+						model: model.Path
 					} );
 
 				this.skills = new SkillCollection();
@@ -106,6 +118,8 @@ define(
 				this.projectList = new view.ExperienceList.ProjectList( {
 					collection: this.projects
 				} );
+
+				this.pathList = new collection.PathCollection( [] );
 
 
 				this.experienceSVG = new view.ExperienceSVG( {
@@ -156,6 +170,8 @@ define(
 
 
 			/**
+			 * Get a safe-ish string represenation of the skill
+			 *
 			 * @property	{String}	skill
 			 * @returns		{String}
 			 */
@@ -170,7 +186,8 @@ define(
 			 */
 			_processSkill: function( skill ) {
 				var skillID = this._skillID( skill ),
-					count = 1;
+					count = 1,
+					rv;
 
 				if ( !( this.skills.get( skillID ) ) ) {
 					this.skills.add( {
@@ -192,15 +209,37 @@ define(
 			_processExperience: function( experience ) {
 
 				var app = require( 'app' );
-				
+
+
 				experience.each(
 					_.bind( function ( exp ) {
+
 						var skills = exp.get( 'skills' );
+
 						_.each( skills, this._processSkill, this );
+
+
+						_.each(
+							skills,
+							function( skill ) {
+								this.pathList.add( {
+									skill: this.skills.get( this._skillID( skill ) ),
+									experience: exp
+								} );
+							},
+							this
+						);
+
 					}, this )
 				);
+
 				app.vent.trigger( EVENTS.SKILL.RENDER );
 			},
+
+
+			_buildPaths: function() {
+
+			}
 
 
         } );
