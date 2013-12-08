@@ -123,11 +123,8 @@ define(
 
 
 				this.experienceSVG = new view.ExperienceSVG( {
-
 					expWork: this.jobs,
-
 					expProjects: this.projects,
-
 					experienceViews: this.experienceViews
 
 				} );
