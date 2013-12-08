@@ -1,14 +1,10 @@
-define(
-	[
-		'backbone',
-		'collection',
+define( function( require ) {
 
-		'model/PathModel'
-	],
-	function( Backbone, collection ) {
+		var Backbone = require( 'backbone' ),
+			PathModel = require( 'model/PathModel' ),
+			PathCollection;
 
-
-		collection.PathCollection = Backbone.Collection.extend( {
+		PathCollection = Backbone.Collection.extend( {
 
 			/**
 			 * @property	{model.Path}	model
@@ -17,7 +13,7 @@ define(
 
 		} );
 
-		return collection.PathCollection;
+		return PathCollection;
 
 	}
 );

@@ -1,13 +1,9 @@
-define(
-    [
-        'jquery',
-        'backbone',
-        'handlebars',
+define(  function ( require ) {
 
-        'view'
 
-    ],
-    function ( $, Backbone, Handlebars ) {
+        var Backbone = require( 'backbone' ),
+            Handlebars = require( 'handlebars' ),
+            BaseView;
 
 
         BaseView = Backbone.View.extend( {

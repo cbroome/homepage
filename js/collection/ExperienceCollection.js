@@ -1,9 +1,7 @@
-define(
-	[
-		'backbone'
-	],
-	function( Backbone, collection ) {
+define( function( require ) {
 
+		var Backbone = require( 'backbone' ),
+			ExperienceCollection;
 
 		ExperienceCollection = Backbone.Collection.extend( {
 

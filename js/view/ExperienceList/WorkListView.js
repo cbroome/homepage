@@ -1,16 +1,11 @@
-define(
-    [
-        'jquery',
-        'backbone',
-		'text!view/ExperienceList/WorkListTemplate.html',
+define(  function ( require ) {
 
-        'view',
-		'view/Experience/WorkView',
-		'view/ExperienceListView'
-
-    ],
-    function ( $, Backbone, WorkListTemplate ) {
-
+		var $ = require( 'jquery' ),
+			Backbone = require( 'backbone' ),
+			WorkListTemplate = require( 'text!view/ExperienceList/WorkListTemplate.html' ),
+			ExperienceWorkView = require( 'view/Experience/WorkView' ),
+			ExperienceListView = require( 'view/ExperienceListView' ),
+			ExperienceListWorkListView;
 
         ExperienceListWorkListView = ExperienceListView.extend( {
 

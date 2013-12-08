@@ -1,15 +1,10 @@
-define(
-    [
-        'jquery',
-        'backbone',
-		'text!view/Experience/ProjectTemplate.html',
+define(  function ( require ) {
 
-        'view',
-		'view/ExperienceView'
-
-    ],
-    function ( $, Backbone, ProjectTemplate ) {
-
+		var $ = require( 'jquery' ),
+			Backbone = require( 'backbone' ),
+			ProjectTemplate = require( 'text!view/Experience/ProjectTemplate.html' ),
+			ExperienceView = require( 'view/ExperienceView' ),
+			ExperienceProjectView;
 
         ExperienceProjectView = ExperienceView.extend( {
 

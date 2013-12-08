@@ -1,11 +1,8 @@
-define(
-    [
-        'backbone',
-        'model',
+define( function ( require ) {
 
-        'model/ExperienceModel'
-    ],
-    function (Backbone, model ) {
+		var Backbone = require( 'backbone' ),
+			ExperienceModel = require( 'model/ExperienceModel' ),
+			ExperienceProjectModel;
 
         /**
          * Represents a standalone web site or application

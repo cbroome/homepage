@@ -1,11 +1,9 @@
-define(
-    [
-        'backbone',
-        'model',
+define( function ( require ) {
 
-        'model/ExperienceModel'
-    ],
-    function (Backbone, model ) {
+		var Backbone = require( 'backbone' ),
+			ExperienceModel = require( 'model/ExperienceModel' ),
+			ExperienceWorkModel;
+
 
         ExperienceWorkModel = ExperienceModel.extend( {
 

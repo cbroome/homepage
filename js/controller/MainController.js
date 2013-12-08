@@ -1,35 +1,30 @@
-define(
-    [
-        'jquery',
-        'backbone',
-        'underscore',
-        'marionette',
-		'app',
-
-        'controller',
-
-        'controller/BaseController',
-		'model/SkillModel',
-		'model/PathModel',
-        'model/Experience/WorkModel',
-		'model/Experience/ProjectModel',
-
-		'view/SkillsView',
-		'view/ExperienceList/WorkListView',
-		'view/ExperienceList/ProjectListView',
-		'view/PathView',
-
-		'collection/Experience/ProjectCollection',
-		'collection/Experience/WorkCollection',
-		'collection/PathCollection',
-
-		'view/ExperienceSVGView'
-
-    ],
-    function ( $, Backbone, _, Marionette, app, controller ) {
+define( function ( require ) {
 
 
-        controller.MainController = Marionette.Controller.extend( {
+		var $ = require( 'jquery' ),
+			Backbone = require( 'backbone' ),
+			_ = require( 'underscore' ),
+			Marionette = require( 'marionette' ),
+			// app = require( 'app' ),
+			SkillModel = require( 'model/SkillModel' ),
+			PathModel = require( 'model/PathModel' ),
+			WorkModel = require( 'model/Experience/WorkModel' ),
+			ProjectModel = require( 'model/Experience/ProjectModel' ),
+
+			SkillsView = require( 'view/SkillsView' ),
+			ExperienceListWorkListView = require( 'view/ExperienceList/WorkListView' ),
+			ExperienceListProjectListView = require( 'view/ExperienceList/ProjectListView' ),
+			PathView = require( 'view/PathView' ),
+
+			ExperienceProjectCollection = require( 'collection/Experience/ProjectCollection' ),
+			ExperienceWorkCollection = require( 'collection/Experience/WorkCollection' ),
+			PathCollection = require( 'collection/PathCollection' ),
+
+			ExperienceSVGView = require( 'view/ExperienceSVGView' ),
+			MainController;
+
+
+        MainController = Marionette.Controller.extend( {
 
             /**
              * @property    {Backbone.Collection}	jobs
@@ -241,6 +236,6 @@ define(
 
         } );
 
-        return controller.MainController;
+        return MainController;
     }
 );

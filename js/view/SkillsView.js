@@ -1,17 +1,12 @@
-define(
-    [
-        'jquery',
-		'underscore',
-        'backbone',
-		'd3',
-		'text!view/SkillsTemplate.html',
+define( function ( require ) {
 
-        'view',
-		'view/BaseView'
-
-    ],
-    function ( $, _, Backbone, d3, SkillsTemplate ) {
-
+		var $ = require( 'jquery' ),
+			_ = require( 'underscore' ),
+			Backbone = require( 'backbone' ),
+			d3 = require( 'd3' ),
+			SkillsTemplate = require( 'text!view/SkillsTemplate.html' ),
+			BaseView = require( 'view/BaseView' ),
+			SkillsView;
 
         SkillsView = BaseView.extend( {
 

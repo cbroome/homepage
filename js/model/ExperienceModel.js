@@ -1,11 +1,7 @@
-define(
-    [
-        'backbone',
-        'model'
-    ],
-    function (Backbone, model ) {
+define(  function ( require ) {
 
-        ExperienceModel = Backbone.Model.extend( {
+        var Backbone = require( 'backbone' ),
+			ExperienceModel = Backbone.Model.extend( {
 
             /**
              * @property    {String}    title   human readable title

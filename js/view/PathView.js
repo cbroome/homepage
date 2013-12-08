@@ -1,16 +1,8 @@
-define(
-    [
-        'jquery',
-		'underscore',
-        'backbone',
-		'd3',
+define( function ( require ) {
 
-        'view',
-		'view/BaseView'
 
-    ],
-    function ( $, _, Backbone, d3 ) {
-
+		var BaseView = require( 'view/BaseView' ),
+			PathView;
 
         PathView = BaseView.extend( {
 

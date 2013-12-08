@@ -1,15 +1,9 @@
-define(
-	[
-		'backbone',
-		'collection',
+define( function( require ) {
 
-		'collection.experience',
-
-		'collection/ExperienceCollection',
-		'model/Experience/WorkModel'
-	],
-	function( Backbone, collection ) {
-
+		var Backbone = require( 'backbone' ),
+			ExperienceCollection = require( 'collection/ExperienceCollection' ),
+			ExperienceWorkModel = require( 'model/Experience/WorkModel'	),
+			ExperienceWorkCollection;
 
 		ExperienceWorkCollection = ExperienceCollection.extend( {
 

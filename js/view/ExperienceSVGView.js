@@ -1,17 +1,14 @@
-define(
-    [
-        'jquery',
-		'underscore',
-        'backbone',
-		'd3',
+define( function ( require ) {
 
-        'view',
-		'view/BaseView',
-		'view/Experience/WorkView'
-
-    ],
-    function ( $, _, Backbone, d3 ) {
-
+		var $ = require( 'jquery' ),
+			_ = require( 'underscore' ),
+			Backbone = require( 'backbone' ),
+			d3 = require( 'd3' ),
+			BaseView = require( 'view/BaseView' ),
+			ExperienceWorkView = require( 'view/Experience/WorkView' ),
+			ExperienceWorkModel = require( 'model/Experience/WorkModel' ),
+			ExperienceProjectView = require( 'view/Experience/ProjectView' ),
+			ExperienceSVGView;
 
         ExperienceSVGView = BaseView.extend( {
 

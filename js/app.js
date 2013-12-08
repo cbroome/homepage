@@ -1,14 +1,8 @@
-define(
-    [
-        'marionette',
-        'backbone',
-        'controller',
+define( function ( require ) {
 
-        'controller/MainController'
-    ],
-    function ( Marionette, Backbone, controller ) {
-
-        var app = new Marionette.Application();
+        var Marionette = require( 'marionette' ),
+            Backbone = require( 'backbone' ),
+            app = new Marionette.Application();
 
         app.addRegions ({
 
@@ -24,8 +18,10 @@ define(
 
         app.on( 'start', function() {
 
+            var MainController =  require( 'controller/MainController' );
+
             Backbone.emulateJSON = true;
-            var main = new controller.MainController();
+            var main = new MainController();
 
         } );
 

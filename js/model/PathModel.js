@@ -1,15 +1,7 @@
-define(
-    [
-		'underscore',
-        'backbone',
-		'd3',
+define( function ( require ) {
 
-        'model'
-    ],
-    function ( _, Backbone ) {
-
-
-		PathModel = Backbone.Model.extend( {
+		var Backbone = require( 'backbone' ),
+			PathModel = Backbone.Model.extend( {
 
 			/**
 			 * @property	{Object}	options
