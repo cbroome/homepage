@@ -6,13 +6,13 @@ define(
 		'd3',
 
         'view',
-		'view/Base'
+		'view/BaseView'
 
     ],
     function ( $, _, Backbone, d3 ) {
 
 
-        view.Path = view.Base.extend( {
+        PathView = BaseView.extend( {
 
 			/**
 			 * @property
@@ -34,6 +34,6 @@ define(
 
         } );
 
-        return view.Path;
+        return PathView;
     }
 );

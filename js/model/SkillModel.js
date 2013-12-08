@@ -10,7 +10,7 @@ define(
 		 *
 		 */
 
-        model.Skill = Backbone.Model.extend( {
+        SkillModel = Backbone.Model.extend( {
 
             /**
              * @property    {Array}     skills
@@ -19,6 +19,6 @@ define(
 
         } );
 
-        return model.Skill;
+        return SkillModel;
     }
 );

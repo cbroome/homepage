@@ -3,7 +3,7 @@ define(
         'backbone',
         'model',
 
-        'model/Experience'
+        'model/ExperienceModel'
     ],
     function (Backbone, model ) {
 
@@ -12,7 +12,7 @@ define(
          *
          */
 
-        model.Experience.Project = model.Experience.extend( {
+       ExperienceProjectModel = ExperienceModel.extend( {
 
             /**
              * @property    {String}    urlRoot
@@ -20,6 +20,6 @@ define(
             urlRoot: 'service/projects'
         } );
 
-        return model.Experience.Project;
+        return ExperienceProjectModel;
     }
 );

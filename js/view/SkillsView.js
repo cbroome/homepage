@@ -7,13 +7,13 @@ define(
 		'text!view/SkillsTemplate.html',
 
         'view',
-		'view/Base'
+		'view/BaseView'
 
     ],
     function ( $, _, Backbone, d3, SkillsTemplate ) {
 
 
-        view.Skills = view.Base.extend( {
+        SkillsView = BaseView.extend( {
 
 
 			/**
@@ -196,6 +196,6 @@ define(
 
         } );
 
-        return view.Skills;
+        return SkillsView;
     }
 );

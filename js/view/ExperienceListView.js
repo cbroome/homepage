@@ -4,14 +4,14 @@ define(
         'backbone',
 
         'view',
-		'view/Base',
-		'view/Experience/Work'
+		'view/BaseView',
+		'view/Experience/WorkView'
 
     ],
     function ( $, Backbone ) {
 
 
-        view.ExperienceList = view.Base.extend( {
+        ExperienceListView = BaseView.extend( {
 
 			/**
 			 * @param	{String}	htmlTemplate	handlebars formatted template
@@ -27,7 +27,7 @@ define(
 			initialize: function() {
 
 				this.listenTo( this.collection, 'reset', this.render );
-				view.Base.prototype.initialize.apply( this );
+				BaseView.prototype.initialize.apply( this );
 			},
 
 
@@ -73,6 +73,6 @@ define(
 
 		} );
 
-		return view.ExperienceList;
+		return ExperienceListView;
 	}
 );

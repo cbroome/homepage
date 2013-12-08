@@ -3,11 +3,11 @@ define(
         'backbone',
         'model',
 
-        'model/Experience'
+        'model/ExperienceModel'
     ],
     function (Backbone, model ) {
 
-        model.Experience.Work = model.Experience.extend( {
+        ExperienceWorkModel = ExperienceModel.extend( {
 
             /**
              * @property    {Datetime}  dateStart
@@ -27,6 +27,6 @@ define(
 
         } );
 
-        return model.Experience.Work;
+        return ExperienceWorkModel;
     }
 );

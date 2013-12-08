@@ -5,15 +5,14 @@ define(
 		'text!view/ExperienceList/WorkListTemplate.html',
 
         'view',
-		'view/Base',
-		'view/Experience/Work',
-		'view/ExperienceList'
+		'view/Experience/WorkView',
+		'view/ExperienceListView'
 
     ],
     function ( $, Backbone, WorkListTemplate ) {
 
 
-        view.ExperienceList.WorkList = view.ExperienceList.extend( {
+        ExperienceListWorkListView = ExperienceListView.extend( {
 
 			/**
 			 * @property	{String}	WorkListTemplate
@@ -23,7 +22,7 @@ define(
 			/**
 			 * @property	{view.Experience.Work}	experienceView
 			 */
-			experienceView: view.Experience.Work,
+			experienceView: ExperienceWorkView,
 
 
 			/**
@@ -38,6 +37,6 @@ define(
 
 		} );
 
-		return view.ExperienceList.WorkListt;
+		return ExperienceListWorkListView;
 	}
 );

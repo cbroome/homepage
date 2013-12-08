@@ -5,14 +5,13 @@ define(
 		'text!view/Experience/WorkTemplate.html',
 
         'view',
-		'view/Base',
-		'view/Experience'
+		'view/ExperienceView'
 
     ],
     function ( $, Backbone, WorkTemplate ) {
 
 
-        view.Experience.Work = view.Experience.extend( {
+        ExperienceWorkView = ExperienceView.extend( {
 
 
 			/**
@@ -36,6 +35,6 @@ define(
 
 		} );
 
-		return view.Experience.Work;
+		return ExperienceWorkView;
 	}
 );

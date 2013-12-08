@@ -10,7 +10,7 @@ define(
     function ( $, Backbone, Handlebars ) {
 
 
-        view.Base = Backbone.View.extend( {
+        BaseView = Backbone.View.extend( {
 
             /**
              * @property    {Object}    options
@@ -43,6 +43,6 @@ define(
 
         } );
 
-        return view;
+        return BaseView;
     }
 );

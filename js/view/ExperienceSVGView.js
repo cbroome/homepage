@@ -6,14 +6,14 @@ define(
 		'd3',
 
         'view',
-		'view/Base',
-		'view/Experience/Work'
+		'view/BaseView',
+		'view/Experience/WorkView'
 
     ],
     function ( $, _, Backbone, d3 ) {
 
 
-        view.ExperienceSVG = view.Base.extend( {
+        ExperienceSVGView = BaseView.extend( {
 
 			/**
 			 * @property
@@ -105,7 +105,7 @@ define(
 
 
 
-				view.Base.prototype.initialize.apply( this );
+				BaseView.prototype.initialize.apply( this );
 			},
 
 
@@ -179,7 +179,7 @@ define(
 
 					function( exp ) {
 
-						var viewClass = ( exp instanceof  model.Experience.Work ) ? view.Experience.Work : view.Experience.Project,
+						var viewClass = ( exp instanceof  ExperienceWorkModel ) ? ExperienceWorkView : ExperienceProjectView,
 							obj = this.svg.append( 'text' )
 								.text( function(){ return exp.get( 'title' ); } )
 								.attr( 'class', 'exp experience' )
@@ -213,6 +213,6 @@ define(
 
 		} );
 
-		return view.ExperienceSVG;
+		return ExperienceSVGView;
 	}
 );

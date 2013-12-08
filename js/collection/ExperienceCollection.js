@@ -1,12 +1,11 @@
 define(
 	[
-		'backbone',
-		'collection'
+		'backbone'
 	],
 	function( Backbone, collection ) {
 
 
-		collection.ExperienceCollection = Backbone.Collection.extend( {
+		ExperienceCollection = Backbone.Collection.extend( {
 
 			/**
 			 * Return the values in custom sorted order.
@@ -19,7 +18,7 @@ define(
 
 		} );
 
-		return collection.ExperienceCollection;
+		return ExperienceCollection;
 
 	}
 );

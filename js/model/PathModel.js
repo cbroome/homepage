@@ -4,14 +4,12 @@ define(
         'backbone',
 		'd3',
 
-        'model',
-		'view/Base'
-
+        'model'
     ],
     function ( _, Backbone ) {
 
 
-        model.Path = Backbone.Model.extend( {
+		PathModel = Backbone.Model.extend( {
 
 			/**
 			 * @property	{Object}	options
@@ -40,6 +38,6 @@ define(
 
         } );
 
-        return model.Path;
+        return PathModel;
     }
 );

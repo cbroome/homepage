@@ -5,17 +5,18 @@ define(
 
 		'collection.experience',
 
-		'collection/ExperienceCollection'
+		'collection/ExperienceCollection',
+		'model/Experience/ProjectModel'
 	],
 	function( Backbone, collection ) {
 
 
-		collection.Experience.ProjectCollection = collection.ExperienceCollection.extend( {
+		ExperienceProjectCollection = ExperienceCollection.extend( {
 
 			/**
 			 * @property	{model.Experience.Project}	model
 			 */
-			model: model.Experience.Project,
+			model: ExperienceProjectModel,
 
 			/**
 			 * @property	{String}	url
@@ -35,7 +36,7 @@ define(
 
 		} );
 
-		return collection.Experience.ProjectCollection;
+		return ExperienceProjectCollection;
 
 	}
 );

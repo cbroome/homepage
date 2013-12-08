@@ -5,7 +5,7 @@ define(
     ],
     function (Backbone, model ) {
 
-        model.Experience = Backbone.Model.extend( {
+        ExperienceModel = Backbone.Model.extend( {
 
             /**
              * @property    {String}    title   human readable title
@@ -28,6 +28,6 @@ define(
 
         } );
 
-        return model.Experience;
+        return ExperienceModel;
     }
 );

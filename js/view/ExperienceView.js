@@ -5,13 +5,13 @@ define(
 		'd3',
 
         'view',
-		'view/Base',
+		'view/BaseView',
 		'events'
 
     ],
     function ( $, Backbone, d3 ) {
 
-        view.Experience = view.Base.extend( {
+        ExperienceView = BaseView.extend( {
 
 
 			/**
@@ -93,7 +93,7 @@ define(
 					this
 				);
 
-				view.Base.prototype.initialize.apply( this );
+				BaseView.prototype.initialize.apply( this );
 			},
 
 
@@ -125,6 +125,6 @@ define(
 
 		} );
 
-		return view.Experience.Work;
+		return ExperienceView;
 	}
 );

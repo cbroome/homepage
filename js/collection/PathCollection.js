@@ -3,7 +3,7 @@ define(
 		'backbone',
 		'collection',
 
-		'model/Path'
+		'model/PathModel'
 	],
 	function( Backbone, collection ) {
 
@@ -13,7 +13,7 @@ define(
 			/**
 			 * @property	{model.Path}	model
 			 */
-			model: model.Path
+			model: PathModel
 
 		} );
 

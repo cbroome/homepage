@@ -9,21 +9,21 @@ define(
         'controller',
 
         'controller/BaseController',
-		'model/Skill',
-		'model/Path',
-        'model/Experience/Work',
-		'model/Experience/Project',
+		'model/SkillModel',
+		'model/PathModel',
+        'model/Experience/WorkModel',
+		'model/Experience/ProjectModel',
 
-		'view/Skills',
-		'view/ExperienceList/WorkList',
-		'view/ExperienceList/ProjectList',
-		'view/Path',
+		'view/SkillsView',
+		'view/ExperienceList/WorkListView',
+		'view/ExperienceList/ProjectListView',
+		'view/PathView',
 
 		'collection/Experience/ProjectCollection',
 		'collection/Experience/WorkCollection',
 		'collection/PathCollection',
 
-		'view/ExperienceSVG'
+		'view/ExperienceSVGView'
 
     ],
     function ( $, Backbone, _, Marionette, app, controller ) {
@@ -50,12 +50,12 @@ define(
 
 
 			/**
-			 * @property	{view.ExperienceList.WorkList}		workList
+			 * @property	{ExperienceListWorkListView}		workList
 			 */
 			workList: undefined,
 
 			/**
-			 * @property	{view.ExperienceList.ProjectList}	projectList
+			 * @property	{ExperienceListProjectListView}	projectList
 			 */
 			projectList: undefined,
 
@@ -90,39 +90,39 @@ define(
             initialize: function() {
 
                 var SkillCollection = Backbone.Collection.extend( {
-						model: model.Skill
+						model: SkillModel
 					} ),
 					PathCollection = Backbone.Collection.extend( {
-						model: model.Path
+						model: PathModel
 					} );
 
 				this.skills = new SkillCollection();
 
 
 				this.experienceViews = [];
-				this.jobs = new collection.Experience.WorkCollection();
-				this.projects = new collection.Experience.ProjectCollection();
+				this.jobs = new ExperienceWorkCollection();
+				this.projects = new ExperienceProjectCollection();
 
 
-				this.skillView = new view.Skills( {
+				this.skillView = new SkillsView( {
 					jobs: this.jobs,
 					projects: this.projects,
 					collection: this.skills
 				} );
 
 
-				this.workList = new view.ExperienceList.WorkList( {
+				this.workList = new ExperienceListWorkListView( {
 					collection: this.jobs
 				} );
 
-				this.projectList = new view.ExperienceList.ProjectList( {
+				this.projectList = new ExperienceListProjectListView( {
 					collection: this.projects
 				} );
 
-				this.pathList = new collection.PathCollection( [] );
+				this.pathList = new PathCollection( [] );
 
 
-				this.experienceSVG = new view.ExperienceSVG( {
+				this.experienceSVG = new ExperienceSVGView( {
 					expWork: this.jobs,
 					expProjects: this.projects,
 					experienceViews: this.experienceViews
