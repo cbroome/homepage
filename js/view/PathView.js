@@ -6,22 +6,16 @@ define( function ( require ) {
 
         PathView = BaseView.extend( {
 
-			/**
-			 * @property
-			 */
-			skill: undefined,
 
 			/**
-			 * @property
+			 * @property	{model/PathModel}
 			 */
-			experience: undefined,
-
-
-			initialize: function() {
+			model: undefined,
 
 
 
-			}
+
+			initialize: function() { }
 
 
         } );

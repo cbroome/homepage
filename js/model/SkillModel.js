@@ -5,8 +5,11 @@ define(  function ( require ) {
 		 *
 		 */
 
-        var Backbone = require( 'backbone' ),
-			SkillModel = Backbone.Model.extend( {
+        var PositionModel = require( 'model/PositionModel' ),
+			SkillModel;
+
+
+		SkillModel = PositionModel.extend( {
 
             /**
              * @property    {Array}     skills

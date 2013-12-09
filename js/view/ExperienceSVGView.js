@@ -176,12 +176,19 @@ define( function ( require ) {
 
 					function( exp ) {
 
-						var viewClass = ( exp instanceof  ExperienceWorkModel ) ? ExperienceWorkView : ExperienceProjectView,
+						var x = this.xRegular,
+							y = getY(),
+							viewClass = ( exp instanceof  ExperienceWorkModel ) ? ExperienceWorkView : ExperienceProjectView,
 							obj = this.svg.append( 'text' )
 								.text( function(){ return exp.get( 'title' ); } )
 								.attr( 'class', 'exp experience' )
-								.attr( 'x', this.xRegular )
-								.attr( 'y',  getY() );
+								.attr( 'x', x )
+								.attr( 'y', y );
+
+						exp.set( {
+							x: x,
+							y: y
+						})
 
 						this.options.experienceViews.push(
 							new viewClass( {
@@ -192,8 +199,6 @@ define( function ( require ) {
 					},
 					this
 				);
-
-
 				return this;
 
 			},

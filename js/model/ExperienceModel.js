@@ -1,7 +1,9 @@
 define(  function ( require ) {
 
-        var Backbone = require( 'backbone' ),
-			ExperienceModel = Backbone.Model.extend( {
+        var PositionModel = require( 'model/PositionModel' ),
+			ExperienceModel;
+
+		ExperienceModel = PositionModel.extend( {
 
             /**
              * @property    {String}    title   human readable title
@@ -18,7 +20,8 @@ define(  function ( require ) {
             /**
              * @property    {Array}     skills
              */
-            skills: undefined
+            skills: undefined,
+
 
 
 

@@ -39,6 +39,16 @@ define( function ( require ) {
 			 */
 			svg: d3,
 
+			/**
+			 * @property	{Integer}	cursorY
+			 */
+			cursorY: 20,
+
+			/**
+			 * @property	{Integer}	heightLine
+			 */
+			heightLine: 22,
+
 
 			/**
 			 *
@@ -170,22 +180,50 @@ define( function ( require ) {
 			render: function() {
 
 
-				var y = 20, height = 22,
-					sortedSkills;
+				var sortedSkills,
+					getY = _.bind( this._getY, this, this.heightLine );
+
+				this.cursorY = 20;
+
+				this.svg.selectAll( 'text.skill-label' )
+					.remove();
 
 				sortedSkills = this.collection.sortBy( 'count' ).reverse();
-				this.svg.selectAll( 'text.skill-label' )
-					.remove()
-					.data( sortedSkills )
-					.enter( )
-					.append( 'text' )
-						.text( function( t ) { return t.get( 'name' ) } )
-						.attr( 'class', 'skill-label' )
-						.attr( 'text-anchor', 'end' )
-						.attr( 'x', 150 )
-						.attr( 'y', function() { return y+=height; } );
+
+				_.each(
+					sortedSkills,
+					function( skill ) {
+
+						var x = 150,
+							y = getY(),
+							obj;
+
+						obj = this.svg.append( 'text' )
+							.text( skill.get( 'name' ) )
+							.attr( 'class', 'skill-label' )
+							.attr( 'text-anchor', 'end' )
+							.attr( 'x', x )
+							.attr( 'y', y );
+
+						skill.set( {
+							xPos:  x,
+							yPos: y
+						} );
+
+					},
+					this
+				);
+
 				return this;
 
+			},
+
+			/**
+			 * @param	{Integer}	increment
+			 * @returns	{Integer}
+			 */
+			_getY: function( increment ) {
+				return this.cursorY += increment;
 			}
 
 

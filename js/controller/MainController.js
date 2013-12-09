@@ -14,7 +14,7 @@ define( function ( require ) {
 			SkillsView = require( 'view/SkillsView' ),
 			ExperienceListWorkListView = require( 'view/ExperienceList/WorkListView' ),
 			ExperienceListProjectListView = require( 'view/ExperienceList/ProjectListView' ),
-			PathView = require( 'view/PathView' ),
+			PathsView = require( 'view/PathsView' ),
 
 			ExperienceProjectCollection = require( 'collection/Experience/ProjectCollection' ),
 			ExperienceWorkCollection = require( 'collection/Experience/WorkCollection' ),
@@ -124,8 +124,14 @@ define( function ( require ) {
 
 				} );
 
+
+				this.pathsView = new PathsView ( {
+					collection: this.pathList
+				} );
+
 				this.listenTo( this.jobs, 'sync', this._processJobs );
-                this.buildLists();
+
+				this.buildLists();
 
 
 
@@ -225,7 +231,10 @@ define( function ( require ) {
 					}, this )
 				);
 
-				app.vent.trigger( EVENTS.SKILL.RENDER );
+				// app.vent.trigger( EVENTS.SKILL.RENDER );
+				if( this.skillView.render() ) {
+					this.pathsView.render();
+				}
 			},
 
 
