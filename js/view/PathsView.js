@@ -45,23 +45,26 @@ define( function ( require ) {
 
 				this.paths = [];
 
+				var expY = 10,
+					expX = 5,
+					skillX = 5,
+					skillY = 7;
+
 				this.collection.each( function( path ) {
 					// Simple lines for now...
 					var skill = path.get( 'skill' ),
 						line = this.svg.append( 'svg:line' )
-							.attr( 'x1', path.get( 'skill' ).get( 'x' ) )
-							.attr( 'y1', path.get( 'skill' ).get( 'y' ) )
-							.attr( 'x2', path.get( 'experience' ).x )
-							.attr( 'y2', path.get( 'experience' ).y )
-							.attr( 'style', 'stroke:rgb(255,0,0);stroke-width:2' );
+							.attr( 'class', 'line' )
+							.attr( 'x1', path.get( 'skill' ).get( 'xPos' ) + skillX)
+							.attr( 'y1', path.get( 'skill' ).get( 'yPos' ) - skillY )
+							.attr( 'x2', path.get( 'experience' ).get( 'xPos' ) - expX )
+							.attr( 'y2', path.get( 'experience' ).get( 'yPos' ) - expY );
 
 
 					this.paths.push( new PathView ( {
 						model: path,
 						line: line
 					} ) );
-
-					console.log( 'skill xPos: ', skill.attributes.xPos );
 
 				}, this );
 

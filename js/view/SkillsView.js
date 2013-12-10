@@ -49,6 +49,11 @@ define( function ( require ) {
 			 */
 			heightLine: 22,
 
+			/**
+			 * @property	{Integer}	x
+			 */
+			x: 100,
+
 
 			/**
 			 *
@@ -194,7 +199,7 @@ define( function ( require ) {
 					sortedSkills,
 					function( skill ) {
 
-						var x = 150,
+						var x = this.x,
 							y = getY(),
 							obj;
 

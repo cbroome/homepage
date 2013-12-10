@@ -86,6 +86,7 @@ define( function ( require ) {
 				this.expProjects = this.options.expProjects;
 
 
+				/*
 				this.listenTo(
 					this.expWork,
 					'reset',
@@ -98,7 +99,7 @@ define( function ( require ) {
 					'reset',
 					render
 				);
-
+				*/
 
 
 
@@ -117,6 +118,7 @@ define( function ( require ) {
 
 				this.svg.selectAll( '.exp' )
 					.remove();
+				this.cursorY = 10;
 
 				this
 					._renderSection( this.expWork, 'Work Experience' )
@@ -186,8 +188,8 @@ define( function ( require ) {
 								.attr( 'y', y );
 
 						exp.set( {
-							x: x,
-							y: y
+							xPos: x,
+							yPos: y
 						})
 
 						this.options.experienceViews.push(

@@ -129,7 +129,7 @@ define( function ( require ) {
 					collection: this.pathList
 				} );
 
-				this.listenTo( this.jobs, 'sync', this._processJobs );
+				// this.listenTo( this.jobs, 'sync', this._processJobs );
 
 				this.buildLists();
 
@@ -232,8 +232,9 @@ define( function ( require ) {
 				);
 
 				// app.vent.trigger( EVENTS.SKILL.RENDER );
-				if( this.skillView.render() ) {
-					this.pathsView.render();
+				if( this.experienceSVG.render() && this.skillView.render() ) {
+					// Give it time to draw everything
+					_.delay( _.bind( this.pathsView.render, this.pathsView ), 100 );
 				}
 			},
 
