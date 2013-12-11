@@ -2,7 +2,7 @@
 	{
 		"title": "This Site!",
 		"url": "http://www.christopherbroome.com",
-		"skills": [ "javascript", "backbone.js", "marionette.js", "jquery" ],
+		"skills": [ "javascript", "backbone.js", "marionette.js", "jquery", "d3", "css", "mvc" ],
 		"status": "active",
 		"description": ""
 	},

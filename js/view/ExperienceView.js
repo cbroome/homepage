@@ -3,7 +3,7 @@ define( function ( requrie ) {
 		var	$ = require( 'jquery' ),
 			Backbone = require( 'backbone' ),
 			d3 = require( 'd3' ),
-			events = require( 'events' ),
+			EVENTS = require( 'events' ),
 			BaseView = require( 'view/BaseView' ),
 			ExperienceView;
 
@@ -84,6 +84,11 @@ define( function ( requrie ) {
 				if ( this.options.d3el ) {
 					this.d3el = d3.select( this.options.d3el );
 				}
+
+
+				// this.on( this.d3el, 'mouseover', function() { console.log( this.model ); } );
+
+				//this.d3el.on( 'mouseover', function() { console.log( 'hover' ); } );
 
 				this.app.vent.on(
 					EVENTS.EXPERIENCE.SELECTED,

@@ -50,7 +50,7 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	xRegular
 			 */
-			xHeader: 250,
+			xHeader: 260,
 
 			/**
 			 * @property	{Integer}	xRegular

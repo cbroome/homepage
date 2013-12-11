@@ -32,8 +32,7 @@ define( function ( require ) {
 				this.paths = [];
  				this.svg = d3.select( 'svg#main-svg' );
 
-				app.vent.on( EVENTS.SKILL.RENDER, this.render, this );
-
+				
 			},
 
 
@@ -48,17 +47,53 @@ define( function ( require ) {
 				var expY = 10,
 					expX = 5,
 					skillX = 5,
-					skillY = 7;
+					skillY = 7,
+					lineFunction,
+					findDiff;
+
+				findDiff = function( start, end ) {
+					return ( end > start ?  start + ( end - start ) / 2  : end + ( start - end ) / 2 );
+				};
+
+				lineFunction = d3.svg.line()
+					.x( function ( d ) { return d.x; } )
+					.y( function ( d ) { return d.y; } )
+					.interpolate( 'basis' );
+
+
 
 				this.collection.each( function( path ) {
 					// Simple lines for now...
-					var skill = path.get( 'skill' ),
-						line = this.svg.append( 'svg:line' )
-							.attr( 'class', 'line' )
-							.attr( 'x1', path.get( 'skill' ).get( 'xPos' ) + skillX)
-							.attr( 'y1', path.get( 'skill' ).get( 'yPos' ) - skillY )
-							.attr( 'x2', path.get( 'experience' ).get( 'xPos' ) - expX )
-							.attr( 'y2', path.get( 'experience' ).get( 'yPos' ) - expY );
+					var	skill = path.get( 'skill' ),
+						experience = path.get( 'experience' ),
+						startX = skill.get( 'xPos' ) + skillX,
+						startY = skill.get( 'yPos' ) - skillY,
+						endX = experience.get( 'xPos' ) - expX,
+						endY = experience.get( 'yPos' ) - expY,
+
+						midX = endX - startX,
+						midY = findDiff( endY, startY ),
+
+
+						lineData = [
+
+							{ x: startX, y: startY },
+
+							{ x: startX + 40, y: startY },
+
+							{ x: midX, y: midY },
+
+							{ x: endX - 60, y: endY },
+
+							{ x: endX, y: endY }
+						],
+
+						line;
+
+
+					line = this.svg.append( 'path' )
+						.attr( 'd', lineFunction( lineData ) )
+						.attr( 'class', 'line' );
 
 
 					this.paths.push( new PathView ( {

@@ -2,7 +2,7 @@ define(
     [ ],
     function ( $, Backbone ) {
 
-        EVENTS = {
+        var EVENTS = {
 
 			SKILL: {
 
@@ -13,7 +13,7 @@ define(
 				RESET: 'skillReset',
 
 				RENDER: 'skillRender'
-				
+
 			},
 
 			EXPERIENCE: {
