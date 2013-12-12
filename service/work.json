@@ -10,7 +10,8 @@
         "skills": [
             "php",
             "javascript",
-            "perl"
+            "perl",
+            "mysql"
         ],
         "description": "worked here..."
     },
@@ -31,7 +32,8 @@
             "javascript",
             "css",
             "html5",
-            "agile"
+            "agile",
+            "svn"
         ],
         "description": "financial stuff"
     },
@@ -55,7 +57,8 @@
             "capistrano",
             "mysql",
             "css",
-            "html5"
+            "html5",
+            "svn"
         ],
         "description": "startup!"
     },
@@ -72,7 +75,10 @@
             "sass",
             "agile",
             "javascript",
-            "d3"
+            "d3",
+            "git",
+            "jquery",
+            "html5"
         ],
         "description": "another startup"
     },
@@ -90,7 +96,8 @@
             "postgres",
             "javascript",
             "cassandra",
-            "python"
+            "python",
+            "mercurial"
         ],
         "description": "Start up with a sendmail type application"
     }

@@ -48,7 +48,7 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	heightLine
 			 */
-			heightLine: 22,
+			heightLine: 20,
 
 			/**
 			 * @property	{Integer}	x
