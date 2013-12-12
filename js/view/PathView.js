@@ -22,7 +22,12 @@ define( function ( require ) {
 				/**
 				 * @property	{d3}	line
 				 */
-				line: undefined
+				line: undefined,
+
+				/**
+				 * @property	{d3}	svg
+				 */
+				svg: undefined
 
 			},
 
@@ -30,9 +35,15 @@ define( function ( require ) {
 			initialize: function() {
 
 				this.listenTo(
-					this.model,
+					this.model.get( 'experience' ),
 					EVENTS.EXPERIENCE.HOVER,
-					this._experienceHover
+					this._experienceHoverOn
+				);
+
+				this.listenTo(
+					this.model.get( 'experience' ),
+					EVENTS.EXPERIENCE.HOVER_END,
+					this._experienceHoverOff
 				);
 
 			},
@@ -40,9 +51,19 @@ define( function ( require ) {
 			/**
 			 *
 			 */
-			_experienceHover: function() {
+			_experienceHoverOn: function() {
+				this.options.line.classed( 'hovered', true );
 
-				console.log( this.options.line );
+				$( this.options.line[ 0 ] ).detach();
+
+				$( this.options.svg[ 0 ] ).append( this.options.line[ 0 ] );
+
+			},
+
+
+			_experienceHoverOff: function() {
+
+				this.options.line.classed( 'hovered', false);
 
 			}
 

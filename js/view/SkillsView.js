@@ -113,15 +113,11 @@ define( function ( require ) {
 			 *
 			 */
 			resetSkillList: function() {
-
 				this.$el.find( 'li' ).removeClass( 'selected' );
-
 			},
 
 
 			_highlightOff: function() {
-				// console.log( 'removing highlighted', this.$el.find( '.highlighted' ) );
-
 				this.$el.find( '.highlighted' )
 					.removeClass( 'highlighted' );
 			},

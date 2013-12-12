@@ -2,6 +2,7 @@ define( function ( requrie ) {
 
 		var	$ = require( 'jquery' ),
 			Backbone = require( 'backbone' ),
+			_ = require( 'underscore'),
 			d3 = require( 'd3' ),
 			EVENTS = require( 'events' ),
 			BaseView = require( 'view/BaseView' ),
@@ -32,15 +33,6 @@ define( function ( requrie ) {
 			 */
 			d3el: undefined,
 
-
-			/**
-			 * @property	{Object}	events
-			 */
-			events: {
-				'click .header': 'onNameClick',
-				'mouseover': 'onMouseover',
-				'mouseout': 'onMouseout'
-			},
 
 
 			/**
@@ -80,23 +72,19 @@ define( function ( requrie ) {
 				this.app = require( 'app' );
 				this.highlighted = false;
 
+				if ( 'd3el' in this.options ) {
+					this.d3el = this.options.d3el;
 
-				if ( this.options.d3el ) {
-					this.d3el = d3.select( this.options.d3el );
+					this.d3el.on( 'mouseover', _.bind( this.onMouseover, this ) );
+					this.d3el.on( 'mouseout', _.bind( this.onMouseout, this ) );
+
 				}
-
-
-				// this.on( this.d3el, 'mouseover', function() { console.log( this.model ); } );
-
-				//this.d3el.on( 'mouseover', function() { console.log( 'hover' ); } );
 
 				this.app.vent.on(
 					EVENTS.EXPERIENCE.SELECTED,
 					this._experienceSelected,
 					this
 				);
-
-				BaseView.prototype.initialize.apply( this );
 			},
 
 
@@ -111,17 +99,16 @@ define( function ( requrie ) {
 
 
 			onMouseover: function() {
-
-				this.app.vent.trigger(
-					EVENTS.EXPERIENCE.HOVER,
-					this.model.get( 'skills' )
+				this.model.trigger(
+					EVENTS.EXPERIENCE.HOVER
 				);
+
 			},
 
 
 			onMouseout: function() {
 
-				this.app.vent.trigger(
+				this.model.trigger(
 					EVENTS.EXPERIENCE.HOVER_END
 				);
 			}

@@ -32,7 +32,7 @@ define( function ( require ) {
 				this.paths = [];
  				this.svg = d3.select( 'svg#main-svg' );
 
-				
+
 			},
 
 
@@ -79,7 +79,7 @@ define( function ( require ) {
 
 							{ x: startX, y: startY },
 
-							{ x: startX + 40, y: startY },
+							{ x: startX + 20, y: startY },
 
 							{ x: midX, y: midY },
 
@@ -97,6 +97,7 @@ define( function ( require ) {
 
 
 					this.paths.push( new PathView ( {
+						svg: this.svg,
 						model: path,
 						line: line
 					} ) );
