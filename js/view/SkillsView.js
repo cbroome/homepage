@@ -7,6 +7,7 @@ define( function ( require ) {
 			SkillsTemplate = require( 'text!view/SkillsTemplate.html' ),
 			BaseView = require( 'view/BaseView' ),
 			EVENTS = require( 'EVENTS' ),
+			SkillView = require( 'view/SkillView' ),
 			SkillsView;
 
         SkillsView = BaseView.extend( {
@@ -31,7 +32,7 @@ define( function ( require ) {
 
 
 			/**
-			 * @property	{Object}	skills
+			 * @property	{Array}	skills
 			 */
 			skills: undefined,
 
@@ -67,111 +68,10 @@ define( function ( require ) {
 				this.app = require( 'app' );
 				this.jobs = this.options.jobs;
 				this.projects = this.options.projects;
-				this.skills = {};
+				this.skills = [];
 
-				this.listenTo(
-					this,
-					EVENTS.SKILL.RENDER,
-					this.render
-				);
-
-				this.app.vent.on(
-					EVENTS.EXPERIENCE.CLICK,
-					this._selectSkills,
-					this
-				);
-
-				this.app.vent.on(
-					EVENTS.EXPERIENCE.HOVER,
-					this._highlightSkills,
-					this
-				);
-
-				this.app.vent.on(
-					EVENTS.EXPERIENCE.HOVER_END,
-					this._highlightOff,
-					this
-				);
-
-				this.app.vent.on(
-					EVENTS.SKILL.RESET,
-					this.resetSkillList,
-					this
-				);
-
-				this.app.vent.on(
-					EVENTS.SKILL.RENDER,
-					render,
-					this
-				);
 
             },
-
-
-			/**
-			 * Removes the selected class...
-			 *
-			 */
-			resetSkillList: function() {
-				this.$el.find( 'li' ).removeClass( 'selected' );
-			},
-
-
-			_highlightOff: function() {
-				this.$el.find( '.highlighted' )
-					.removeClass( 'highlighted' );
-			},
-
-
-			/**
-			 *
-			 */
-			_highlightSkills: function( skills )  {
-
-				this._highlightOff();
-
-				if ( skills ) {
-					var skillIDs = _.map( skills, function( skill ) {
-						return '#' + this._skillID( skill );
-					}, this );
-					this.$el.find( skillIDs.toString() ).addClass( 'highlighted' );
-				}
-
-			},
-
-
-			/**
-			 *
-			 * @param	{Array}	skills
-			 */
-			_selectSkills: function( skills ) {
-
-				this.resetSkillList();
-				var skillIDs = _.each(
-					skills,
-					function( skill ){
-						this.$el.find( '#' + this._skillID( skill ) ).addClass( 'selected' );
-					},
-					this
-				);
-
-
-			},
-
-
-
-			/**
-			 *
-			 */
-			_renderSkills: function() {
-				var html, sortedSkills;
-
-				// html...
-				sortedSkills = _.sortBy( this.skills, 'count' ).reverse();
-				html = this.template( SkillsTemplate, { skills: this.skills } );
-				this.$el.empty().append( html );
-
-			},
 
 
 
@@ -211,6 +111,14 @@ define( function ( require ) {
 							xPos:  x,
 							yPos: y
 						} );
+
+						this.skills.push(
+							new SkillView( {
+								svg: this.svg,
+								d3el: obj,
+								model: skill
+							} )
+						)
 
 					},
 					this

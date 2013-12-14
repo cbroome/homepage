@@ -6,11 +6,11 @@ define( function ( requrie ) {
 			d3 = require( 'd3' ),
 			EVENTS = require( 'events' ),
 			BaseView = require( 'view/BaseView' ),
-			ExperienceView;
+			SkillView;
 
 
 
-		ExperienceView = BaseView.extend( {
+		SkillView = BaseView.extend( {
 
 
 			/**
@@ -34,57 +34,19 @@ define( function ( requrie ) {
 			d3el: undefined,
 
 
-
-			/**
-			 *
-			 * @param {model.Experience}	model
-			 */
-			_experienceSelected: function( model ) {
-
-				this.$el.removeClass( 'selected' );
-				if ( this.model.cid === model.cid ) {
-
-					if ( this.highlighted ) {
-						this.app.vent.trigger( EVENTS.SKILL.RESET );
-					}
-					else {
-						this.app.vent.trigger(
-							EVENTS.EXPERIENCE.CLICK,
-							this.model.get( 'skills' )
-						);
-						this.$el.addClass( 'selected' );
-
-					}
-					this.highlighted = !this.highlighted;
-				}
-				else {
-					this.highlighted = false;
-				}
-
-			},
-
-
 			/**
 			 *
 			 */
 			initialize: function() {
 
-				this.app = require( 'app' );
 				this.highlighted = false;
 
 				if ( 'd3el' in this.options ) {
 					this.d3el = this.options.d3el;
-
 					this.d3el.on( 'mouseover', _.bind( this.onMouseover, this ) );
 					this.d3el.on( 'mouseout', _.bind( this.onMouseout, this ) );
-
 				}
 
-				this.app.vent.on(
-					EVENTS.EXPERIENCE.SELECTED,
-					this._experienceSelected,
-					this
-				);
 			},
 
 
@@ -99,7 +61,7 @@ define( function ( requrie ) {
 
 			onMouseover: function() {
 				this.model.trigger(
-					EVENTS.EXPERIENCE.HOVER
+					EVENTS.SKILL.HOVER
 				);
 
 			},
@@ -108,12 +70,12 @@ define( function ( requrie ) {
 			onMouseout: function() {
 
 				this.model.trigger(
-					EVENTS.EXPERIENCE.HOVER_END
+					EVENTS.SKILL.HOVER_END
 				);
 			}
 
 		} );
 
-		return ExperienceView;
+		return SkillView;
 	}
 );

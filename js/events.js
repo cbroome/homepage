@@ -8,6 +8,8 @@ define(
 
 				HOVER: 'skillHover',
 
+				HOVER_END: 'skillHoverEnd',
+
 				CLICK: 'skillClick',
 
 				RESET: 'skillReset',

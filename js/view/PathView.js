@@ -37,13 +37,25 @@ define( function ( require ) {
 				this.listenTo(
 					this.model.get( 'experience' ),
 					EVENTS.EXPERIENCE.HOVER,
-					this._experienceHoverOn
+					this._hoverOn
+				);
+
+				this.listenTo(
+					this.model.get( 'skill' ),
+					EVENTS.SKILL.HOVER,
+					this._hoverOn
 				);
 
 				this.listenTo(
 					this.model.get( 'experience' ),
 					EVENTS.EXPERIENCE.HOVER_END,
-					this._experienceHoverOff
+					this._hoverOff
+				);
+
+				this.listenTo(
+					this.model.get( 'skill' ),
+					EVENTS.SKILL.HOVER_END,
+					this._hoverOff
 				);
 
 			},
@@ -51,20 +63,16 @@ define( function ( require ) {
 			/**
 			 *
 			 */
-			_experienceHoverOn: function() {
+			_hoverOn: function() {
 				this.options.line.classed( 'hovered', true );
-
 				$( this.options.line[ 0 ] ).detach();
-
 				$( this.options.svg[ 0 ] ).append( this.options.line[ 0 ] );
 
 			},
 
 
-			_experienceHoverOff: function() {
-
+			_hoverOff: function() {
 				this.options.line.classed( 'hovered', false);
-
 			}
 
 
