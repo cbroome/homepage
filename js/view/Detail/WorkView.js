@@ -1,7 +1,7 @@
 define( function( require) {
 
 	var DetailView = require( 'view/DetailView' ),
-		template = require( 'view/Detail/ProjectTemplate.html' ),
+		template = require( 'text!view/Detail/WorkTemplate.html' ),
 		DetailWorkView;
 
 	DetailWorkView = DetailView.extend( {
