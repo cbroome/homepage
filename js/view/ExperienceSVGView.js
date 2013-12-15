@@ -85,24 +85,6 @@ define( function ( require ) {
 				this.expWork = this.options.expWork;
 				this.expProjects = this.options.expProjects;
 
-
-				/*
-				this.listenTo(
-					this.expWork,
-					'reset',
-					render
-				);
-
-
-				this.listenTo(
-					this.expProjects,
-					'reset',
-					render
-				);
-				*/
-
-
-
 				BaseView.prototype.initialize.apply( this );
 			},
 
@@ -122,7 +104,7 @@ define( function ( require ) {
 
 				this
 					._renderSection( this.expWork, 'Work Experience' )
-					._renderSection( this.expProjects, 'Projects' );
+					._renderSection( this.expProjects, 'Personal Projects' );
 
 
 

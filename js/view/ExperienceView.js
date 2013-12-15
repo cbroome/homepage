@@ -77,6 +77,7 @@ define( function ( requrie ) {
 
 					this.d3el.on( 'mouseover', _.bind( this.onMouseover, this ) );
 					this.d3el.on( 'mouseout', _.bind( this.onMouseout, this ) );
+					this.d3el.on( 'click', _.bind( this.onNameClick, this ) );
 
 				}
 
@@ -93,7 +94,8 @@ define( function ( requrie ) {
 			 * @event	{EVENTS.EXPERIENCE.SELECTED}
 			 */
 			onNameClick: function() {
-				this.app.vent.trigger( EVENTS.EXPERIENCE.SELECTED, this.model );
+				console.log( 'clicked' );
+				this.model.set( 'selected', true );
 			},
 
 

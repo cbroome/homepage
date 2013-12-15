@@ -5,7 +5,6 @@ define( function ( require ) {
 			Backbone = require( 'backbone' ),
 			_ = require( 'underscore' ),
 			Marionette = require( 'marionette' ),
-			// app = require( 'app' ),
 			SkillModel = require( 'model/SkillModel' ),
 			PathModel = require( 'model/PathModel' ),
 			WorkModel = require( 'model/Experience/WorkModel' ),
@@ -15,6 +14,7 @@ define( function ( require ) {
 			ExperienceListWorkListView = require( 'view/ExperienceList/WorkListView' ),
 			ExperienceListProjectListView = require( 'view/ExperienceList/ProjectListView' ),
 			PathsView = require( 'view/PathsView' ),
+			DetailsView = require( 'view/DetailsView' ),
 
 			ExperienceProjectCollection = require( 'collection/Experience/ProjectCollection' ),
 			ExperienceWorkCollection = require( 'collection/Experience/WorkCollection' ),
@@ -79,6 +79,12 @@ define( function ( require ) {
 			experienceViews: undefined,
 
 
+			/**
+			 * @property	{DetailsViews}	detailsViews
+			 */
+			detailsViews: undefined,
+
+
             /**
              *
              */
@@ -105,7 +111,7 @@ define( function ( require ) {
 					collection: this.skills
 				} );
 
-
+/*
 				this.workList = new ExperienceListWorkListView( {
 					collection: this.jobs
 				} );
@@ -113,7 +119,7 @@ define( function ( require ) {
 				this.projectList = new ExperienceListProjectListView( {
 					collection: this.projects
 				} );
-
+*/
 				this.pathList = new PathCollection( [] );
 
 
@@ -124,23 +130,33 @@ define( function ( require ) {
 
 				} );
 
-
 				this.pathsView = new PathsView ( {
 					collection: this.pathList
 				} );
 
-				// this.listenTo( this.jobs, 'sync', this._processJobs );
+				this.detailsView = new DetailsView ( {
+					expProjects: this.projects,
+					expWork: this.jobs
+				} );
+
+
+				// Reset selected
+				this.listenTo(
+					this.projects,
+					'change:selected',
+					this._resetSelected
+				);
+
+				this.listenTo(
+					this.jobs,
+					'change:selected',
+					this._resetSelected
+				);
+
+
 
 				this.buildLists();
 
-
-
-
-
-				// @deprecated -- html stuff
-				// app.skillList.show( this.skillView );
-				// app.experienceWork.show( this.workList );
-				// app.experienceProjects.show( this.projectList );
             },
 
 
@@ -241,6 +257,28 @@ define( function ( require ) {
 
 			_buildPaths: function() {
 
+			},
+
+
+			/**
+			 * @param	{ExperienceCollection}	collection
+			 */
+			_unselectCollection: function( collection ) {
+				collection.each( function( model ) {
+					model.set( { selected: false }, { silent: true } );
+				} );
+			},
+
+			/**
+			 * @param	{ExperienceModel}	model
+			 */
+			_resetSelected: function( model ) {
+				var collections = [
+					this.projects,
+					this.jobs
+				];
+				_.each( collections, this._unselectCollection, this );
+				model.set( { 'selected': true }, { silent: true } );
 			}
 
 

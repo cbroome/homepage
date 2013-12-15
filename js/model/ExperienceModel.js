@@ -22,6 +22,23 @@ define(  function ( require ) {
              */
             skills: undefined,
 
+			/**
+			 * @property	{Boolean}	options
+			 */
+			options: {
+
+				/**
+				 * @property	{Boolean}	selected
+				 */
+				selected: undefined
+
+			},
+
+
+			initialize: function() {
+				this.set( { selected: false }, { silent: true } );
+			}
+
 
 
 
