@@ -4,10 +4,29 @@ define( function( require ) {
 		BaseView = require( 'view/BaseView' ),
 		DetailProjectView = require( 'view/Detail/ProjectView' ),
 		DetailWorkView = require( 'view/Detail/WorkView' ),
+		DetailTemplate = require( 'text!view/DetailTemplate.html' ),
 		DetailsView;
 
 	DetailsView = BaseView.extend( {
 
+		/**
+		 *
+		 */
+		html: undefined,
+
+		/**
+		 * @property	{String}	tagname
+		 */
+		tagname: 'div',
+
+		/**
+		 * @property	{String}	className
+		 */
+		className: 'detail-view',
+
+		/**
+		 * @property	{Object}	options
+		 */
 		options: {
 
 			/**
@@ -27,6 +46,10 @@ define( function( require ) {
 
 			var _renderWork = _.partial( this.renderExp, DetailWorkView ),
 				_renderProject = _.partial( this.renderExp, DetailProjectView );
+
+			this.html = this.template( DetailTemplate, {} );
+
+			console.log( this.html );
 
 			this.listenTo(
 				this.options.expWork,

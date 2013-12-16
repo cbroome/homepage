@@ -94,7 +94,6 @@ define( function ( requrie ) {
 			 * @event	{EVENTS.EXPERIENCE.SELECTED}
 			 */
 			onNameClick: function() {
-				console.log( 'clicked' );
 				this.model.set( 'selected', true );
 			},
 
