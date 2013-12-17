@@ -21,6 +21,7 @@ define( function ( require ) {
 			PathCollection = require( 'collection/PathCollection' ),
 
 			ExperienceSVGView = require( 'view/ExperienceSVGView' ),
+			app,
 			MainController;
 
 
@@ -97,6 +98,8 @@ define( function ( require ) {
 						model: PathModel
 					} );
 
+				app = require( 'app' );	
+				
 				this.skills = new SkillCollection();
 
 
@@ -111,17 +114,7 @@ define( function ( require ) {
 					collection: this.skills
 				} );
 
-/*
-				this.workList = new ExperienceListWorkListView( {
-					collection: this.jobs
-				} );
-
-				this.projectList = new ExperienceListProjectListView( {
-					collection: this.projects
-				} );
-*/
 				this.pathList = new PathCollection( [] );
-
 
 				this.experienceSVG = new ExperienceSVGView( {
 					expWork: this.jobs,
@@ -153,9 +146,9 @@ define( function ( require ) {
 					this._resetSelected
 				);
 
-
-
 				this.buildLists();
+				
+				app.detailsView.show( this.detailsView );
 
             },
 
@@ -253,12 +246,6 @@ define( function ( require ) {
 					_.delay( _.bind( this.pathsView.render, this.pathsView ), 100 );
 				}
 			},
-
-
-			_buildPaths: function() {
-
-			},
-
 
 			/**
 			 * @param	{ExperienceCollection}	collection

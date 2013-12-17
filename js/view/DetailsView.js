@@ -4,7 +4,7 @@ define( function( require ) {
 		BaseView = require( 'view/BaseView' ),
 		DetailProjectView = require( 'view/Detail/ProjectView' ),
 		DetailWorkView = require( 'view/Detail/WorkView' ),
-		DetailTemplate = require( 'text!view/DetailTemplate.html' ),
+		DetailsTemplate = require( 'text!view/DetailsTemplate.html' ),
 		DetailsView;
 
 	DetailsView = BaseView.extend( {
@@ -47,9 +47,8 @@ define( function( require ) {
 			var _renderWork = _.partial( this.renderExp, DetailWorkView ),
 				_renderProject = _.partial( this.renderExp, DetailProjectView );
 
-			this.html = this.template( DetailTemplate, {} );
+			this.html = this.template( DetailsTemplate, {} );
 
-			console.log( this.html );
 
 			this.listenTo(
 				this.options.expWork,
@@ -64,13 +63,29 @@ define( function( require ) {
 			);
 
 		},
+		
+		/**
+		 *
+		 * @returns {DetailsView}
+		 */
+		render: function() {
+		
+			this.$el.html( DetailsTemplate );
+			
+			return this;	
+		},
 
 		renderExp: function( View, model ) {
-
+		
+			this.render();
+		
+		
 			// Reset all the models back to unselected.
 			var detail = new View( {
 				model: model
-			} );
+			} ).render();
+			
+			
 		}
 
 	} );

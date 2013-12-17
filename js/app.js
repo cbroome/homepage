@@ -10,7 +10,9 @@ define( function ( require ) {
 
             experienceWork: '.experience-work',
 
-            experienceProjects: '.experience-projects'
+            experienceProjects: '.experience-projects',
+            
+            detailsView: '.detail-view-column'
 
         });
 

@@ -8,7 +8,7 @@ define( function( require) {
 
 
 		initialize: function () {
-			this.template = template;
+			this.html = template;
 		}
 
 	} );

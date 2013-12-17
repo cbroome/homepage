@@ -4,10 +4,11 @@ define( function( require) {
 		template = require( 'text!view/Detail/WorkTemplate.html' ),
 		DetailWorkView;
 
+    
 	DetailWorkView = DetailView.extend( {
 
 		initialize: function() {
-
+            this.html = template;
 		}
 
 

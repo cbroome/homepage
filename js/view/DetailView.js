@@ -9,12 +9,20 @@ define( function( require ) {
 		/**
 		 * @property	{String}	template
 		 */
-		template: undefined,
+		html: undefined,
 
-
-		initialize: function() {
-			console.log( "in detail view" );
-		},
+		
+		/**
+		 * @property	{String}	className
+		 */
+		className: 'experience-detail',
+		
+		
+		/**
+		 * @property	{String}	tagName
+		 */
+		tagName: 'div',
+		
 
 		/**
 		 *
@@ -22,7 +30,7 @@ define( function( require ) {
 		render: function() {
 
 			
-
+			console.log( 'dv: rendering,', this.html );
 			return this;
 		}
 
