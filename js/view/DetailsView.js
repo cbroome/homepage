@@ -94,9 +94,7 @@ define( function( require ) {
             if( detailHeight < height ) {
                 paddingTop = parseInt( ( height - detailHeight ) / 2 ); 
             }
-            
-            console.log( 'marginTop: ', paddingTop );
-            
+                        
             detail.$el.css( 'padding-top', paddingTop );
                         
 			

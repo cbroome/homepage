@@ -2,8 +2,10 @@ define( function ( require ) {
 
 
 		var BaseView = require( 'view/BaseView' ),
+            _ = require( 'underscore' ),
 			PathModel = require( 'model/PathModel' ),
 			EVENTS = require( 'events' ),
+            app,
 			PathView;
 
         PathView = BaseView.extend( {
@@ -34,6 +36,8 @@ define( function ( require ) {
 
 			initialize: function() {
 
+                app = require( 'app' );
+                
 				this.listenTo(
 					this.model.get( 'experience' ),
 					EVENTS.EXPERIENCE.HOVER,
@@ -57,6 +61,11 @@ define( function ( require ) {
 					EVENTS.SKILL.HOVER_END,
 					this._hoverOff
 				);
+                
+                app.vent.on( 
+                    EVENTS.PATHS.RESET,
+                    _.bind( this._hoverOff, this )
+                );
 
 			},
 
@@ -72,7 +81,9 @@ define( function ( require ) {
 
 
 			_hoverOff: function() {
-				this.options.line.classed( 'hovered', false);
+                if( !this.model.get( 'experience' ).get( 'selected' ) )  {
+				    this.options.line.classed( 'hovered', false );
+                }
 			}
 
 

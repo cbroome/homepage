@@ -21,6 +21,7 @@ define( function ( require ) {
 			PathCollection = require( 'collection/PathCollection' ),
 
 			ExperienceSVGView = require( 'view/ExperienceSVGView' ),
+            EVENTS = require( 'events' ),
 			app,
 			MainController;
 
@@ -145,6 +146,9 @@ define( function ( require ) {
 					'change:selected',
 					this._resetSelected
 				);
+                
+                app.vent.on( EVENTS.SKILL.HOVER_END, _.bind( this._hoverEnd, this ) );
+                app.vent.on( EVENTS.EXPERIENCE.HOVER_END, _.bind( this._hoverEnd, this ) ); 
 
 				this.buildLists();
 				
@@ -264,10 +268,40 @@ define( function ( require ) {
 					this.projects,
 					this.jobs
 				];
-				_.each( collections, this._unselectCollection, this );
-				model.set( { 'selected': true }, { silent: true } );
-			}
 
+				_.each( collections, this._unselectCollection, this );
+				model.set( { selected: true }, { silent: true } );
+                app.vent.trigger( EVENTS.PATHS.RESET ); 
+			},
+            
+            
+            /**
+             *
+             * @param   {ExperienceModel}   model
+             */
+            _hoverEnd: function( model ) {                
+                var exps = [ this.jobs, this.projects ]; 
+                app.vent.trigger( EVENTS.PATHS.RESET ); 
+                _.each(
+                    exps,
+                    this._reselectExperience,
+                    this
+                );
+                
+            },
+            
+            
+            /**
+             * @param   {Backbone.Collection}   collection
+             */
+            _reselectExperience: function( collection ) {
+                
+                var exp = collection.findWhere( { selected: true } );
+                if( exp ) {
+                    exp.trigger( EVENTS.EXPERIENCE.RESELECT );    
+                }
+                
+            }
 
         } );
 

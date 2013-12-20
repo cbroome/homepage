@@ -26,10 +26,15 @@ define(
 
 				CLICK: 'experienceClick',
 
-				SELECTED: 'experienceSelected'
+				SELECTED: 'experienceSelected',
+                
+                RESELECT: 'experienceReselect'
 
-			}
-
+			},
+            
+            PATHS: {
+                RESET: 'pathsReset'   
+            }
 		};
 
 		return EVENTS;

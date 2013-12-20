@@ -6,6 +6,7 @@ define( function ( requrie ) {
 			d3 = require( 'd3' ),
 			EVENTS = require( 'events' ),
 			BaseView = require( 'view/BaseView' ),
+            app,
 			ExperienceView;
 
 
@@ -37,39 +38,10 @@ define( function ( requrie ) {
 
 			/**
 			 *
-			 * @param {model.Experience}	model
-			 */
-			_experienceSelected: function( model ) {
-
-				this.$el.removeClass( 'selected' );
-				if ( this.model.cid === model.cid ) {
-
-					if ( this.highlighted ) {
-						this.app.vent.trigger( EVENTS.SKILL.RESET );
-					}
-					else {
-						this.app.vent.trigger(
-							EVENTS.EXPERIENCE.CLICK,
-							this.model.get( 'skills' )
-						);
-						this.$el.addClass( 'selected' );
-
-					}
-					this.highlighted = !this.highlighted;
-				}
-				else {
-					this.highlighted = false;
-				}
-
-			},
-
-
-			/**
-			 *
 			 */
 			initialize: function() {
 
-				this.app = require( 'app' );
+				app = require( 'app' );
 				this.highlighted = false;
 
 				if ( 'd3el' in this.options ) {
@@ -81,11 +53,7 @@ define( function ( requrie ) {
 
 				}
 
-				this.app.vent.on(
-					EVENTS.EXPERIENCE.SELECTED,
-					this._experienceSelected,
-					this
-				);
+                this.listenTo( this.model, EVENTS.EXPERIENCE.RESELECT, this.onMouseover );
 			},
 
 
@@ -111,6 +79,8 @@ define( function ( requrie ) {
 				this.model.trigger(
 					EVENTS.EXPERIENCE.HOVER_END
 				);
+                app.vent.trigger( EVENTS.EXPERIENCE.HOVER_END, this.model );
+ 
 			}
 
 		} );
