@@ -29,8 +29,7 @@ define( function( require ) {
 		 */
 		render: function() {
 
-			
-			console.log( 'dv: rendering,', this.html );
+			this.$el.html( this.template( this.html, this.model.attributes ) ); 
 			return this;
 		}
 

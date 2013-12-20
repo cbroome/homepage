@@ -14,7 +14,11 @@ define( function ( require ) {
             /**
              * @property    {String}    urlRoot
              */
-            urlRoot: 'service/projects'
+            urlRoot: 'service/projects',
+           
+            initialize: function() {
+                this.set( 'active', this.get( 'status' ) === 'active' );
+            }
         } );
 
         return ExperienceProjectModel;

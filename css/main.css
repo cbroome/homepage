@@ -18,7 +18,7 @@ body {
     color: #060046;
     /* background: #EFF7FC; */
     /* background: #faf9ff; */
-    background: #f5f7ff;
+    background: rgb(245, 247, 255);
 }
 
 .section {
@@ -30,6 +30,10 @@ a {
     /* color: #1700FF; */
     color: #0D9FFE;
     text-decoration: none;
+}
+
+a[target=_blank]:after {
+    content: ' \00bb';
 }
 
 
@@ -67,6 +71,10 @@ header {
 
 .heading-font {
     font-family: LeagueGothic, Tahoma, sans-serif;
+}
+
+.main-display {
+    height: 600px;
 }
 
 
@@ -263,3 +271,33 @@ ul.scant-bio {
     display: block;
     min-height: 60px;
 }
+
+
+/* experience
+ * ================================================= */
+
+.detail-view-column {
+    overflow: auto;
+}
+
+.detail-view {
+    height: 100%;
+    border: 1px solid #acb7de;
+    border-top: none;
+    border-bottom: none;
+    padding: 0 15px;
+    font-size: .6em;
+    background: #fff;
+}
+
+
+.detail-view .experience-detail {
+    margin: auto 0;
+}
+
+.detail-view .description {
+    
+}
+
+
+

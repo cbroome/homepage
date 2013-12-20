@@ -77,6 +77,10 @@ define( function( require ) {
 
 		renderExp: function( View, model ) {
 		
+            var height = this.$el.height(),
+                paddingTop = 0,
+                detailHeight;
+            
 			this.render();
 		
 		
@@ -84,6 +88,17 @@ define( function( require ) {
 			var detail = new View( {
 				model: model
 			} ).render();
+            this.$el.empty().append( detail.$el );             
+            detailHeight = detail.$el.height();
+            
+            if( detailHeight < height ) {
+                paddingTop = parseInt( ( height - detailHeight ) / 2 ); 
+            }
+            
+            console.log( 'marginTop: ', paddingTop );
+            
+            detail.$el.css( 'padding-top', paddingTop );
+                        
 			
 			
 		}
