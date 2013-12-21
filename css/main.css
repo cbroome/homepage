@@ -10,7 +10,7 @@
 }
 
 body {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Lora', sans-serif;
     font-size: 35px;
     margin: 0;
     padding: 0;
@@ -34,6 +34,7 @@ a {
 
 a[target=_blank]:after {
     content: ' \00bb';
+    font-size: .9em;
 }
 
 
@@ -293,6 +294,7 @@ ul.scant-bio {
 
 .detail-view .title {
     font-size: 1.3em;
+    border-bottom: 1px solid;
 }
 
 .detail-view .experience-detail {
@@ -303,11 +305,22 @@ ul.scant-bio {
     font-size: .7em;
 }
 
+.detail-view div {
+    margin-bottom: 5px;
+}
+
 .detail-view a {
-    
+    font-size: .9em;
 }
 
 .detail-view .description {
+    font-size: .9em;
+}
+
+
+.detail-view .status {
+    text-transform: uppercase;
+    font-size: .6em;
 }
 
 

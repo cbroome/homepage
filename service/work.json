@@ -13,7 +13,7 @@
             "perl",
             "mysql"
         ],
-        "description": "worked here..."
+        "description": "Traditional display and banner advertisements"
     },
 
     {
@@ -35,7 +35,7 @@
             "agile",
             "svn"
         ],
-        "description": "financial stuff"
+        "description": "Developing jquery-heavy social media tools for the financial and education sectors."
     },
 
 
@@ -60,7 +60,7 @@
             "html5",
             "svn"
         ],
-        "description": "startup!"
+        "description": "Mobile advertisements."
     },
 
     {
@@ -80,7 +80,7 @@
             "jquery",
             "html5"
         ],
-        "description": "another startup"
+        "description": "Offers a suite of network intrusion detection software controlled by Flex and HTML5 enterprise applications."
     },
 
     {
@@ -99,6 +99,6 @@
             "python",
             "mercurial"
         ],
-        "description": "Start up with a sendmail type application"
+        "description": "Offers a high-volume sendmail-type application."
     }
 ]

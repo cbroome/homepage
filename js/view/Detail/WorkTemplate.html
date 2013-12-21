@@ -1,11 +1,12 @@
 <div class="title">{{title}}</div>
 <div class="dates">
     {{#if dates.start}}
+        from
         <span class="date-start">{{dates.startString}}</span>
     {{/if}}
     
     {{#if dates.end}}
-        &#8212; 
+        to 
         <span class="date-end">{{dates.endString}}</span>
     {{/if}}
 </div>

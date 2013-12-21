@@ -4,7 +4,7 @@
 		"url": "http://www.christopherbroome.com",
 		"skills": [ "javascript", "backbone.js", "marionette.js", "jquery", "d3", "css", "mvc", "git" ],
 		"status": "active",
-		"description": ""
+		"description": "A little experiment in Marionette and D3.js"
 	},
 
 	{
@@ -18,8 +18,8 @@
 	{
 		"title": "Dither and Bicker",
 		"url": "http://www.ditherandbicker.com",
-		"skills": [ "jekyll" ],
+		"skills": [ "wordpress" ],
 		"status": "active",
-		"description": "Tech Blog"
+		"description": "A seldomly updated tech-blog"
 	}
 ]
