@@ -5,6 +5,7 @@ define( function( require ) {
 		DetailProjectView = require( 'view/Detail/ProjectView' ),
 		DetailWorkView = require( 'view/Detail/WorkView' ),
 		DetailsTemplate = require( 'text!view/DetailsTemplate.html' ),
+        ArrowView = require( 'view/ArrowView' ),
 		DetailsView;
 
 	DetailsView = BaseView.extend( {
@@ -79,6 +80,7 @@ define( function( require ) {
 		
             var height = this.$el.height(),
                 paddingTop = 0,
+                arrow,
                 detailHeight;
             
 			this.render();
@@ -92,10 +94,22 @@ define( function( require ) {
             detailHeight = detail.$el.height();
             
             if( detailHeight < height ) {
-                paddingTop = parseInt( ( height - detailHeight ) / 2 ); 
+                paddingTop = model.get( 'yPos' ) - 30;
+                if( ( paddingTop + detailHeight ) > height ) {
+                    paddingTop -= ( paddingTop + detailHeight ) - height + 25;
+                }
             }
+
                         
             detail.$el.css( 'padding-top', paddingTop );
+            
+            
+            // Draw the arrow.
+            arrow = new ArrowView( { model: model } );
+            arrow.render();
+            
+            this.$el.append( arrow.$el );
+            
                         
 			
 			

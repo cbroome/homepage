@@ -1,4 +1,14 @@
 <div class="title">{{title}}</div>
+<div class="dates">
+    {{#if dates.start}}
+        <span class="date-start">{{dates.startString}}</span>
+    {{/if}}
+    
+    {{#if dates.end}}
+        &#8212; 
+        <span class="date-end">{{dates.endString}}</span>
+    {{/if}}
+</div>
 <div class="url"> 
     <a href="{{url}}" target="_blank">{{url}}</a>
 </div>

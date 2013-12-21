@@ -277,7 +277,7 @@ ul.scant-bio {
  * ================================================= */
 
 .detail-view-column {
-    overflow: auto;
+    position: relative;
 }
 
 .detail-view {
@@ -285,19 +285,59 @@ ul.scant-bio {
     border: 1px solid #acb7de;
     border-top: none;
     border-bottom: none;
-    padding: 0 15px;
-    font-size: .6em;
+    padding: 0 20px;
+    font-size: .55em;
     background: #fff;
 }
 
+
+.detail-view .title {
+    font-size: 1.3em;
+}
 
 .detail-view .experience-detail {
     margin: auto 0;
 }
 
-.detail-view .description {
+.detail-view .dates {
+    font-size: .7em;
+}
+
+.detail-view a {
     
 }
 
+.detail-view .description {
+}
+
+
+/* arrow
+ * ================================================= */
+
+.arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -24px;
+    z-index: 10;
+    
+    border-right: 25px solid #acb7de;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+}
+
+.arrow:before {
+    content:  ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -25px;
+    left: 1px;
+    z-index: 11;
+    
+    border-right: 25px solid #fff;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;    
+}
 
 
