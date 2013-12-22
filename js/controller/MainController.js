@@ -11,8 +11,6 @@ define( function ( require ) {
 			ProjectModel = require( 'model/Experience/ProjectModel' ),
 
 			SkillsView = require( 'view/SkillsView' ),
-			ExperienceListWorkListView = require( 'view/ExperienceList/WorkListView' ),
-			ExperienceListProjectListView = require( 'view/ExperienceList/ProjectListView' ),
 			PathsView = require( 'view/PathsView' ),
 			DetailsView = require( 'view/DetailsView' ),
 
@@ -44,17 +42,6 @@ define( function ( require ) {
 			 * @property	{Backbone.View}		skillView
 			 */
 			skillView: undefined,
-
-
-			/**
-			 * @property	{ExperienceListWorkListView}		workList
-			 */
-			workList: undefined,
-
-			/**
-			 * @property	{ExperienceListProjectListView}	projectList
-			 */
-			projectList: undefined,
 
 
 			/**
