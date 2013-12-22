@@ -13,7 +13,7 @@
             "perl",
             "mysql"
         ],
-        "description": "Traditional display and banner advertisements"
+        "description": "Wrote standalone sites that tied to the larger display advertising network."
     },
 
     {
@@ -35,7 +35,7 @@
             "agile",
             "svn"
         ],
-        "description": "Developing jquery-heavy social media tools for the financial and education sectors."
+        "description": "Developed jquery-heavy social media tools for the financial and education sectors."
     },
 
 
@@ -60,7 +60,7 @@
             "html5",
             "svn"
         ],
-        "description": "Mobile advertisements."
+        "description": "Wrote interfaces to manage and monitor a mobile ad network. Worked on rich media, javascript heavy mobile advertisements."
     },
 
     {
@@ -80,7 +80,7 @@
             "jquery",
             "html5"
         ],
-        "description": "Offers a suite of network intrusion detection software controlled by Flex and HTML5 enterprise applications."
+        "description": "Worked on HTML5 enterprise application used to manage a network vulnerability monitor."
     },
 
     {
@@ -99,6 +99,6 @@
             "python",
             "mercurial"
         ],
-        "description": "Offers a high-volume sendmail-type application."
+        "description": "Research work around technologies such as Cassandra for high volume data queries."
     }
 ]

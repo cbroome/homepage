@@ -354,3 +354,10 @@ ul.scant-bio {
 }
 
 
+/* read-more
+ * ================================================= */
+.read-more {
+    text-align: center;
+    line-height: 570px;
+}    
+    
