@@ -54,7 +54,7 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	x
 			 */
-			x: 100,
+			x: 115,
 
 
 			/**
