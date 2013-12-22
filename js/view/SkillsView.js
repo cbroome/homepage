@@ -6,7 +6,7 @@ define( function ( require ) {
 			d3 = require( 'd3' ),
 			SkillsTemplate = require( 'text!view/SkillsTemplate.html' ),
 			BaseView = require( 'view/BaseView' ),
-			EVENTS = require( 'EVENTS' ),
+			EVENTS = require( 'events' ),
 			SkillView = require( 'view/SkillView' ),
 			SkillsView;
 
