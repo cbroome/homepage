@@ -48,6 +48,10 @@ require.config( {
             exports: 'Marionette'
         },
 
+        text: {
+            exports: 'text'
+        },
+
         d3: {
             exports: 'd3'
         }
@@ -55,11 +59,3 @@ require.config( {
 
 
 });
-
-require(
-    [ 'app' ],
-    function ( app ) {
-        app.start();
-
-    }
-);
