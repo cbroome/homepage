@@ -18,18 +18,15 @@ define( function ( require ) {
 			 */
 			app: undefined,
 
-
 			/**
 			 * @property	{Backbone.Collection}	jobs
 			 */
 			jobs: undefined,
 
-
 			/**
 			 * @property	{Backbone.Collection}	projects
 			 */
 			projects: undefined,
-
 
 			/**
 			 * @property	{Array}	skills
@@ -40,16 +37,22 @@ define( function ( require ) {
 			 * @property	{d3}	svg
 			 */
 			svg: d3,
+            
+            /**
+             * @property    {Integer}   startY
+             */
+            startY: 5,
+            
 
 			/**
 			 * @property	{Integer}	cursorY
 			 */
-			cursorY: 20,
+			cursorY: undefined,
 
 			/**
 			 * @property	{Integer}	heightLine
 			 */
-			heightLine: 20,
+			heightLine: 18,
 
 			/**
 			 * @property	{Integer}	x
@@ -80,13 +83,10 @@ define( function ( require ) {
 			 * @returns	{view.Skills}
 			 */
 			render: function() {
-
-
 				var sortedSkills,
 					getY = _.bind( this._getY, this, this.heightLine );
 
-				this.cursorY = 20;
-
+                this.cursorY = this.startY;
 				this.svg.selectAll( 'text.skill-label' )
 					.remove();
 

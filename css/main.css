@@ -75,7 +75,7 @@ header {
 }
 
 .main-display {
-    height: 600px;
+    height: 500px;
 }
 
 
@@ -358,6 +358,6 @@ ul.scant-bio {
  * ================================================= */
 .read-more {
     text-align: center;
-    line-height: 570px;
+    line-height: 500px;
 }    
     

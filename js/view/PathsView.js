@@ -47,7 +47,7 @@ define( function ( require ) {
 				var expY = 10,
 					expX = 5,
 					skillX = 5,
-					skillY = 7,
+					skillY = 4,
 					lineFunction,
 					findDiff;
 

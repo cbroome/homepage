@@ -31,16 +31,21 @@ define( function ( require ) {
 			 * @property	{d3}	svg
 			 */
 			svg: undefined,
+            
+            /**
+             * @property    {Integer}   startY
+             */
+            startY: 5,
 
 			/**
 			 * @property	{Integer}	cursorY		Keep track of current height
 			 */
-			cursorY: 10,
+			cursorY: undefined,
 
 			/**
 			 * @property	{Integer}	heightHeader
 			 */
-			heightHeader: 45,
+			heightHeader: 40,
 
 			/**
 			 * @property	{Integer}	heightLine
@@ -100,7 +105,7 @@ define( function ( require ) {
 
 				this.svg.selectAll( '.exp' )
 					.remove();
-				this.cursorY = 10;
+				this.cursorY = this.startY;
 
 				this
 					._renderSection( this.expWork, 'Work Experience' )
