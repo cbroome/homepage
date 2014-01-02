@@ -63,6 +63,9 @@ define( function ( requrie ) {
 			 */
 			onNameClick: function() {
 				this.model.set( 'selected', true );
+                
+                // for tablets, that don't have a mouseover event
+                this.onMouseover();
 			},
 
 

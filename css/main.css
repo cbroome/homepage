@@ -4,10 +4,6 @@
  * https://kuler.adobe.com/Clustered-color-theme-3230414/
  */
 
-@font-face {
-    font-family: LeagueGothic;
-    src: url('../lib/LeagueGothic-Regular.otf');
-}
 
 @font-face {
     font-family: 'league_gothicregular';
@@ -26,10 +22,7 @@ body {
     font-size: 35px;
     margin: 0;
     padding: 0;
-    /*color: #2E1A00;*/
     color: #060046;
-    /* background: #EFF7FC; */
-    /* background: #faf9ff; */
     background: rgb(245, 247, 255);
 }
 

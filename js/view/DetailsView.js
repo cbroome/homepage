@@ -76,6 +76,11 @@ define( function( require ) {
 			return this;	
 		},
 
+        /**
+         * 
+         * @param   {ExperienceView}    View
+         * @param   {ExperienceModel}   model
+         */
 		renderExp: function( View, model ) {
 		
             var height = this.$el.height(),
