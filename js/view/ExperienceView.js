@@ -50,6 +50,9 @@ define( function ( requrie ) {
 					this.d3el.on( 'click', _.bind( this.onNameClick, this ) );
 					this.d3el.on( 'mouseover', _.bind( this.onMouseover, this ) );
 					this.d3el.on( 'mouseout', _.bind( this.onMouseout, this ) );
+                    
+                    // Touch events
+                    this.d3el.on( 'touchstart', _.bind( this.onNameClick, this ) );
 					this.d3el.on( 'touchenter', _.bind( this.onNameClick, this ) );
 
 				}
