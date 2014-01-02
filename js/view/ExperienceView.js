@@ -47,9 +47,10 @@ define( function ( requrie ) {
 				if ( 'd3el' in this.options ) {
 					this.d3el = this.options.d3el;
 
+					this.d3el.on( 'click', _.bind( this.onNameClick, this ) );
 					this.d3el.on( 'mouseover', _.bind( this.onMouseover, this ) );
 					this.d3el.on( 'mouseout', _.bind( this.onMouseout, this ) );
-					this.d3el.on( 'click', _.bind( this.onNameClick, this ) );
+					this.d3el.on( 'touchenter', _.bind( this.onNameClick, this ) );
 
 				}
 
@@ -63,8 +64,6 @@ define( function ( requrie ) {
 			 */
 			onNameClick: function() {
 				this.model.set( 'selected', true );
-                
-                // for tablets, that don't have a mouseover event
                 this.onMouseover();
 			},
 
