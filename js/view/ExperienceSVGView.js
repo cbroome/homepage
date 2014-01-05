@@ -177,7 +177,7 @@ define( function ( require ) {
 						exp.set( {
 							xPos: x,
 							yPos: y
-						})
+						});
 
 						this.options.experienceViews.push(
 							new viewClass( {

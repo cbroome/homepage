@@ -1,17 +1,12 @@
-define( function ( requrie ) {
+define( function ( require ) {
 
-		var	$ = require( 'jquery' ),
-			Backbone = require( 'backbone' ),
-			_ = require( 'underscore'),
-			d3 = require( 'd3' ),
-			EVENTS = require( 'events' ),
-			BaseView = require( 'view/BaseView' ),
-            app,
+		var	EVENTS = require( 'events' ),
+            SelectableView = require( 'view/SelectableView' ),
 			SkillView;
 
 
 
-		SkillView = BaseView.extend( {
+		SkillView = SelectableView.extend( {
 
 
 			/**
@@ -35,34 +30,6 @@ define( function ( requrie ) {
 			d3el: undefined,
 
 
-			/**
-			 *
-			 */
-			initialize: function() {
-
-				this.highlighted = false;
-
-                app = require( 'app' );
-                
-				if ( 'd3el' in this.options ) {
-					this.d3el = this.options.d3el;
-					this.d3el.on( 'mouseover', _.bind( this.onMouseover, this ) );
-					this.d3el.on( 'mouseout', _.bind( this.onMouseout, this ) );
-				}
-                
-
-			},
-
-
-			/**
-			 *
-			 * @event	{EVENTS.EXPERIENCE.SELECTED}
-			 */
-			onNameClick: function() {
-				app.vent.trigger( EVENTS.EXPERIENCE.SELECTED, this.model );
-			},
-
-
 			onMouseover: function() {
 				this.model.trigger(
 					EVENTS.SKILL.HOVER
@@ -71,12 +38,10 @@ define( function ( requrie ) {
 
 
 			onMouseout: function() {
-
 				this.model.trigger(
 					EVENTS.SKILL.HOVER_END
 				);
-                
-                app.vent.trigger( EVENTS.SKILL.HOVER_END, this.model );
+                this.app.vent.trigger( EVENTS.SKILL.HOVER_END, this.model );
 			}
 
 		} );

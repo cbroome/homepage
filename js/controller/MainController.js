@@ -134,6 +134,12 @@ define( function ( require ) {
 					this._resetSelected
 				);
                 
+                this.listenTo( 
+                    this.skills,
+                    'change:selected',
+                    this._resetSelected
+                );
+                
                 app.vent.on( EVENTS.SKILL.HOVER_END, _.bind( this._hoverEnd, this ) );
                 app.vent.on( EVENTS.EXPERIENCE.HOVER_END, _.bind( this._hoverEnd, this ) ); 
 
@@ -252,12 +258,14 @@ define( function ( require ) {
 			 */
 			_resetSelected: function( model ) {
 				var collections = [
-					this.projects,
-					this.jobs
-				];
+                        this.projects,
+                        this.jobs,
+                        this.skills
+                    ],
+                    selected = model.get( 'selected' );
 
 				_.each( collections, this._unselectCollection, this );
-				model.set( { selected: true }, { silent: true } );
+                model.set( { selected: selected }, { silent: true } );
                 app.vent.trigger( EVENTS.PATHS.RESET ); 
 			},
             
@@ -267,7 +275,7 @@ define( function ( require ) {
              * @param   {ExperienceModel}   model
              */
             _hoverEnd: function( model ) {                
-                var exps = [ this.jobs, this.projects ]; 
+                var exps = [ this.jobs, this.projects, this.skills ]; 
                 app.vent.trigger( EVENTS.PATHS.RESET ); 
                 _.each(
                     exps,
@@ -282,12 +290,10 @@ define( function ( require ) {
              * @param   {Backbone.Collection}   collection
              */
             _reselectExperience: function( collection ) {
-                
                 var exp = collection.findWhere( { selected: true } );
                 if( exp ) {
                     exp.trigger( EVENTS.EXPERIENCE.RESELECT );    
                 }
-                
             }
 
         } );
