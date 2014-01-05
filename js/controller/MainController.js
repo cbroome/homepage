@@ -117,7 +117,8 @@ define( function ( require ) {
 
 				this.detailsView = new DetailsView ( {
 					expProjects: this.projects,
-					expWork: this.jobs
+					expWork: this.jobs,
+                    skills: this.skills
 				} );
 
 

@@ -38,7 +38,12 @@ define( function( require ) {
 			/**
 			 * @property	{ExperienceProjectCollection}	expProjects
 			 */
-			expProjects: undefined
+			expProjects: undefined,
+            
+            /**
+             * @property    
+             */
+            skills: undefined
 
 		},
 
@@ -62,6 +67,12 @@ define( function( require ) {
 				'change:selected',
 				_renderProject
 			);
+            
+            this.listenTo( 
+                this.options.skills,
+                'change:selected',
+                this.render
+            );
 
 		},
 		
@@ -71,7 +82,7 @@ define( function( require ) {
 		 */
 		render: function() {
 		
-			this.$el.html( DetailsTemplate );
+			this.$el.empty().html( DetailsTemplate );
 			
 			return this;	
 		},
@@ -86,34 +97,43 @@ define( function( require ) {
             var height = this.$el.height(),
                 paddingTop = 0,
                 arrow,
-                detailHeight;
+                detailHeight,
+                detail;
             
 			this.render();
 		
 		
 			// Reset all the models back to unselected.
-			var detail = new View( {
-				model: model
-			} ).render();
-            this.$el.empty().append( detail.$el );             
-            detailHeight = detail.$el.height();
-            
-            if( detailHeight < height ) {
-                paddingTop = model.get( 'yPos' ) - 30;
-                if( ( paddingTop + detailHeight ) > height ) {
-                    paddingTop -= ( paddingTop + detailHeight ) - height + 25;
-                }
-            }
 
-                        
-            detail.$el.css( 'padding-top', paddingTop );
             
+            if( model.get( 'selected' ) ) {
+                detail = new View( {
+                    model: model
+                } ).render();
+                
+                this.$el
+                    .empty()
+                    .append( detail.$el );
             
-            // Draw the arrow.
-            arrow = new ArrowView( { model: model } );
-            arrow.render();
-            
-            this.$el.append( arrow.$el );
+                detailHeight = detail.$el.height();
+                
+                if( detailHeight < height ) {
+                    paddingTop = model.get( 'yPos' ) - 30;
+                    if( ( paddingTop + detailHeight ) > height ) {
+                        paddingTop -= ( paddingTop + detailHeight ) - height + 25;
+                    }
+                }
+    
+                            
+                detail.$el.css( 'padding-top', paddingTop );
+                
+                
+                // Draw the arrow.
+                arrow = new ArrowView( { model: model } );
+                arrow.render();
+                
+                this.$el.append( arrow.$el );
+            }
             
                         
 			
