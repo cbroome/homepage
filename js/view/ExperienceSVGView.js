@@ -35,7 +35,7 @@ define( function ( require ) {
             /**
              * @property    {Integer}   startY
              */
-            startY: 5,
+            startY: 70,
 
 			/**
 			 * @property	{Integer}	cursorY		Keep track of current height
@@ -50,22 +50,22 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	heightLine
 			 */
-			heightLine: 45,
+			heightLine: 50,
 
 			/**
 			 * @property	{Integer}	xRegular
 			 */
-			xHeader: 260,
+			xHeader: 270,
 
 			/**
 			 * @property	{Integer}	xRegular
 			 */
-			xRegular: 285,
+			xRegular: 300,
 
 			/**
 			 * @property	{Integer}	spacer
 			 */
-			spacer: 25,
+			spacer: 30,
 
 
 			/**
@@ -197,7 +197,9 @@ define( function ( require ) {
 			 * @returns	{Integer}
 			 */
 			_getY: function( increment ) {
-				return this.cursorY += increment;
+                var rv = this.cursorY;
+				this.cursorY += increment;
+                return rv;
 			}
 
 

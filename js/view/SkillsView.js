@@ -52,12 +52,33 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	heightLine
 			 */
-			heightLine: 18,
+			heightLine: 14,
+            
+            /**
+             * @property    {Integer}   heightHeader
+             */
+            heightHeader: 18,
 
 			/**
 			 * @property	{Integer}	x
 			 */
-			x: 115,
+			x: 120,
+            
+            /**
+             * @property    {Integer}   xHeader
+             */
+            xHeader: 120,
+            
+            
+            /**
+             * @property    {Array} sortOrder
+             */
+            sortOrder: undefined,
+            
+            /**
+             * @property    {Integer}   startY
+             */
+            startY: 14,
 
 
 			/**
@@ -72,6 +93,17 @@ define( function ( require ) {
 				this.jobs = this.options.jobs;
 				this.projects = this.options.projects;
 				this.skills = [];
+                
+                
+                this.sortOrder = {
+                    'language': 'Languages',
+                    'datastore': 'Datastores',
+                    'version control': 'Version Control',
+                    'framework': 'Frameworks',
+                    'library': 'Libraries',
+                    'utility': 'Utilities',
+                    'misc': 'Miscellaneous'
+                };
 
 
             },
@@ -83,43 +115,45 @@ define( function ( require ) {
 			 * @returns	{view.Skills}
 			 */
 			render: function() {
-				var sortedSkills,
+				var sortedSkills = {},
+                    orderedKeys = _.keys( this.sortOrder ),
 					getY = _.bind( this._getY, this, this.heightLine );
-
+                
+                this.cursorY = this.startY;
+                
                 this.cursorY = this.startY;
 				this.svg.selectAll( 'text.skill-label' )
 					.remove();
 
-				sortedSkills = this.collection.sortBy( 'count' ).reverse();
-
+                _.each( 
+                    orderedKeys,
+                    function( type ) {
+                        sortedSkills[ type ] = [];   
+                    },
+                    this
+                );
+                
+                
+                this.collection.each( function( skill ) {
+                    var type = _.indexOf( orderedKeys, skill.get( 'type' ) ) >= 0 ? skill.get( 'type' ) : 'misc';
+                    sortedSkills[ type ].push( skill ); 
+                }, this );
+                
+            
 				_.each(
 					sortedSkills,
-					function( skill ) {
-
-						var x = this.x,
-							y = getY(),
-							obj;
-
-						obj = this.svg.append( 'text' )
-							.text( skill.get( 'name' ) )
-							.attr( 'class', 'skill-label' )
-							.attr( 'text-anchor', 'end' )
-							.attr( 'x', x )
-							.attr( 'y', y );
-
-						skill.set( {
-							xPos:  x,
-							yPos: y
-						} );
-
-						this.skills.push(
-							new SkillView( {
-								svg: this.svg,
-								d3el: obj,
-								model: skill
-							} )
-						)
-
+					function( section, key ) {
+                        
+                        this._createHeader( key ); 
+                        //this._getY( 2 );
+                        
+                        _.each( 
+                            section,
+                            this._createSkill,
+                            this
+                        );
+                        
+                        this._getY( 12 );
 					},
 					this
 				);
@@ -127,13 +161,64 @@ define( function ( require ) {
 				return this;
 
 			},
+            
+            
+            /**
+             * 
+             * @param   {String}    title
+             */
+            _createHeader: function( title ) {
+                 var x = this.x,
+                    y = this._getY( this.heightHeader ),
+                    obj;
+
+                obj = this.svg.append( 'text' )
+                    .text( this.sortOrder[ title ] )
+                    .attr( 'class', 'skill-header' )
+                    .attr( 'text-anchor', 'end' )
+                    .attr( 'x', this.xHeader )
+                    .attr( 'y', y );               
+            },
+            
+            
+            /**
+             * 
+             * @param   {SkillModel}    skill
+             */
+            _createSkill: function( skill ) {
+                var x = this.x,
+                    y = this._getY( this.heightLine ),
+                    obj;
+
+                obj = this.svg.append( 'text' )
+                    .text( skill.get( 'id' ) )
+                    .attr( 'class', 'skill-label' )
+                    .attr( 'text-anchor', 'end' )
+                    .attr( 'x', x )
+                    .attr( 'y', y );
+
+                skill.set( {
+                    xPos:  x,
+                    yPos: y
+                } );
+
+                this.skills.push(
+                    new SkillView( {
+                        svg: this.svg,
+                        d3el: obj,
+                        model: skill
+                    } )
+                );
+            },
 
 			/**
 			 * @param	{Integer}	increment
 			 * @returns	{Integer}
 			 */
 			_getY: function( increment ) {
-				return this.cursorY += increment;
+                var rv = this.cursorY;
+				this.cursorY += increment;
+                return rv;
 			}
 
 

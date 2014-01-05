@@ -14,7 +14,27 @@ define(  function ( require ) {
             /**
              * @property    {Array}     skills
              */
-            skill: undefined
+            skill: undefined,
+            
+            
+            options: {
+                
+                /**
+                 * @property    {String}    type
+                 */
+                type: undefined,
+                
+                /**
+                 * @property    {String}    url
+                 */
+                url: undefined,
+                
+                /**
+                 * @property    {Array} related
+                 */
+                related: undefined
+                
+            }
 
         } );
 

@@ -17,6 +17,7 @@ define( function ( require ) {
 			ExperienceProjectCollection = require( 'collection/Experience/ProjectCollection' ),
 			ExperienceWorkCollection = require( 'collection/Experience/WorkCollection' ),
 			PathCollection = require( 'collection/PathCollection' ),
+            SkillCollection = require( 'collection/SkillCollection' ),
 
 			ExperienceSVGView = require( 'view/ExperienceSVGView' ),
             EVENTS = require( 'events' ),
@@ -79,10 +80,7 @@ define( function ( require ) {
              */
             initialize: function() {
 
-                var SkillCollection = Backbone.Collection.extend( {
-						model: SkillModel
-					} ),
-					PathCollection = Backbone.Collection.extend( {
+                var PathCollection = Backbone.Collection.extend( {
 						model: PathModel
 					} );
 
@@ -162,17 +160,20 @@ define( function ( require ) {
 					success: _.bind( this._processExperience, this )
 				};
 
-                this.jobs.fetch( params );
-				this.projects.fetch( params );
+                this.skills.add( require( 'data/SkillData' ) );
+                
+                this.jobs.add( require( 'data/WorkData' ) );
+                this.projects.add( require( 'data/ProjectData' ) );
+                
+                this._processExperience( this.jobs );
+                this._processExperience( this.projects );
+                
+                this.skillView.render();
+                this.experienceSVG.render();
+                
+                // Brief delay to render everything
+                _.delay( _.bind( this.pathsView.render, this.pathsView ), 100 );
             },
-
-			/**
-			 *
-			 */
-			_buildLines: function() {
-
-			},
-
 
 			/**
 			 * Get a safe-ish string represenation of the skill
@@ -185,50 +186,19 @@ define( function ( require ) {
 			},
 
 			/**
-			 * Inserts the skill into this.skills or increments its count.
-			 *
-			 * @param	{String}	skill
-			 */
-			_processSkill: function( skill ) {
-				var skillID = this._skillID( skill ),
-					count = 1,
-					rv;
-
-				if ( !( this.skills.get( skillID ) ) ) {
-					this.skills.add( {
-						name: skill,
-						id: skillID,
-						count: count
-					} );
-				}
-				else {
-					count = this.skills.get( skillID ).get( 'count' );
-					this.skills.get( skillID ).set( 'count', ++count );
-				}
-			},
-
-
-			/**
-			 * @param	{collection.ExperienceCollection}	experience
+			 * @param	{ExperienceCollection}	experience
 			 */
 			_processExperience: function( experience ) {
 
 				var app = require( 'app' );
-
-
 				experience.each(
-					_.bind( function ( exp ) {
-
-						var skills = exp.get( 'skills' );
-
-						_.each( skills, this._processSkill, this );
-
-
+					_.bind( function ( exp ) {						
+                        var skills = exp.get( 'skills' );
 						_.each(
 							skills,
 							function( skill ) {
 								this.pathList.add( {
-									skill: this.skills.get( this._skillID( skill ) ),
+                                    skill: this.skills.get( skill ),
 									experience: exp
 								} );
 							},
@@ -237,13 +207,8 @@ define( function ( require ) {
 
 					}, this )
 				);
-
-				// app.vent.trigger( EVENTS.SKILL.RENDER );
-				if( this.experienceSVG.render() && this.skillView.render() ) {
-					// Give it time to draw everything
-					_.delay( _.bind( this.pathsView.render, this.pathsView ), 100 );
-				}
 			},
+            
 
 			/**
 			 * @param	{ExperienceCollection}	collection
