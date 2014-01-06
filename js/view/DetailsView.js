@@ -4,8 +4,10 @@ define( function( require ) {
 		BaseView = require( 'view/BaseView' ),
 		DetailProjectView = require( 'view/Detail/ProjectView' ),
 		DetailWorkView = require( 'view/Detail/WorkView' ),
+        DetailSkillView = require( 'view/Detail/SkillView' ),
 		DetailsTemplate = require( 'text!view/DetailsTemplate.html' ),
         ArrowView = require( 'view/ArrowView' ),
+        SkillModel = require( 'model/SkillModel' ),
 		DetailsView;
 
 	DetailsView = BaseView.extend( {
@@ -71,7 +73,7 @@ define( function( require ) {
             this.listenTo( 
                 this.options.skills,
                 'change:selected',
-                this.render
+                this.renderSkill
             );
 
 		},
@@ -86,6 +88,41 @@ define( function( require ) {
 			
 			return this;	
 		},
+        
+        
+        /**
+         * 
+         * @param   {SkillModel}    model
+         */
+        renderSkill: function( model  ) {
+            
+            var height = this.$el.height(),
+                paddingTop = 0,
+                detailHeight,
+                detail;
+            
+			this.render();
+            
+            if( model.get( 'selected' ) ) {
+                detail = new DetailSkillView( {
+                    model: model
+                } ).render();
+                
+                this.$el
+                    .empty()
+                    .append( detail.$el );
+            
+                detailHeight = detail.$el.height();
+                
+                if( detailHeight < height ) {
+                    paddingTop = parseInt( ( height - detailHeight ) / 2 );
+                }
+                                
+                detail.$el.css( 'padding-top', paddingTop );
+            }
+			          
+        },
+        
 
         /**
          * 
@@ -101,10 +138,6 @@ define( function( require ) {
                 detail;
             
 			this.render();
-		
-		
-			// Reset all the models back to unselected.
-
             
             if( model.get( 'selected' ) ) {
                 detail = new View( {
@@ -127,16 +160,12 @@ define( function( require ) {
                             
                 detail.$el.css( 'padding-top', paddingTop );
                 
-                
                 // Draw the arrow.
                 arrow = new ArrowView( { model: model } );
                 arrow.render();
-                
+            
                 this.$el.append( arrow.$el );
             }
-            
-                        
-			
 			
 		}
 

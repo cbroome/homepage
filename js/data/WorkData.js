@@ -81,7 +81,8 @@ define( function( require ) {
                 "git",
                 "jquery",
                 "html5",
-                "css"
+                "css",
+                "require.js"
             ],
             "description": "Worked on an HTML5 enterprise application used to manage a network vulnerability monitor."
         },

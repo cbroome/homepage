@@ -1,0 +1,24 @@
+<div class="title">{{id}}</div>
+<div class="type">{{type}}</div>
+{{#if url}}
+    <div> 
+        <a href="{{url}}" target="_blank">{{url}}</a>
+    </div>
+{{/if}}
+
+{{#if description}}
+    <div class="description">
+        {{description}}
+    </div>
+{{/if}}
+
+{{#if related}}
+<div class="related">
+    Related:
+    <ul>
+        {{#each related}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+</div>
+{{/if}}

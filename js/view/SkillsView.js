@@ -62,12 +62,12 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	x
 			 */
-			x: 120,
+			x: 125,
             
             /**
              * @property    {Integer}   xHeader
              */
-            xHeader: 120,
+            xHeader: 125,
             
             
             /**
@@ -144,16 +144,14 @@ define( function ( require ) {
 					sortedSkills,
 					function( section, key ) {
                         
-                        this._createHeader( key ); 
-                        //this._getY( 2 );
-                        
+                        this._createHeader( key );                         
                         _.each( 
                             section,
                             this._createSkill,
                             this
                         );
                         
-                        this._getY( 12 );
+                        this._getY( 10 );
 					},
 					this
 				);

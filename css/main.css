@@ -328,6 +328,19 @@ ul.scant-bio {
     font-size: .6em;
 }
 
+.detail-view .related {
+    padding-top: 10px;
+    font-size: .85em;
+}
+
+.detail-view .related ul {
+    list-style: none;
+}
+
+.detail-view .related li {
+    margin-left: 15px;
+}
+
 
 /* arrow
  * ================================================= */
