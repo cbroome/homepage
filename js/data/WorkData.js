@@ -101,7 +101,8 @@ define( function( require ) {
                 "javascript",
                 "cassandra",
                 "python",
-                "mercurial"
+                "mercurial",
+                "agile"
             ],
             "description": "Research work around technologies such as Cassandra for high volume data queries."
         }

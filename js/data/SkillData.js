@@ -170,7 +170,8 @@ define( function( require ) {
             id: 'require.js',
             type: 'library',
             description: 'Allows for the construction and easy loading of javascript modules',
-            related: [ 'javascript' ]
+            related: [ 'javascript' ],
+            url: 'http://requirejs.org/'
         }
     ];
     
