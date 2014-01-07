@@ -62,12 +62,12 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	x
 			 */
-			x: 125,
+			x: 130,
             
             /**
              * @property    {Integer}   xHeader
              */
-            xHeader: 125,
+            xHeader: 130,
             
             
             /**

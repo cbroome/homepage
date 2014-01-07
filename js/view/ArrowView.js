@@ -21,7 +21,7 @@ define( function( require ) {
          */
         render: function() {
             
-            this.$el.css( 'top', this.model.get( 'yPos' ) - 35 );
+            this.$el.css( 'top', this.model.get( 'yPos' ) - 30 );
             
             return this;
         }
