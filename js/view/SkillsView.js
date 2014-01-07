@@ -52,12 +52,12 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	heightLine
 			 */
-			heightLine: 14,
+			heightLine: 13,
             
             /**
              * @property    {Integer}   heightHeader
              */
-            heightHeader: 18,
+            heightHeader: 17,
 
 			/**
 			 * @property	{Integer}	x

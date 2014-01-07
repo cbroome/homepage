@@ -35,7 +35,7 @@ define( function ( require ) {
             /**
              * @property    {Integer}   startY
              */
-            startY: 70,
+            startY: 50,
 
 			/**
 			 * @property	{Integer}	cursorY		Keep track of current height
