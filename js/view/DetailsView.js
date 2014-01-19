@@ -52,8 +52,9 @@ define( function( require ) {
 
 		initialize: function() {
 
-			var _renderWork = _.partial( this.renderExp, DetailWorkView ),
-				_renderProject = _.partial( this.renderExp, DetailProjectView );
+			var _renderWork = _.partial( this.renderSkill, DetailWorkView ),
+				_renderProject = _.partial( this.renderSkill, DetailProjectView ),
+                _renderSkill = _.partial( this.renderSkill, DetailSkillView) ;
 
 			this.html = this.template( DetailsTemplate, {} );
 
@@ -73,7 +74,7 @@ define( function( require ) {
             this.listenTo( 
                 this.options.skills,
                 'change:selected',
-                this.renderSkill
+                _renderSkill
             );
 
 		},
@@ -84,7 +85,7 @@ define( function( require ) {
 		 */
 		render: function() {
 		
-			this.$el.empty().html( DetailsTemplate );
+			this.$el.empty().html( DetailsTemplate ).css( 'margin-top', 235 );
 			
 			return this;	
 		},
@@ -94,46 +95,10 @@ define( function( require ) {
          * 
          * @param   {SkillModel}    model
          */
-        renderSkill: function( model  ) {
+        renderSkill: function( View, model  ) {
             
-            var height = this.$el.height(),
-                paddingTop = 0,
-                detailHeight,
-                detail;
-            
-			this.render();
-            
-            if( model.get( 'selected' ) ) {
-                detail = new DetailSkillView( {
-                    model: model
-                } ).render();
-                
-                this.$el
-                    .empty()
-                    .append( detail.$el );
-            
-                detailHeight = detail.$el.height();
-                
-                if( detailHeight < height ) {
-                    paddingTop = parseInt( ( height - detailHeight ) / 2 );
-                }
-                                
-                detail.$el.css( 'padding-top', paddingTop );
-            }
-			          
-        },
-        
-
-        /**
-         * 
-         * @param   {ExperienceView}    View
-         * @param   {ExperienceModel}   model
-         */
-		renderExp: function( View, model ) {
-		
-            var height = this.$el.height(),
-                paddingTop = 0,
-                arrow,
+            var height = this.$el.parent().height(),
+                marginTop = 0,
                 detailHeight,
                 detail;
             
@@ -148,27 +113,17 @@ define( function( require ) {
                     .empty()
                     .append( detail.$el );
             
-                detailHeight = detail.$el.height();
+                detailHeight = this.$el.height();
                 
                 if( detailHeight < height ) {
-                    paddingTop = model.get( 'yPos' ) - 30;
-                    if( ( paddingTop + detailHeight ) > height ) {
-                        paddingTop -= ( paddingTop + detailHeight ) - height + 25;
-                    }
+                    marginTop = parseInt( ( height - detailHeight ) / 2 );
                 }
-    
-                            
-                detail.$el.css( 'padding-top', paddingTop );
-                
-                // Draw the arrow.
-                arrow = new ArrowView( { model: model } );
-                arrow.render();
-            
-                this.$el.append( arrow.$el );
+                                
+                this.$el.css( 'margin-top', marginTop );
             }
-			
-		}
-
+			          
+        }
+        
 	} );
 
 	return DetailsView;

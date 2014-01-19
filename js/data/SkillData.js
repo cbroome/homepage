@@ -19,11 +19,6 @@ define( function( require ) {
             description: 'Cascading Style Sheets'
         },
         {
-            id: 'html5',
-            type: 'language',
-            url: 'http://www.html5rocks.com/en/'
-        },
-        {
             id: 'mysql',
             type: 'datastore',
             url: 'http://www.mysql.com',

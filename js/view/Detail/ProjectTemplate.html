@@ -1,8 +1,8 @@
-<div class="title">{{title}}</div>
+<div class="title heading-font">{{title}}</div>
 <div> 
     <a href="{{url}}" target="_blank">{{url}}</a>
 </div>
-<div class="status">
+<div class="status {{#if active}}active{{else}}inactive{{/if}}">
     {{#if active}}Active{{else}}Inactive{{/if}}
 </div>
 <div class="description">

@@ -12,7 +12,7 @@ define( function( require ) {
         {
             "title": "Mobile Device Browser",
             "url": "http://www.mobiledevicebrowser.com",
-            "skills": [ "javascript", "dhtmlx", "prototype.js", "mysql", "php" ],
+            "skills": [ "javascript", "dhtmlx", "prototype.js", "mysql", "php", "css" ],
             "status": "inactive",
             "description": "Attempt at a Web 2.0 browser of the open source WURFL database.  Worked stopped after WURFL licensing changed."
         },
@@ -20,7 +20,7 @@ define( function( require ) {
         {
             "title": "Dither and Bicker",
             "url": "http://www.ditherandbicker.com",
-            "skills": [ "wordpress" ],
+            "skills": [ "wordpress", "javascript", "css" ],
             "status": "active",
             "description": "A seldomly updated tech-blog"
         }

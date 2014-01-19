@@ -13,7 +13,8 @@ define( function( require ) {
                 "php",
                 "javascript",
                 "perl",
-                "mysql"
+                "mysql",
+                "css"
             ],
             "description": "Wrote standalone sites that tied to the larger display advertising network."
         },
@@ -33,7 +34,6 @@ define( function( require ) {
                 "mysql",
                 "javascript",
                 "css",
-                "html5",
                 "agile",
                 "svn"
             ],
@@ -59,8 +59,8 @@ define( function( require ) {
                 "capistrano",
                 "mysql",
                 "css",
-                "html5",
-                "svn"
+                "svn",
+                "agile"
             ],
             "description": "Wrote interfaces to manage and monitor a mobile ad network. Worked on rich media, javascript heavy mobile advertisements."
         },
@@ -80,7 +80,6 @@ define( function( require ) {
                 "d3",
                 "git",
                 "jquery",
-                "html5",
                 "css",
                 "require.js"
             ],
