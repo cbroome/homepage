@@ -55,12 +55,12 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	xRegular
 			 */
-			xHeader: 320,
+			xHeader: 780,
 
 			/**
 			 * @property	{Integer}	xRegular
 			 */
-			xRegular: 320,
+			xRegular: 780,
 
 			/**
 			 * @property	{Integer}	spacer

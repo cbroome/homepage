@@ -79,11 +79,11 @@ define( function ( require ) {
 
 							{ x: startX, y: startY },
 
-							{ x: startX + 20, y: startY },
+							{ x: startX + 85, y: startY },
 
 							{ x: midX, y: midY },
 
-							{ x: endX - 60, y: endY },
+							{ x: endX - 75, y: endY },
 
 							{ x: endX, y: endY }
 						],

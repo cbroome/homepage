@@ -17,6 +17,17 @@
 
 }
 
+@font-face {
+    font-family: 'Lane - Narrow';
+    src: url( '../lib/LANENAR_.ttf' );
+}
+
+
+@font-face {
+    font-family: 'Hero Light';
+    src: url( '../lib/Hero_Light.otf' );
+}
+
 body {
     /* font-family: 'Lora', sans-serif; */
     font-family: 'Fjord One', serif;
@@ -46,12 +57,13 @@ a[target=_blank]:after {
 h1, h2, h3, h4 {
     margin: 0;
     padding: 0;
-    font-family: 'league_gothicregular', Tahoma, sans-serif;
+    /* font-family: 'league_gothicregular', Tahoma, sans-serif; */
+    font-family: 'Lane - Narrow', Tahoma, sans-serif;
 }
 
 h1 {
     font-weight: normal;
-    font-size: 2.5em;
+    font-size: 2.2em;
     text-align: left;
 }
 
@@ -76,7 +88,9 @@ header {
 
 
 .heading-font {
-    font-family: 'league_gothicregular', Tahoma, sans-serif;
+    /* font-family: 'league_gothicregular', Tahoma, sans-serif; */
+    font-family: 'Lane - Narrow', Tahoma, sans-serif;
+
 }
 
 .main-display {
@@ -88,10 +102,10 @@ header {
  * ================================================= */
 
 .portrait {
-    width: 125px;
+    width: 94px;
     overflow: hidden;
     margin: 0 auto;
-    float: left;
+    float: right;
 }
 
 .portrait .portrait-image {
@@ -105,8 +119,7 @@ header {
 /* Right
  * ================================================= */
 .right-header-menu {
-    line-height: 30px;
-    padding-top: 10px;
+    padding-top: 5px;
     font-size: .74em;
 }
 
@@ -133,8 +146,7 @@ ul.linkbar li {
 
 
 h1.head {
-    float: left;
-    width: auto;
+    width: 100%;
 }
 
 .head {
@@ -153,8 +165,9 @@ ul.scant-bio {
 }
 
 .scant-bio li {
-    text-align: right;
     list-style: none;
+    float: left;
+    margin-right: 15px;
 }
 
 /* skill-list
@@ -192,6 +205,14 @@ ul.scant-bio {
     border: 1px solid #CE00FE;
     padding: 3px;
     color: #CE00FE;
+}
+
+
+/* main-section
+ * ================================================= */
+
+.main-section {
+    position: relative;
 }
 
 
@@ -282,7 +303,9 @@ ul.scant-bio {
  * ================================================= */
 
 .detail-view-column {
-    position: relative;
+    position: absolute;
+    left: 250px;
+    top: 0;
 }
 
 .detail-view {
@@ -292,7 +315,7 @@ ul.scant-bio {
     border-bottom: none;
     padding: 0 20px;
     font-size: .55em;
-    background: #fff;
+    background: rgba( 255, 255, 255, .75 );
 }
 
 
