@@ -64,6 +64,7 @@ define( function ( require ) {
 
 			/**
 			 *
+			 * @returns  {Boolean}   always false
 			 */
 			onNameClick: function() {
                 var selected = !this.model.get( 'selected' );
@@ -72,21 +73,32 @@ define( function ( require ) {
                 if( selected ) {
                     this.onMouseover();
                 }
+                return false;
             },
 
 
-			onMouseover: function() {
+			/**
+			 *
+			 * @returns  {Boolean}   always false
+			 */
+            onMouseover: function() {
 				this.model.trigger(
 					EVENTS.SKILL.HOVER
 				);
+                return false;
 			},
 
 
-			onMouseout: function() {
+			/**
+			 *
+			 * @returns  {Boolean}   always false
+			 */
+            onMouseout: function() {
 				this.model.trigger(
 					EVENTS.SKILL.HOVER_END
 				);
                 app.vent.trigger( EVENTS.SKILL.HOVER_END, this.model );
+                return false;
 			}
 
 		} );
