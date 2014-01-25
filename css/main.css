@@ -27,7 +27,7 @@ body {
     font-size: 35px;
     margin: 0;
     padding: 0;
-    color: #060046;
+    color: #81616a ;
     /* background: rgb(245, 247, 255); */
     background: #fffcee; 
 }
@@ -42,10 +42,6 @@ a {
     text-decoration: none;
 }
 
-a[target=_blank]:after {
-    content: ' \00bb';
-    font-size: .80em;
-}
 
 
 h1, h2, h3, h4 {
@@ -57,8 +53,7 @@ h1, h2, h3, h4 {
 
 h1 {
     font-weight: normal;
-    font-size: 2.2em;
-    text-align: left;
+    font-size: 2em;
 }
 
 h2 {
@@ -70,11 +65,7 @@ ul, ol {
     margin: 0;
 }
 
-header {
-    padding-bottom: 0px;
-    border-bottom: 1px solid  #acb7de;
 
-}
 
 .clearit {
     clear: both;
@@ -82,13 +73,12 @@ header {
 
 
 .heading-font {
-    /* font-family: 'league_gothicregular', Tahoma, sans-serif; */
     font-family: 'Lane - Narrow', Tahoma, sans-serif;
 
 }
 
 .main-display {
-    height: 550px;
+    height: 480px;
 }
 
 
@@ -96,18 +86,28 @@ header {
  * ================================================= */
 
 .portrait {
-    width: 94px;
-    overflow: hidden;
     margin: 0 auto;
-    float: right;
+    text-align:center;
+    height: 130px;
 }
 
 .portrait .portrait-image {
     width: 130px;
-    position: relative;
-    left: -20px;
+    display: inline-block;
 }
 
+
+.portrait img {
+    width: 100%;
+}
+
+.portrait .divider {
+    width: 100px;
+    margin: 0 25px;
+    border-top: 2px solid #d5bdc8;
+    display: inline-block;
+    height: 50%;
+}
 
 
 /* Right
@@ -138,74 +138,46 @@ ul.linkbar li {
 /* Header
  * ================================================= */
 
+.header {
+    text-align: center;
+    padding-bottom: 0px;
+
+}
+
+.header .scant-bio {
+    font-size: .75em;
+}
 
 h1.head {
     width: 100%;
+    font-size: 1.4em;
+    color: #60474e;
 }
 
-.head {
-    height: 95px;
-    line-height: 95px;
+
+/* social buttons
+ * ================================================= */
+
+ul.social-buttons {
+    margin-top: 25px;
+    list-style:none;
+    text-align:center;
+}
+
+.social-buttons li {
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 10px;
 }
 
 
 /* Footer
  * ================================================= */
 footer {
+    margin-top: 25px;
     text-align: center;
     font-size: .4em
-}
-
-
-/* scant-bio
- * ================================================= */
-
-ul.scant-bio {
-    width: auto;
-    text-align: right;
-}
-
-.scant-bio li {
-    list-style: none;
-    float: left;
-    margin-right: 15px;
-}
-
-/* skill-list
- * ================================================= */
-.skill-list {
-    margin: 0;
-    padding: 0;
-
-    font-family: Inconsolata;
-    font-size: .6em;
-}
-
-.skill-list li {
-    list-style: none;
-    width: auto;
-    padding: 4px;
-    margin: 2px;
-    border: 1px solid none;
-    display: inline-block;
-
-    color: #555465;
-}
-
-.skill-list .selected {
-    border: 1px solid #CE00FE;
-    padding: 3px;
-    color: #CE00FE;
-}
-
-.skill-list .highlighted {
-    color: #8f70b3;
-}
-
-.skill-list .selected {
-    border: 1px solid #CE00FE;
-    padding: 3px;
-    color: #CE00FE;
 }
 
 
@@ -214,95 +186,14 @@ ul.scant-bio {
 
 .main-section {
     position: relative;
-    height: 550px;
-    overflow:hidden;
+    height: 500px;
+    overflow: visible;
 }
 
 
-/* experience
- * ================================================= */
-
-.experience-section .exp-list {
-    padding: 0;
-    margin: 0;
-}
-
-.experience-section .exp-list li {
-    list-style: none;
-}
-
-.experience {
-    margin: 10px 0;
-    position: relative;
-    min-height: 35px;
-}
-
-.experience .subinfo {
-    display: none;
-    position: absolute;
-    right: -1px;
-    top: -1px;
-    padding-right:10px;
-    z-index: 20;
-}
-
-.experience .subinfo .description,
-.experience .subinfo .url {
-    padding: 10px;
-}
-
-.experience .description {
-    color: #555173;
-}
-
-.experience .header {
-    cursor: pointer;
-    font-size: .85em;
-    position: relative;
-    z-index: 40;
-    padding-right: 2px;
-}
 
 
-.experience .header .name,
-.experience .header .dates {
-
-}
-
-.experience .header .name {
-    margin: 0 15px 0 5px;
-
-}
-
-.experience .header .dates {
-    font-size: .65em;
-    margin-left: 25px;
-}
-
-/* Selected */
-
-.experience.selected {
-    background: #fefcff;
-    color: #00131E;
-    border: 1px solid #8f70b3;
-    min-height: 35px;
-}
-
-.experience.selected .header {
-    background: #FEFCFF;
-}
-
-.experience.selected .subinfo {
-    display: block;
-    border: 1px solid #8f70b3;
-    background: #fefcff;
-    font-size: .5em;
-    display: block;
-    min-height: 60px;
-}
-
-
-/* experience
+/* detail view
  * ================================================= */
 
 .detail-view-column {
@@ -314,8 +205,7 @@ ul.scant-bio {
 .detail-view {
     padding: 15px;
     font-size: .55em;
-    background: rgba( 255, 255, 255, .65 );
-    border: 1px solid #060046;
+    background: rgba(232, 229, 237, 0.75);
     border-radius: 5px;
 }
 
@@ -323,6 +213,7 @@ ul.scant-bio {
 .detail-view .title {
     font-size: 1.67em;
     border-bottom: 1px solid;
+    font-weight:bold;
 }
 
 

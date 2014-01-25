@@ -6,7 +6,9 @@ define( function( require ) {
     return [
         
         '#8333E5',
-        '#1700FC'
+        '#1700FC',
+        '#CE00FE',
+        '#0B44E5'
     ];
     
 } );
