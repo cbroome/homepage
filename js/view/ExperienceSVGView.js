@@ -33,6 +33,11 @@ define( function ( require ) {
 			svg: undefined,
             
             /**
+             * @property    {d3}    group
+             */
+            group: undefined,
+            
+            /**
              * @property    {Integer}   startY
              */
             startY: 50,
@@ -55,12 +60,12 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	xRegular
 			 */
-			xHeader: 780,
+			xHeader: 255,
 
 			/**
 			 * @property	{Integer}	xRegular
 			 */
-			xRegular: 780,
+			xRegular: 255,
 
 			/**
 			 * @property	{Integer}	spacer
@@ -86,6 +91,8 @@ define( function ( require ) {
 				var render = _.debounce( _.bind( this.render, this ), 100 );
 
 				this.svg = d3.select( 'svg#main-svg' );
+                this.group = this.svg.append( 'g' )
+                    .attr( 'class', 'group-experience' );
 
 				this.expWork = this.options.expWork;
 				this.expProjects = this.options.expProjects;
@@ -139,7 +146,7 @@ define( function ( require ) {
 			_renderHeader: function ( title ) {
 
 				var getY = this._getY( this.heightHeader );
-				var obj = this.svg
+				var obj = this.group
 					.append( 'text' )
 						.text( title )
 						.attr( 'class', 'header exp' )
@@ -168,7 +175,7 @@ define( function ( require ) {
 						var x = this.xRegular,
 							y = getY(),
 							viewClass = ( exp instanceof  ExperienceWorkModel ) ? ExperienceWorkView : ExperienceProjectView,
-							obj = this.svg.append( 'text' )
+							obj = this.group.append( 'text' )
 								.text( function(){ return exp.get( 'title' ); } )
 								.attr( 'class', 'exp experience' )
 								.attr( 'x', x )

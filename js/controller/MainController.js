@@ -143,7 +143,11 @@ define( function ( require ) {
                 app.vent.on( EVENTS.EXPERIENCE.HOVER_END, _.bind( this._hoverEnd, this ) ); 
 
 				this.buildLists();
-				
+                this.drawViews();
+                
+                
+                $( window ).bind( 'resize.app', _.bind( this.drawViews, this ) );
+                
 				app.detailsView.show( this.detailsView );
 
             },
@@ -178,19 +182,40 @@ define( function ( require ) {
                     this
                 );
                 
-                
                 this._processExperience( this.jobs );
                 this._processExperience( this.projects );
+            },
+            
+            
+            
+            drawViews: function() {
+                
+                var windowWidth = $( window ).width();
                 
                 
+                if( windowWidth > 2000 ) {
+                    windowWidth = 2000;
+                }
+                else if( windowWidth > 1024 ) {
+                    // for padding...
+                    windowWidth -= 50;   
+                }
+                else if( windowWidth < 1024 ) {
+                    windowWidth = 1024;   
+                }
                 
                 
-                this.skillView.render();
-                this.experienceSVG.render();
+                $( '.main-display svg' )
+                    .attr( 'width', windowWidth )
+                    .find( 'g' ).empty();
+                
+                this.skillView.render( windowWidth  );
+                this.experienceSVG.render( windowWidth );
                 
                 // Brief delay to render everything
-                _.delay( _.bind( this.pathsView.render, this.pathsView ), 100 );
+                _.delay( _.bind( this.pathsView.render, this.pathsView ), 100 );                
             },
+            
 
 			/**
 			 * Get a safe-ish string represenation of the skill

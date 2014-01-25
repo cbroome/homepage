@@ -36,7 +36,12 @@ define( function ( require ) {
 			/**
 			 * @property	{d3}	svg
 			 */
-			svg: d3,
+			svg: undefined,
+            
+            /**
+             * @property    {d3}    group
+             */
+            group: undefined,
             
             /**
              * @property    {Integer}   startY
@@ -62,12 +67,22 @@ define( function ( require ) {
 			/**
 			 * @property	{Integer}	x
 			 */
-			x: 130,
+			x: 900,
             
             /**
              * @property    {Integer}   xHeader
              */
-            xHeader: 130,
+            xHeader: 900,
+            
+            /**
+             * @property    {Integer}   width       width of widest component, should be computed eventually
+             */
+            width: 124,
+            
+            /**
+             * @property    {Integer}   xComputed
+             */
+            xComputed: undefined,
             
             
             /**
@@ -88,6 +103,9 @@ define( function ( require ) {
 
 				var render = _.debounce( _.bind( this.render, this ), 100 );
 				this.svg = d3.select( 'svg' );
+                
+                this.group = this.svg.append( 'g' )
+                    .attr( 'class', 'group-skills' );
 
 				this.app = require( 'app' );
 				this.jobs = this.options.jobs;
@@ -114,15 +132,19 @@ define( function ( require ) {
 			 * @chainable
 			 * @returns	{view.Skills}
 			 */
-			render: function() {
+			render: function( windowWidth ) {
 				var sortedSkills = {},
                     orderedKeys = _.keys( this.sortOrder ),
 					getY = _.bind( this._getY, this, this.heightLine );
                 
+                
+                
+                this.xComputed = windowWidth - this.width;
+                
                 this.cursorY = this.startY;
                 
                 this.cursorY = this.startY;
-				this.svg.selectAll( 'text.skill-label' )
+				this.group.selectAll( 'text.skill-label' )
 					.remove();
 
                 _.each( 
@@ -166,15 +188,14 @@ define( function ( require ) {
              * @param   {String}    title
              */
             _createHeader: function( title ) {
-                 var x = this.x,
+                 var x = this.xComputed,
                     y = this._getY( this.heightHeader ),
                     obj;
 
-                obj = this.svg.append( 'text' )
+                obj = this.group.append( 'text' )
                     .text( this.sortOrder[ title ] )
                     .attr( 'class', 'skill-header' )
-                    .attr( 'text-anchor', 'end' )
-                    .attr( 'x', this.xHeader )
+                    .attr( 'x', this.xComputed )
                     .attr( 'y', y );               
             },
             
@@ -184,14 +205,13 @@ define( function ( require ) {
              * @param   {SkillModel}    skill
              */
             _createSkill: function( skill ) {
-                var x = this.x,
+                var x = this.xComputed,
                     y = this._getY( this.heightLine ),
                     obj;
 
-                obj = this.svg.append( 'text' )
+                obj = this.group.append( 'text' )
                     .text( skill.get( 'id' ) )
                     .attr( 'class', 'skill-label' )
-                    .attr( 'text-anchor', 'end' )
                     .attr( 'x', x )
                     .attr( 'y', y );
 

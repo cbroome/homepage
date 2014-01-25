@@ -74,11 +74,14 @@ ul, ol {
 
 .heading-font {
     font-family: 'Lane - Narrow', Tahoma, sans-serif;
+}
 
+.heading-color {
+    color: #60474e;    
 }
 
 .main-display {
-    height: 480px;
+    height: 470px;
 }
 
 
@@ -151,7 +154,6 @@ ul.linkbar li {
 h1.head {
     width: 100%;
     font-size: 1.4em;
-    color: #60474e;
 }
 
 
@@ -188,8 +190,13 @@ footer {
     position: relative;
     height: 500px;
     overflow: visible;
+    text-align: center;
 }
 
+
+.main-section svg {
+    margin: 0 auto;
+}
 
 
 
@@ -198,15 +205,16 @@ footer {
 
 .detail-view-column {
     position: absolute;
-    left: 250px;
+    left: 30%;
     top: 0;
 }
 
 .detail-view {
     padding: 15px;
     font-size: .55em;
-    background: rgba(232, 229, 237, 0.75);
+    background: rgba(243, 240, 248, 0.55);
     border-radius: 5px;
+    text-align:left;
 }
 
 
@@ -241,18 +249,20 @@ footer {
 
 .detail-view .status {
     text-transform: uppercase;
-    font-size: .6em;
+    font-size: .35em;
     display: inline-block;
     border: 1px solid  #060046;
     border-radius: 3px;
     padding: 3px;
     width: auto;
+    margin: 10px;
+    float: right;E
 
 }
 
 
 .detail-view .status.active {
-    background: #060046;
+    background: #211c5d;
     color: #fff;
 }
 

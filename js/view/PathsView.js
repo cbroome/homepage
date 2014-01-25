@@ -23,6 +23,11 @@ define( function ( require ) {
 			 * @property	{d3}		svg
 			 */
 			svg: undefined,
+            
+            /**
+             * @property    {d3}        group
+             */
+            group: undefined,
 
 
 
@@ -31,7 +36,9 @@ define( function ( require ) {
 				var app = require( 'app' );
 				this.paths = [];
  				this.svg = d3.select( 'svg#main-svg' );
-
+                    
+                this.group = this.svg.append( 'g' )
+                    .attr( 'class', 'group-paths' );
 
 			},
 
@@ -42,10 +49,20 @@ define( function ( require ) {
 			 */
 			render: function() {
 
+                if( this.paths ) {
+                    _.each( 
+                        this.paths,
+                        function( path ) {
+                            path.remove();    
+                        },
+                        this
+                    );
+                }
+                
 				this.paths = [];
 
-				var expY = 10,
-					expX = 5,
+				var expY = 5,
+					expX = 10,
 					skillX = 5,
 					skillY = 4,
 					lineFunction,
@@ -66,10 +83,10 @@ define( function ( require ) {
 					// Simple lines for now...
 					var	skill = path.get( 'skill' ),
 						experience = path.get( 'experience' ),
-						startX = skill.get( 'xPos' ) + skillX,
-						startY = skill.get( 'yPos' ) - skillY,
-						endX = experience.get( 'xPos' ) - expX,
-						endY = experience.get( 'yPos' ) - expY,
+						startX = experience.get( 'xPos' ) + expX,
+						startY = experience.get( 'yPos' ) - expY,
+						endX = skill.get( 'xPos' ) - skillX,
+						endY = skill.get( 'yPos' ) - skillY,
 
 						midX = endX - startX,
 						midY = findDiff( endY, startY ),
@@ -91,7 +108,7 @@ define( function ( require ) {
 						line;
 
 
-					line = this.svg.append( 'path' )
+					line = this.group.append( 'path' )
 						.attr( 'd', lineFunction( lineData ) )
                         .attr( 'stroke', experience.get( 'stroke' ) )
 						.attr( 'class', 'line' );
@@ -99,6 +116,7 @@ define( function ( require ) {
 
 					this.paths.push( new PathView ( {
 						svg: this.svg,
+                        group: this.group,
 						model: path,
 						line: line
 					} ) );

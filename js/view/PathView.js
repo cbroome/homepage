@@ -30,7 +30,12 @@ define( function ( require ) {
 				/**
 				 * @property	{d3}	svg
 				 */
-				svg: undefined
+				svg: undefined,
+                
+                /**
+                 * @property    {d3}    group
+                 */
+                group: undefined
 
 			},
 
@@ -78,7 +83,7 @@ define( function ( require ) {
                 
                 this.options.line.attr( 'stroke', this.model.get( 'experience' ).get( 'stroke' ) );
 				$( this.options.line[ 0 ] ).detach();
-				$( this.options.svg[ 0 ] ).append( this.options.line[ 0 ] );
+				$( this.options.group[ 0 ] ).append( this.options.line[ 0 ] );
 
 			},
 

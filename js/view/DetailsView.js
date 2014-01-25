@@ -85,7 +85,9 @@ define( function( require ) {
 		 */
 		render: function() {
 		
-			this.$el.empty().html( DetailsTemplate ).css( 'margin-top', 235 );
+			this.$el.empty()
+                .css( 'margin-top', 235 )
+                .hide();
 			
 			return this;	
 		},
@@ -111,7 +113,8 @@ define( function( require ) {
                 
                 this.$el
                     .empty()
-                    .append( detail.$el );
+                    .append( detail.$el )
+                    .show();
             
                 detailHeight = this.$el.height();
                 
