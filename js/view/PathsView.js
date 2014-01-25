@@ -1,7 +1,8 @@
 define( function ( require ) {
 
 
-		var BaseView = require( 'view/BaseView' ),
+		var _ = require( 'underscore' ),
+            BaseView = require( 'view/BaseView' ),
 			d3 = require( 'd3' ),
 			PathView = require( 'view/PathView' ),
 			PathsView;
