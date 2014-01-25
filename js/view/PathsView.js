@@ -93,6 +93,7 @@ define( function ( require ) {
 
 					line = this.svg.append( 'path' )
 						.attr( 'd', lineFunction( lineData ) )
+                        .attr( 'stroke', experience.get( 'stroke' ) )
 						.attr( 'class', 'line' );
 
 

@@ -30,7 +30,12 @@ define(  function ( require ) {
 				/**
 				 * @property	{Boolean}	selected
 				 */
-				selected: undefined
+				selected: undefined,
+                
+                /**
+                 * @property    {String}    stroke      hex color...
+                 */
+                stroke: undefined
 
 			},
 

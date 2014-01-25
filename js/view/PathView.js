@@ -2,6 +2,7 @@ define( function ( require ) {
 
 
 		var BaseView = require( 'view/BaseView' ),
+            d3 = require( 'd3' ),
             _ = require( 'underscore' ),
 			PathModel = require( 'model/PathModel' ),
 			EVENTS = require( 'events' ),
@@ -74,6 +75,8 @@ define( function ( require ) {
 			 */
 			_hoverOn: function() {
 				this.options.line.classed( 'hovered', true );
+                
+                this.options.line.attr( 'stroke', this.model.get( 'experience' ).get( 'stroke' ) );
 				$( this.options.line[ 0 ] ).detach();
 				$( this.options.svg[ 0 ] ).append( this.options.line[ 0 ] );
 

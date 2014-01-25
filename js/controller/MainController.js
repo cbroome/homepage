@@ -156,17 +156,34 @@ define( function ( require ) {
             buildLists: function() {
 
 				var params = {
-					reset: true,
-					success: _.bind( this._processExperience, this )
-				};
-
+                        reset: true,
+                        success: _.bind( this._processExperience, this )
+                    },
+                    exps = [ this.jobs, this.projects ],
+                    colors = require( 'data/ColorsData' ),
+                    colorIndex = 0;
+                
                 this.skills.add( require( 'data/SkillData' ) );
                 
                 this.jobs.add( require( 'data/WorkData' ) );
                 this.projects.add( require( 'data/ProjectData' ) );
                 
+                _.each( 
+                    exps,
+                    function( exp ) {
+                        exp.each( function( model ) {
+                            model.set( { stroke: colors[ ( colorIndex++ % colors.length ) ] } );
+                        } );
+                    },
+                    this
+                );
+                
+                
                 this._processExperience( this.jobs );
                 this._processExperience( this.projects );
+                
+                
+                
                 
                 this.skillView.render();
                 this.experienceSVG.render();
