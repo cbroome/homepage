@@ -209,25 +209,34 @@ footer {
     top: 0;
 }
 
+
 .detail-view {
-    padding: 15px;
     font-size: .55em;
-    background: rgba(186, 182, 195, 0.8);
+    background: rgba(49, 49, 51, 0.8);
     border-radius: 5px;
     text-align:left;
+    color: #d0cec6;
+    
 }
 
+.detail-view a {
+    color: #679abc;
+}
+
+
+.detail-view .heading-color {
+    color: #aa999e;
+}
 
 .detail-view .title {
     font-size: 1.67em;
     border-bottom: 1px solid;
-    font-weight:bold;
 }
-
 
 
 .detail-view .experience-detail {
     margin: auto 0;
+    padding: 1.5em;
 }
 
 .detail-view .dates {
