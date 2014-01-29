@@ -81,7 +81,7 @@ ul, ol {
 }
 
 .main-display {
-    height: 470px;
+    height: 450px;
 }
 
 
@@ -188,7 +188,7 @@ footer {
 
 .main-section {
     position: relative;
-    height: 500px;
+    height: 480px;
     overflow: visible;
     text-align: center;
 }
