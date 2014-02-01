@@ -46,7 +46,7 @@ define( function ( require ) {
                 
 				if ( 'd3el' in this.options ) {
                     
-                    var onNameClick = _.throttle( _.bind( this.onNameClick, this ), 500, { trailing: false } );
+                    var onNameClick = _.throttle( _.bind( this.onNameClick, this ), 600, { trailing: false } );
                     
 					this.d3el = this.options.d3el;
 					this.d3el.on( 'mouseover', _.bind( this.onMouseover, this ) );
@@ -55,7 +55,7 @@ define( function ( require ) {
                     
                      // Touch events
                     this.d3el.on( 'touchstart', onNameClick );
-					this.d3el.on( 'touchenter', onNameClick );
+					this.d3el.on( 'touchenter', function( ) { return false; } );
                    
 				}
                 
