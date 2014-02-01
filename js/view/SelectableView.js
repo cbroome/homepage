@@ -45,14 +45,17 @@ define( function ( require ) {
                 this.app = require( 'app' );
                 
 				if ( 'd3el' in this.options ) {
+                    
+                    var onNameClick = _.throttle( _.bind( this.onNameClick, this ), 500 );
+                    
 					this.d3el = this.options.d3el;
 					this.d3el.on( 'mouseover', _.bind( this.onMouseover, this ) );
 					this.d3el.on( 'mouseout', _.bind( this.onMouseout, this ) );
-                    this.d3el.on( 'click', _.bind( this.onNameClick, this ) );
+                    this.d3el.on( 'click', onNameClick );
                     
                      // Touch events
-                    this.d3el.on( 'touchstart', _.bind( this.onNameClick, this ) );
-					this.d3el.on( 'touchenter', _.bind( this.onNameClick, this ) );
+                    this.d3el.on( 'touchstart', onNameClick );
+					this.d3el.on( 'touchenter', onNameClick );
                    
 				}
                 
