@@ -52,15 +52,20 @@ define( function ( require ) {
                         { trailing: false } 
                     );
                     
-					this.d3el = this.options.d3el;
-					this.d3el.on( 'mouseover', _.bind( this.onMouseover, this ) );
-					this.d3el.on( 'mouseout', _.bind( this.onMouseout, this ) );
-                    this.d3el.on( 'mousedown', onNameClick );
+                    this.d3el = this.options.d3el;
                     
-                     // Touch events
-                    this.d3el.on( 'touchstart', onNameClick );
-					this.d3el.on( 'touchenter', onNameClick );
-                    this.d3el.on( 'touchleave', onNameClick );
+                    if( 'ontouchstart' in window ) {
+                         // Touch events
+                        this.d3el.on( 'touchstart', onNameClick );
+                        this.d3el.on( 'touchenter', onNameClick );
+                        this.d3el.on( 'touchleave', onNameClick );
+                    }   
+                    else 
+                    {
+                        this.d3el.on( 'mouseover', _.bind( this.onMouseover, this ) );
+                        this.d3el.on( 'mouseout', _.bind( this.onMouseout, this ) );
+                        this.d3el.on( 'mousedown', onNameClick );
+                    }
                    
 				}
                 
@@ -105,7 +110,6 @@ define( function ( require ) {
 				this.model.trigger(
 					EVENTS.SKILL.HOVER_END
 				);
-                app.vent.trigger( EVENTS.SKILL.HOVER_END, this.model );
                 return false;
 			}
 
