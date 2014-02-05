@@ -21,7 +21,9 @@ set :keep_releases, 10
 #}
 
 namespace :deploy do
-    
+
+  after 'deploy:publishing', 'deploy:restart'
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -30,6 +32,7 @@ namespace :deploy do
     end
   end
 
+    
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -42,6 +45,7 @@ namespace :deploy do
         #    execute 'r.js -o #{release_path}/scripts/app.build.js'
         #end
         within release_path do
+            execute 'echo Release path: #{release_path}'
             execute 'r.js', ' -o scripts/app.build.js'
         end
         
