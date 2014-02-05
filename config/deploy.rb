@@ -14,7 +14,7 @@ set :deploy_to, '/var/www/christopherbroome'
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
-# set :keep_releases, 5
+set :keep_releases, 10
 
 #set :ssh_options, {
 #  verbose: :debug
