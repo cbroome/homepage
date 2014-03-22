@@ -92,13 +92,6 @@ define( function( require ) {
             url: 'http://www.perl.org/'
         },
         {
-            id: 'wordpress',
-            type: 'blog',
-            related: [ 'php' ],
-            url: 'http://wordpress.org/',
-            description: 'Popular blogging platform that just won\'t die'
-        },
-        {
             id: 'marionette.js',
             type: 'framework',
             related: [ 'javascript', 'backbone.js', 'mvc' ],
@@ -167,6 +160,12 @@ define( function( require ) {
             description: 'Allows for the construction and easy loading of javascript modules',
             related: [ 'javascript' ],
             url: 'http://requirejs.org/'
+        },
+        {
+            id: 'jekyll',
+            type: 'utility',
+            description: 'Static site generator',
+            url: 'http://jekyllrb.com'
         }
     ];
     

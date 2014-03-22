@@ -20,7 +20,7 @@ define( function( require ) {
         {
             "title": "Dither and Bicker",
             "url": "http://www.ditherandbicker.com",
-            "skills": [ "wordpress", "javascript", "css" ],
+            "skills": [ "jekyll", "css", "capistrano" ],
             "status": "active",
             "description": "A seldomly updated tech-blog"
         }

@@ -6,7 +6,8 @@ set :stage, :production
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 #role :app, %w{deploy@christopherbroome.com}
-role :web, %w{deploy@christopherbroome.com}
+#role :web, %w{deploy@christopherbroome.com}
+role :web, %w{deploy@dqq0.x.rootbsd.net}
 #role :db,  %w{deploy@christopherbroome.com}
 
 # Extended Server Syntax
@@ -15,7 +16,7 @@ role :web, %w{deploy@christopherbroome.com}
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server 'christopherbroome.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server 'dqq0.x.rootbsd.net', user: 'deploy', roles: %w{web app}, my_property: :my_value
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options

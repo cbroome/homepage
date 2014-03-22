@@ -20,6 +20,17 @@ set :keep_releases, 10
 #  verbose: :debug
 #}
 
+# BSD bug: https://github.com/capistrano/capistrano/issues/677
+module GitStrategy
+  require 'capistrano/git'
+  include Capistrano::Git::DefaultStrategy
+  def release
+    git :archive, fetch(:branch), '| tar -x -f - -C', release_path
+  end
+end
+
+set :git_strategy, GitStrategy
+
 namespace :deploy do
 
   after 'deploy:publishing', 'deploy:restart'

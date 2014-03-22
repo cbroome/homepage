@@ -77,6 +77,7 @@ define( function ( require ) {
 
 			/**
 			 *
+			 * @global   ga
 			 * @returns  {Boolean}   always false
 			 */
 			onNameClick: function() {
@@ -85,6 +86,15 @@ define( function ( require ) {
                 
                 if( selected ) {
                     this.onMouseover();
+                    
+                    // Google Analytics tracking...
+                    if( _.isFunction( ga ) ) {
+                        // Record page view
+                        ga( 'send', {
+                            'hitType': 'pageview',
+                            'page': '/experience/' +  encodeURI( this.model.get( 'title' ) )
+                        } );                    
+                    }
                 }
                 return false;
             },
