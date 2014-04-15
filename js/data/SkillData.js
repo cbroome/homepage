@@ -162,10 +162,11 @@ define( function( require ) {
             url: 'http://requirejs.org/'
         },
         {
-            id: 'jekyll',
+            id: 'docpad',
             type: 'utility',
-            description: 'Static site generator',
-            url: 'http://jekyllrb.com'
+            description: 'Node.js static site generator which utilizes server-side backbone.js',
+            related: [ 'node.js', 'backbone.js' ],
+            url: 'http://docpad.org'
         }
     ];
     
