@@ -1,136 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html  prefix="og: http://ogp.me/ns#">
 <head>
     <title>Christopher Broome - Baltimore-Based Web Developer</title>
+
+    <meta name="description" property="og:description" content="Full LAMP stack web developer in Baltimore, Maryland USA" />
+    <meta property="og:image" content="http://www.christopherbroome.com/imgs/portrait-og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:title" content="Christopher Broome" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Christopher Broome" />
+    <meta name="twitter:description" content="Full LAMP stack web developer in Baltimore, Maryland USA" />
+    <meta name="twitter:image" content="http://www.christopherbroome.com/imgs/portrait-og.png" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Fjord+One' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- http://www.responsivegridsystem.com/ -->
+    <link rel="stylesheet" href="./css/col.css" type="text/css" />
+    <link rel="stylesheet" href="./css/8cols.css" type="text/css" />
+    <!-- end http://www.responsivegridsystem.com/ -->
+
     <link rel="stylesheet" href="./css/main.css" type="text/css" />
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     
-    <script data-main="js/main" src="js/lib/require.debug.js"></script>
+      ga('create', 'UA-46677505-1', 'christopherbroome.com');
+      ga('send', 'pageview');
     
+    </script>
+    
+    <script data-main="js/main" src="js/lib/require.js"></script>
+
 </head>
 <body>
-    
-    <header>
-        <div class="portrait head">
-            <div class="portrait-image">
-                <object data="./imgs/portrait-comp.svg" type="image/svg+xml" width="150"></object>
-            </div>
-        </div>
-        
-        <h1 class="head">Christopher Broome</h1>
-        
-        <ul class="scant-bio">
-            <li>Web Developer</li>
-        
-            <li>Baltimore, MD</li>
-        </ul>
-        
-    </header>
-    
-    <div class="clearit"></div>
-    
-    <!-- Image/etc... -->
-    <section>
-        
 
+
+    <section>
+
+        <div class="main-section">
             
-        <div class="column column-left skills">
-            
-            <ul class="skill-list">
-                
-                <li>PHP</li>
-            
-                <li>MySQL</li>
-                
-                <li>Apache</li>
-                
-                <li>jQuery</li>
-                
-                <li>Backbone.js</li>
+            <div class="col span_8_of_8 main-display">
+                <svg id="main-svg" height="630" width="100%">
+    
+                    <defs>
+                        <style type="text/css"><![CDATA[
                             
-            </ul>
-            
-            
-        </div>
-        
-        
-        <div class="clearit"></div>
-
-        <div class="column column-right experience">
-            
-            
-            <div class="experience-work">
-                
-            </div>
-            
-            <div class="experience-projects">
-            
-            </div>
-            
-        </div>
-
-            
-
-
-    </section>
+                            text {
+                                fill: #81616a ;
+                            }
+                            
+                            .skill-label {
+                                font-size: .38em;
+                                cursor: pointer;
+                            }
+                            
+                            .skill-header {
+                                font-size: .48em;
+                                font-family: 'Lane - Narrow';
+                            }
+                            
+                            .header {
+                                font-family: 'Lane - Narrow';
+                                font-size: .85em;
+                                text-anchor: end;
+                            }
     
-    <!-- Contact Stuff -->
-    <section>        
-        <div class="social-media">
-            <div class="button twitter">
-                
-                <a href="https://twitter.com/C_Broome" class="twitter-follow-button" data-show-count="false">
-                    Follow @C_Broome
-                </a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
-        
+                            .experience {
+                                font-size: .6em;
+                                cursor: pointer;
+                                text-anchor:end;
+                            }
+    
+                            .line {
+                                /* stroke: #ebeaee; */
+                                stroke-width: .5;
+                                stroke-opacity: .07;
+                                fill: none;
+                            }
+    
+                            path.hovered {
+                                /* stroke: #CE00FE; */
+                                stroke-opacity: .75;
+                            }
+                        ]]></style>
+                    </defs>
+    
+                </svg>
             </div>
+
+            <div class="detail-view-column span_3_of_8 main-display"></div>
+
             
-            <div class="button linkedin">
-                <a href="http://www.linkedin.com/pub/chris-broome/1b/154/251" target="_blank">
-                    <img src="http://www.linkedin.com/img/webpromo/btn_liprofile_blue_80x15.png"
-                         width="80" height="15" border="0" alt="View Chris Broome's profile on LinkedIn" />
-                </a>
-            </div>
         </div>
+
+
     </section>
     
     <section>
-        
-        <h2>Links on the web</h2>
-        <ul class="links">
-            
-            <li>
-                <a href="http://www.linkedin.com/pub/chris-broome/1b/154/251/" target="_blank">LinkedIn</a>
-            </li>
-            <li>
-                <a href="http://www.ditherandbicker.com" target="_blank">Dither and Bicker</a>
-                <div class="description">
-                    Tech blog, rarely updated...
-                </div>
-            </li>
-            <li>
-                <a href="http://www.mobiledevicebrowser.com" target="_blank">Mobile Device Browser</a>
-                <div class="description">
-                    Personal project to query the WURFL database.  Work stopped after the licensing on the
-                    project changed.
-                </div>
-            </li>
-            
-            <li>
+
+        <div class="section header">
+
+            <div class="portrait head">
                 
-            </li>
+                <div class="divider"> </div>
+                
+                <div class="portrait-image">
+                    <img src="./imgs/portrait-comp.png" />
+                </div>
+                
+                <div class="divider"> </div>
+                
+            </div>
             
-        </ul>
+            
+            <h1 class="head heading-color">Christopher Broome</h1>
+            
+            <div class="scant-bio heading-font">Full Stack Web Developer / Baltimore, MD</div>        
+
+            <ul class="social-buttons heading-font">
+
+                <li>
+                    <a href="https://twitter.com/C_Broome" target="_blank">
+                        <img src="imgs/twitter.png" alt="Twitter" />
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://www.linkedin.com/pub/chris-broome/1b/154/251" target="_blank">
+                        <img src="imgs/linkedin.png" alt="LinkedIn" />
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://github.com/cbroome" target="_blank">
+                        <img src="imgs/github.png" alt="GitHub" />
+                    </a>
+                </li>
+
+            </ul>
         
-        <h2>Previous Employers</h2>
-        <ul class="links">
-            <li><a href="http://www.dstbs.com">DST Brokerage Solutions</a></li>
-            <li><a href="http://www.millennialmedia.com" target="_blank">Millennial Media</a></li>
-            <li><a href="http://www.advertising.com" target="_blank">Advertising.com</a></li>
-        </ul>
+        </div>
+
     </section>
     
+    
+
+    <footer>
+        <div class="section">
+            
+            &copy; 2014
+            
+            |
+            
+            <a href="https://github.com/cbroome/homepage" target="_blank">Source Code</a>
+            
+
+        </div>
+        
+    </footer>
+
+
 </body>
-    
-    
+
+
 </html>

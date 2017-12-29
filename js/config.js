@@ -7,8 +7,6 @@ require.config( {
 
         underscore: 'lib/underscore-min',
 
-        // backbone: 'lib/backbone-min',
-
         backbone: 'lib/backbone-debug',
 
         handlebars: 'lib/handlebars',
@@ -48,6 +46,10 @@ require.config( {
             exports: 'Marionette'
         },
 
+        text: {
+            exports: 'text'
+        },
+
         d3: {
             exports: 'd3'
         }
@@ -55,11 +57,3 @@ require.config( {
 
 
 });
-
-require(
-    [ 'app' ],
-    function ( app ) {
-        app.start();
-
-    }
-);

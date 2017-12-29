@@ -1,0 +1,135 @@
+[
+    { 
+        "key": "javascript",
+        "type": "language"
+    },
+    {
+        "key": "php",
+        "type": "language",
+        "url": "http://www.php.net"
+    },
+    {
+        "key": "css",
+        "type": "language"
+    {
+        "key": "html5",
+        "type": "language"
+    {
+        "key": "mysql",
+        "type": "datastore",
+        "url": "http://www.mysql.com"
+    },
+    {
+        "key": "jquery",
+        "type": "library"
+        "related": [ "javascript" ]
+    },
+    {
+        "key": "mvc",
+        "type": "design pattern"
+    },
+    {
+        "key": "git",
+        "type": "version control"
+    },
+    {
+        "key": "d3",
+        "type": "library",
+        "related": [ "javascript", "svg" ],
+        "url": "http://d3js.org/"
+    },
+    {
+        "key": "backbone.js",
+        "type": "library",
+        "related": [ "javascript", "jquery", "underscore.js" ],
+        "url": "http://backbonejs.org/"
+    },
+    {
+        "key": "capistrano",
+        "type": "utility",
+        "description": "Tool for deploying code to production servers from a repository",
+        "url": "http://capistranorb.com/"
+    },
+    {
+        "key": "dhtmlx",
+        "type": "library",
+        "description": "Flash based charting library",
+        "url": "http://dhtmlx.com/"
+    },
+    {
+        "key": "prototype.js",
+        "type": "library",
+        "url": "http://prototypejs.org/"
+    },
+    {
+        "key": "svn", 
+        "type": "version control"
+    },
+    {
+        "key": "agile",
+        "type": "management"
+    },
+    {
+        "key": "perl",
+        "type": "language"
+    },
+    {
+        "key": "wordpress",
+        "type": "blog",
+        "related": [ "php" ],
+        "url": "http://wordpress.org/"
+    },
+    {
+        "key": "marionette.js",
+        "type": "framework",
+        "related": [ "javascript", "backbone.js" ],
+        "url": "http://marionettejs.com/"
+    },
+    {
+        "key": "cassandra",
+        "type": "datastore",
+        "url": "http://cassandra.apache.org/"
+    },
+    {
+        "key": "postgres",
+        "type": "datastore"
+    },
+    {
+        "key": "mercurial",
+        "type": "version control"
+    },
+    {
+        "key": "python",
+        "type": "language"
+    },
+    {
+        "key": "sass", 
+        "type": "library",
+        "url": "http://sass-lang.com/"
+    },
+    {
+        "key": "jasmine.js",
+        "type": "utility",
+        "description": "Unit testing for javascript",
+        "related": [ "javascript" ],
+        "url": "http://pivotal.github.io/jasmine/" 
+    },
+    {
+        "key": "extjs",
+        "type": "library",
+        "description": "Now known as sencha touch.",
+        "url": "http://www.sencha.com/"
+    },
+    {
+        "key": "cakephp",
+        "type": "framework",
+        "related": [ "php" ],
+        "url": "http://cakephp.org/"
+    },
+    {
+        "key": "puppet",
+        "type": "utility",
+        "description": "*nix system manager.  Can be used to manage a range of servers",
+        "url": "http://puppetlabs.com/"
+    }
+]
