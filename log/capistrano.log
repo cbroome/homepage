@@ -1,0 +1,176 @@
+# Logfile created on 2017-12-29 14:06:42 -0500 by logger.rb/56815
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-12-29 14:06:42 -0500 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [ba940cef] Running /usr/bin/env mkdir -p /tmp as deploy@christopherbroome.com
+ DEBUG [ba940cef] Command: /usr/bin/env mkdir -p /tmp
+  INFO [ba940cef] Finished in 1.653 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 0.0%
+  INFO Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 100.0%
+  INFO [d30c15e9] Running /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh as deploy@christopherbroome.com
+ DEBUG [d30c15e9] Command: /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh
+  INFO [d30c15e9] Finished in 0.131 seconds with exit status 0 (successful).
+  INFO [343a9702] Running /usr/bin/env mkdir -p /tmp as deploy@christopherbroome.com
+ DEBUG [343a9702] Command: /usr/bin/env mkdir -p /tmp
+  INFO [343a9702] Finished in 0.142 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 0.0%
+  INFO Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 100.0%
+  INFO [00b2b90d] Running /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh as deploy@christopherbroome.com
+ DEBUG [00b2b90d] Command: /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh
+  INFO [00b2b90d] Finished in 0.150 seconds with exit status 0 (successful).
+  INFO [ac82f2ba] Running /usr/bin/env git ls-remote git@github.com:cbroome/homepage.git HEAD as deploy@christopherbroome.com
+ DEBUG [ac82f2ba] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git ls-remote git@github.com:cbroome/homepage.git HEAD )
+ DEBUG [ac82f2ba] 	Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+ DEBUG [ac82f2ba] 	Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-12-29 14:13:25 -0500 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [d7dd8aff] Running /usr/bin/env mkdir -p /tmp as deploy@christopherbroome.com
+ DEBUG [d7dd8aff] Command: /usr/bin/env mkdir -p /tmp
+  INFO [d7dd8aff] Finished in 0.778 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 0.0%
+  INFO Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 100.0%
+  INFO [54d065bc] Running /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh as deploy@christopherbroome.com
+ DEBUG [54d065bc] Command: /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh
+  INFO [54d065bc] Finished in 0.142 seconds with exit status 0 (successful).
+  INFO [1b18c1be] Running /usr/bin/env mkdir -p /tmp as deploy@christopherbroome.com
+ DEBUG [1b18c1be] Command: /usr/bin/env mkdir -p /tmp
+  INFO [1b18c1be] Finished in 0.128 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 0.0%
+  INFO Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 100.0%
+  INFO [015d4f8c] Running /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh as deploy@christopherbroome.com
+ DEBUG [015d4f8c] Command: /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh
+  INFO [015d4f8c] Finished in 0.136 seconds with exit status 0 (successful).
+  INFO [92c1d3a1] Running /usr/bin/env git ls-remote git@github.com:cbroome/homepage.git HEAD as deploy@christopherbroome.com
+ DEBUG [92c1d3a1] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git ls-remote git@github.com:cbroome/homepage.git HEAD )
+ DEBUG [92c1d3a1] 	Warning: Permanently added the RSA host key for IP address '192.30.253.112' to the list of known hosts.
+ DEBUG [92c1d3a1] 	Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+  INFO ---------------------------------------------------------------------------
+  INFO START 2017-12-29 14:17:04 -0500 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [602da02b] Running /usr/bin/env mkdir -p /tmp as deploy@christopherbroome.com
+ DEBUG [602da02b] Command: /usr/bin/env mkdir -p /tmp
+  INFO [602da02b] Finished in 0.791 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 0.0%
+  INFO Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 100.0%
+  INFO [14994dea] Running /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh as deploy@christopherbroome.com
+ DEBUG [14994dea] Command: /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh
+  INFO [14994dea] Finished in 0.130 seconds with exit status 0 (successful).
+  INFO [a2f43767] Running /usr/bin/env mkdir -p /tmp as deploy@christopherbroome.com
+ DEBUG [a2f43767] Command: /usr/bin/env mkdir -p /tmp
+  INFO [a2f43767] Finished in 0.127 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 0.0%
+  INFO Uploading /tmp/git-ssh-christopherbroome-production-Chris.sh 100.0%
+  INFO [1f71a619] Running /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh as deploy@christopherbroome.com
+ DEBUG [1f71a619] Command: /usr/bin/env chmod 700 /tmp/git-ssh-christopherbroome-production-Chris.sh
+  INFO [1f71a619] Finished in 0.141 seconds with exit status 0 (successful).
+  INFO [d40c1acd] Running /usr/bin/env git ls-remote git@github.com:cbroome/homepage.git HEAD as deploy@christopherbroome.com
+ DEBUG [d40c1acd] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git ls-remote git@github.com:cbroome/homepage.git HEAD )
+ DEBUG [d40c1acd] 	95db08e485d4f49969e8e0e117f49105446839f2	HEAD
+  INFO [d40c1acd] Finished in 0.464 seconds with exit status 0 (successful).
+  INFO [dca0295c] Running /usr/bin/env git ls-remote git@github.com:cbroome/homepage.git HEAD as deploy@christopherbroome.com
+ DEBUG [dca0295c] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git ls-remote git@github.com:cbroome/homepage.git HEAD )
+ DEBUG [dca0295c] 	95db08e485d4f49969e8e0e117f49105446839f2	HEAD
+  INFO [dca0295c] Finished in 0.388 seconds with exit status 0 (successful).
+  INFO [07eddc1b] Running /usr/bin/env mkdir -p /var/www/christopherbroome/shared /var/www/christopherbroome/releases as deploy@christopherbroome.com
+ DEBUG [07eddc1b] Command: /usr/bin/env mkdir -p /var/www/christopherbroome/shared /var/www/christopherbroome/releases
+  INFO [07eddc1b] Finished in 0.114 seconds with exit status 0 (successful).
+ DEBUG [650b09c5] Running [ -f /var/www/christopherbroome/current/REVISION ] as deploy@christopherbroome.com
+ DEBUG [650b09c5] Command: [ -f /var/www/christopherbroome/current/REVISION ]
+ DEBUG [650b09c5] Finished in 0.080 seconds with exit status 1 (failed).
+ DEBUG [6e374d10] Running [ -f /var/www/christopherbroome/repo/HEAD ] as deploy@christopherbroome.com
+ DEBUG [6e374d10] Command: [ -f /var/www/christopherbroome/repo/HEAD ]
+ DEBUG [6e374d10] Finished in 0.134 seconds with exit status 1 (failed).
+ DEBUG [1f1675df] Running if test ! -d /var/www/christopherbroome; then echo "Directory does not exist '/var/www/christopherbroome'" 1>&2; false; fi as deploy@christopherbroome.com
+ DEBUG [1f1675df] Command: if test ! -d /var/www/christopherbroome; then echo "Directory does not exist '/var/www/christopherbroome'" 1>&2; false; fi
+ DEBUG [1f1675df] Finished in 0.142 seconds with exit status 0 (successful).
+  INFO [eaeada1f] Running /usr/bin/env git clone --mirror git@github.com:cbroome/homepage.git /var/www/christopherbroome/repo as deploy@christopherbroome.com
+ DEBUG [eaeada1f] Command: cd /var/www/christopherbroome && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git clone --mirror git@github.com:cbroome/homepage.git /var/www/christopherbroome/repo )
+ DEBUG [eaeada1f] 	Cloning into bare repository '/var/www/christopherbroome/repo'...
+  INFO [eaeada1f] Finished in 1.515 seconds with exit status 0 (successful).
+ DEBUG [606db20d] Running [ -f /var/www/christopherbroome/repo/HEAD ] as deploy@christopherbroome.com
+ DEBUG [606db20d] Command: [ -f /var/www/christopherbroome/repo/HEAD ]
+ DEBUG [606db20d] Finished in 0.086 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/christopherbroome/repo
+ DEBUG [f6bb966e] Running if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi as deploy@christopherbroome.com
+ DEBUG [f6bb966e] Command: if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi
+ DEBUG [f6bb966e] Finished in 0.134 seconds with exit status 0 (successful).
+  INFO [982fd70c] Running /usr/bin/env git remote set-url origin git@github.com:cbroome/homepage.git as deploy@christopherbroome.com
+ DEBUG [982fd70c] Command: cd /var/www/christopherbroome/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git remote set-url origin git@github.com:cbroome/homepage.git )
+  INFO [982fd70c] Finished in 0.129 seconds with exit status 0 (successful).
+  INFO [a1ab1a5b] Running /usr/bin/env git remote update --prune as deploy@christopherbroome.com
+ DEBUG [a1ab1a5b] Command: cd /var/www/christopherbroome/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [a1ab1a5b] 	Fetching origin
+  INFO [a1ab1a5b] Finished in 0.410 seconds with exit status 0 (successful).
+ DEBUG [0a2022a1] Running if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi as deploy@christopherbroome.com
+ DEBUG [0a2022a1] Command: if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi
+ DEBUG [0a2022a1] Finished in 0.080 seconds with exit status 0 (successful).
+  INFO [a8431b4d] Running /usr/bin/env git remote set-url origin git@github.com:cbroome/homepage.git as deploy@christopherbroome.com
+ DEBUG [a8431b4d] Command: cd /var/www/christopherbroome/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git remote set-url origin git@github.com:cbroome/homepage.git )
+  INFO [a8431b4d] Finished in 0.112 seconds with exit status 0 (successful).
+  INFO [a03fbf75] Running /usr/bin/env git remote update --prune as deploy@christopherbroome.com
+ DEBUG [a03fbf75] Command: cd /var/www/christopherbroome/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [a03fbf75] 	Fetching origin
+  INFO [a03fbf75] Finished in 0.389 seconds with exit status 0 (successful).
+ DEBUG [0b84205b] Running if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi as deploy@christopherbroome.com
+ DEBUG [0b84205b] Command: if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi
+ DEBUG [0b84205b] Finished in 0.111 seconds with exit status 0 (successful).
+  INFO [b62cf4b4] Running /usr/bin/env mkdir -p /var/www/christopherbroome/releases/20171229191706 as deploy@christopherbroome.com
+ DEBUG [b62cf4b4] Command: cd /var/www/christopherbroome/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env mkdir -p /var/www/christopherbroome/releases/20171229191706 )
+  INFO [b62cf4b4] Finished in 0.101 seconds with exit status 0 (successful).
+  INFO [2df4538d] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/christopherbroome/releases/20171229191706 as deploy@christopherbroome.com
+ DEBUG [2df4538d] Command: cd /var/www/christopherbroome/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/christopherbroome/releases/20171229191706 )
+  INFO [2df4538d] Finished in 0.162 seconds with exit status 0 (successful).
+ DEBUG [270532e0] Running if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi as deploy@christopherbroome.com
+ DEBUG [270532e0] Command: if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi
+ DEBUG [270532e0] Finished in 0.134 seconds with exit status 0 (successful).
+  INFO [5c7dfc2a] Running /usr/bin/env mkdir -p /var/www/christopherbroome/releases/20171229191706 as deploy@christopherbroome.com
+ DEBUG [5c7dfc2a] Command: cd /var/www/christopherbroome/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env mkdir -p /var/www/christopherbroome/releases/20171229191706 )
+  INFO [5c7dfc2a] Finished in 0.157 seconds with exit status 0 (successful).
+  INFO [daee605d] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/christopherbroome/releases/20171229191706 as deploy@christopherbroome.com
+ DEBUG [daee605d] Command: cd /var/www/christopherbroome/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/christopherbroome/releases/20171229191706 )
+  INFO [daee605d] Finished in 0.167 seconds with exit status 0 (successful).
+ DEBUG [b3b85600] Running if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi as deploy@christopherbroome.com
+ DEBUG [b3b85600] Command: if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi
+ DEBUG [b3b85600] Finished in 0.122 seconds with exit status 0 (successful).
+ DEBUG [5ba9a17a] Running /usr/bin/env git rev-list --max-count=1 master as deploy@christopherbroome.com
+ DEBUG [5ba9a17a] Command: cd /var/www/christopherbroome/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [5ba9a17a] 	95db08e485d4f49969e8e0e117f49105446839f2
+ DEBUG [5ba9a17a] Finished in 0.145 seconds with exit status 0 (successful).
+ DEBUG [c86db3a1] Running if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi as deploy@christopherbroome.com
+ DEBUG [c86db3a1] Command: if test ! -d /var/www/christopherbroome/repo; then echo "Directory does not exist '/var/www/christopherbroome/repo'" 1>&2; false; fi
+ DEBUG [c86db3a1] Finished in 0.141 seconds with exit status 0 (successful).
+ DEBUG [a4be646b] Running /usr/bin/env git rev-list --max-count=1 master as deploy@christopherbroome.com
+ DEBUG [a4be646b] Command: cd /var/www/christopherbroome/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-christopherbroome-production-Chris.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [a4be646b] 	95db08e485d4f49969e8e0e117f49105446839f2
+ DEBUG [a4be646b] Finished in 0.121 seconds with exit status 0 (successful).
+ DEBUG [a71be7c7] Running if test ! -d /var/www/christopherbroome/releases/20171229191706; then echo "Directory does not exist '/var/www/christopherbroome/releases/20171229191706'" 1>&2; false; fi as deploy@christopherbroome.com
+ DEBUG [a71be7c7] Command: if test ! -d /var/www/christopherbroome/releases/20171229191706; then echo "Directory does not exist '/var/www/christopherbroome/releases/20171229191706'" 1>&2; false; fi
+ DEBUG [a71be7c7] Finished in 0.366 seconds with exit status 0 (successful).
+  INFO [159a5a0a] Running /usr/bin/env echo "95db08e485d4f49969e8e0e117f49105446839f2" >> REVISION as deploy@christopherbroome.com
+ DEBUG [159a5a0a] Command: cd /var/www/christopherbroome/releases/20171229191706 && /usr/bin/env echo "95db08e485d4f49969e8e0e117f49105446839f2" >> REVISION
+  INFO [159a5a0a] Finished in 0.119 seconds with exit status 0 (successful).
+  INFO [cfb0e727] Running /usr/bin/env ln -s /var/www/christopherbroome/releases/20171229191706 /var/www/christopherbroome/releases/current as deploy@christopherbroome.com
+ DEBUG [cfb0e727] Command: /usr/bin/env ln -s /var/www/christopherbroome/releases/20171229191706 /var/www/christopherbroome/releases/current
+  INFO [cfb0e727] Finished in 0.114 seconds with exit status 0 (successful).
+  INFO [f9ed49a4] Running /usr/bin/env mv /var/www/christopherbroome/releases/current /var/www/christopherbroome as deploy@christopherbroome.com
+ DEBUG [f9ed49a4] Command: /usr/bin/env mv /var/www/christopherbroome/releases/current /var/www/christopherbroome
+  INFO [f9ed49a4] Finished in 0.145 seconds with exit status 0 (successful).
+ DEBUG [2c5a7edb] Running /usr/bin/env ls -x /var/www/christopherbroome/releases as deploy@christopherbroome.com
+ DEBUG [2c5a7edb] Command: /usr/bin/env ls -x /var/www/christopherbroome/releases
+ DEBUG [2c5a7edb] 	20171229191706
+ DEBUG [2c5a7edb] Finished in 0.162 seconds with exit status 0 (successful).
+ DEBUG [a65fee1b] Running if test ! -d /var/www/christopherbroome/releases; then echo "Directory does not exist '/var/www/christopherbroome/releases'" 1>&2; false; fi as deploy@christopherbroome.com
+ DEBUG [a65fee1b] Command: if test ! -d /var/www/christopherbroome/releases; then echo "Directory does not exist '/var/www/christopherbroome/releases'" 1>&2; false; fi
+ DEBUG [a65fee1b] Finished in 0.119 seconds with exit status 0 (successful).
+  INFO [b531747d] Running /usr/bin/env echo "Branch master (at 95db08e485d4f49969e8e0e117f49105446839f2) deployed as release 20171229191706 by Chris" >> /var/www/christopherbroome/revisions.log as deploy@christopherbroome.com
+ DEBUG [b531747d] Command: cd /var/www/christopherbroome/releases && /usr/bin/env echo "Branch master (at 95db08e485d4f49969e8e0e117f49105446839f2) deployed as release 20171229191706 by Chris" >> /var/www/christopherbroome/revisions.log
+  INFO [b531747d] Finished in 0.105 seconds with exit status 0 (successful).
