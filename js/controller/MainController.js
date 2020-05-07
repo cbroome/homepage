@@ -235,20 +235,34 @@ define( function ( require ) {
 				var app = require( 'app' );
 				experience.each(
 					_.bind( function ( exp ) {						
-                        var skills = exp.get( 'skills' );
+						var skills = exp.get( 'skills' );
+						var associateSkillAndExperience = _.bind( this._associateSkillAndExperience, this, exp );
+
 						_.each(
 							skills,
-							function( skill ) {
-								this.pathList.add( {
-                                    skill: this.skills.get( skill ),
-									experience: exp
-								} );
-							},
+							associateSkillAndExperience,
 							this
 						);
 
 					}, this )
 				);
+			},
+
+
+			/**
+			 * 
+			 * @param {*} exp 
+			 * @param {*} skill 
+			 */
+			_associateSkillAndExperience( exp, skill ) {
+				var skillModel = this.skills.get( skill );
+				if( !skillModel ) {
+					throw new Error ('Could not find skill ' + skill);
+				}
+				this.pathList.add( {
+					skill: skillModel,
+					experience: exp
+				} );				
 			},
             
 

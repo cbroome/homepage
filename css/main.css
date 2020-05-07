@@ -33,7 +33,6 @@ body {
 }
 
 .section {
-    width: 1024px;
     margin: 0 auto;
 }
 
@@ -144,6 +143,10 @@ ul.linkbar li {
 .header {
     text-align: center;
     padding-bottom: 0px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 
 }
 
@@ -154,6 +157,7 @@ ul.linkbar li {
 h1.head {
     width: 100%;
     font-size: 1.4em;
+    font-weight: bold;
 }
 
 
@@ -176,8 +180,9 @@ ul.social-buttons {
 
 /* Footer
  * ================================================= */
-footer {
-    margin-top: 25px;
+.footer {
+    margin-top: 1em;
+    margin-bottom: 1em;
     text-align: center;
     font-size: .4em
 }
@@ -212,8 +217,7 @@ footer {
 
 .detail-view {
     font-size: .55em;
-    background: rgba(49, 49, 51, 0.8);
-    border-radius: 5px;
+    background: rgba(69, 69, 80);
     text-align:left;
     color: #d0cec6;
     
@@ -225,11 +229,12 @@ footer {
 
 
 .detail-view .heading-color {
-    color: #aa999e;
+    color: #d0cec6;
 }
 
 .detail-view .title {
     font-size: 1.67em;
+    font-weight: bold;
     border-bottom: 1px solid;
 }
 

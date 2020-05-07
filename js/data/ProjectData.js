@@ -4,7 +4,7 @@ define( function( require ) {
         {
             "title": "This Site!",
             "url": "http://www.christopherbroome.com",
-            "skills": [ "javascript", "backbone.js", "marionette.js", "jquery", "d3", "css", "mvc", "git", "capistrano", "require.js" ],
+            "skills": [ "javascript", "backbone.js", "marionette.js", "jquery", "d3", "css", "mvc", "git", "capistrano" ],
             "status": "active",
             "description": "A little experiment in Marionette and D3.js"
         },

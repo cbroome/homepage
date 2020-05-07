@@ -69,11 +69,12 @@ define( function( require ) {
             "title": "Tenable Network Security",
             "url": "http://www.tenable.com",
             "dates": {
-                "start": "201306"
+                "start": "201306",
+                "end": "202003"
             },
             "skills": [
                 "backbone.js",
-                "jasmine.js",
+                "react.js",
                 "sass",
                 "agile",
                 "javascript",
@@ -81,11 +82,29 @@ define( function( require ) {
                 "git",
                 "jquery",
                 "css",
-                "require.js"
+                "bamboo",
+                "spring",
+                "java"
             ],
             "description": "Worked on an HTML5 enterprise application used to manage a network vulnerability monitor."
         },
-    
+
+        {
+            "title": "Fearless",
+            "url": "https://fearless.tech",
+            "dates": {
+                "start": "202004"
+            },
+            "skills": [
+                "java",
+                "spring",
+                "react.js",
+                "javascript",
+                "php"
+            ],
+            "description": "Working on a Spring Boot application"
+        },
+
         {
             "title": "Message Systems",
             "url": "http://www.messagesystems.com",
@@ -98,13 +117,12 @@ define( function( require ) {
                 "php",
                 "postgres",
                 "javascript",
-                "cassandra",
                 "python",
-                "mercurial",
                 "agile"
             ],
-            "description": "Research work around technologies such as Cassandra for high volume data queries."
+            "description": "Research work around technologies such as Cassandra for high volume data queries. Managed multiple development teams."
         }
+
     ];
     
     return work;

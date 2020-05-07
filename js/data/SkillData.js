@@ -1,6 +1,11 @@
 define( function( require ) {
     
     var skills = [
+        {
+            id: 'java',
+            type: 'language',
+            description: 'Object-orientated programming language'
+        },
         { 
             id: 'javascript',
             type: 'language',
@@ -99,22 +104,10 @@ define( function( require ) {
             description: 'Rounds backbone.js into a full MVC framework by adding, among other things, a dedicated application and controller object'
         },
         {
-            id: 'cassandra',
-            type: 'datastore',
-            url: 'http://cassandra.apache.org/',
-            description: 'Scalable no-sql datastore'
-        },
-        {
             id: 'postgres',
             type: 'datastore',
             url: 'http://www.postgresql.org/',
             description: 'Respected relational database.'
-        },
-        {
-            id: 'mercurial',
-            type: 'version control',
-            url: 'http://mercurial.selenic.com/',
-            description: 'Distributed version control, similar to git'
         },
         {
             id: 'python',
@@ -155,18 +148,26 @@ define( function( require ) {
             url: 'http://puppetlabs.com/'
         },
         {
-            id: 'require.js',
-            type: 'library',
-            description: 'Allows for the construction and easy loading of javascript modules',
-            related: [ 'javascript' ],
-            url: 'http://requirejs.org/'
-        },
-        {
             id: 'docpad',
             type: 'utility',
             description: 'Node.js static site generator which utilizes server-side backbone.js',
             related: [ 'node.js', 'backbone.js' ],
             url: 'http://docpad.org'
+        },
+        {
+            id: 'spring',
+            type: 'framework',
+            related: [ 'java' ],
+            url: 'https://spring.io'
+        },
+        {
+            id: 'react.js',
+            type: 'library',
+            related: [ 'javascript']
+        },
+        { 
+            id: 'bamboo',
+            type: 'utility'
         }
     ];
     
