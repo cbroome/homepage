@@ -79,6 +79,7 @@ define(function (require) {
 				'bamboo',
 				'spring',
 				'java',
+				'aws',
 			],
 			description:
 				'Worked on an HTML5 enterprise application used to manage a network vulnerability monitor.',
@@ -127,6 +128,7 @@ define(function (require) {
 				'aws',
 				'graphql',
 				'redshift',
+				'css',
 			],
 			description:
 				'Helped build out an ecommerce platform on AWS. Introduced Agile practice for project management',
