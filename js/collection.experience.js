@@ -1,12 +1,5 @@
-define(
-    [ 'collection' ],
-    function ( collection ) {
+define(['collection'], function (collection) {
+	collection.Experience = {};
 
-
-        collection.Experience = {};
-
-        return collection.Experience;
-
-
-    }
-);
+	return collection.Experience;
+});
