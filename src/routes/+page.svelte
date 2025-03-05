@@ -1,52 +1,11 @@
+<script>
+	import CareerGraph from '$lib/CareerGraph/CareerGraph.svelte';
+</script>
+
 <section>
 	<div class="main-section">
 		<div class="col span_8_of_8 main-display">
-			<svg id="main-svg" height="630" width="100%">
-				<defs>
-					<style type="text/css">
-<![CDATA[
-                            
-                            text {
-                                fill: #81616a ;
-                            }
-                            
-                            .skill-label {
-                                font-size: .38em;
-                                cursor: pointer;
-                            }
-                            
-                            .skill-header {
-                                font-size: .48em;
-                                font-family: 'Lane - Narrow';
-                            }
-                            
-                            .header {
-                                font-family: 'Lane - Narrow';
-                                font-size: .85em;
-                                text-anchor: end;
-                            }
-    
-                            .experience {
-                                font-size: .6em;
-                                cursor: pointer;
-                                text-anchor:end;
-                            }
-    
-                            .line {
-                                /* stroke: #ebeaee; */
-                                stroke-width: .5;
-                                stroke-opacity: .07;
-                                fill: none;
-                            }
-    
-                            path.hovered {
-                                /* stroke: #CE00FE; */
-                                stroke-opacity: .75;
-                            }
-                        ]]>
-					</style>
-				</defs>
-			</svg>
+			<CareerGraph />
 		</div>
 
 		<div class="detail-view-column span_3_of_8 main-display"></div>
