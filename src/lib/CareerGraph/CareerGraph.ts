@@ -1,60 +1,6 @@
 import * as d3 from 'd3';
-
-export interface IExperienceModel {
-	/**
-	 * @property    {String}    title   human readable title
-	 */
-	title: string;
-
-	/**
-	 * @property    {String}    description
-	 */
-	description: string;
-
-	/**
-	 * @property    {Array}     skills
-	 */
-	skills: string[];
-
-	/**
-	 * @property	{Boolean}	options
-	 */
-	options: {
-		/**
-		 * @property	{Boolean}	selected
-		 */
-		selected?: boolean;
-
-		/**
-		 * @property    {String}    stroke      hex color...
-		 */
-		stroke?: string;
-	};
-}
-
-export interface IExperienceWorkModel extends IExperienceModel {
-	/**
-	 * @property    {Datetime}  dateStart
-	 */
-	dateStart: Date;
-
-	/**
-	 * @property    {Datetime}  dateEnd
-	 */
-	dateEnd: Date;
-
-	/**
-	 * @property    {String}    urlRoot
-	 */
-	urlRoot?: 'service/work';
-}
-
-export interface IExperienceProjectModel extends IExperienceModel {}
-
-export interface ICareerGraphOptions {
-	expWork: IExperienceWorkModel[];
-	expProjects: IExperienceProjectModel[];
-}
+import { bind } from 'lodash';
+import { SelectableView } from './SelectableView';
 
 export class CareerGraph {
 	/**
@@ -75,12 +21,12 @@ export class CareerGraph {
 	/**
 	 * @property	{d3}	svg
 	 */
-	svg: d3.Selection | null = null;
+	svg: d3.Selection<SVGElement> | null = null;
 
 	/**
 	 * @property    {d3}    group
 	 */
-	group: undefined;
+	group: any;
 
 	/**
 	 * @property    {Integer}   startY
@@ -125,7 +71,7 @@ export class CareerGraph {
 	/**
 	 * @property	{Array}		experienceViews
 	 */
-	protected experienceViews = [];
+	protected experienceViews: SelectableView[] = [];
 
 	constructor(options: ICareerGraphOptions) {
 		this.options = {
@@ -194,17 +140,12 @@ export class CareerGraph {
 	 */
 	protected renderExperience = (collection: IExperienceWorkModel[]) => {
 		var data = collection,
-			getY = _.bind(this._getY, this, this.heightLine);
+			getY = bind(this.getY, this, this.heightLine);
 
 		data.forEach((exp) => {
 			const x = this.xRegular;
 			const y = getY();
-			const viewClass = ExperienceWorkView;
-			/*
-				viewClass =
-					exp instanceof IExperienceWorkModel ? ExperienceWorkView : ExperienceProjectView,
-                */
-			const obj = this.group
+			const d3el = this.group
 				.append('text')
 				.text(function () {
 					return exp.get('title');
@@ -218,12 +159,7 @@ export class CareerGraph {
 				yPos: y
 			});
 
-			this.experienceViews.push(
-				new viewClass({
-					d3el: obj,
-					model: exp
-				})
-			);
+			this.experienceViews.push(new SelectableView(d3el, exp));
 		});
 		return this;
 	};
