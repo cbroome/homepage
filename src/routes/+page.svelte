@@ -30,12 +30,6 @@
 
 		<ul class="social-buttons heading-font">
 			<li>
-				<a href="https://twitter.com/C_Broome" target="_blank">
-					<img src="imgs/twitter.png" alt="Twitter" />
-				</a>
-			</li>
-
-			<li>
 				<a href="http://www.linkedin.com/pub/chris-broome/1b/154/251" target="_blank">
 					<img src="imgs/linkedin.png" alt="LinkedIn" />
 				</a>

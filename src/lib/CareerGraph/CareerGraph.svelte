@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { CareerGraph } from './CareerGraph';
-	import type { ICareerGraphOptions } from './CareerGraph';
 
 	onMount(() => {
 		const options: ICareerGraphOptions = {
-			experienceViews: [],
 			expProjects: [],
 
 			expWork: [

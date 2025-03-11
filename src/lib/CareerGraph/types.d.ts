@@ -53,3 +53,29 @@ interface ICareerGraphOptions {
 	expWork: IExperienceWorkModel[];
 	expProjects: IExperienceProjectModel[];
 }
+
+interface ISkillModel {
+	/**
+	 * @property    {Array}     skills
+	 */
+	skill: string;
+
+	id: string;
+
+	options: {
+		/**
+		 * @property    {String}    type
+		 */
+		type: string;
+
+		/**
+		 * @property    {String}    url
+		 */
+		url: string;
+
+		/**
+		 * @property    {Array} related
+		 */
+		related: ISkillModel[];
+	};
+}
