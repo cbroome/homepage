@@ -1,11 +1,11 @@
 <script>
-	import CareerGraph from '$lib/CareerGraph/CareerGraph.svelte';
+	import CareerGraphNeu from '$lib/CareerGraphNeu/CareerGraphNeu.svelte';
 </script>
 
 <section>
 	<div class="main-section">
 		<div class="col span_8_of_8 main-display">
-			<CareerGraph />
+			<CareerGraphNeu />
 		</div>
 
 		<div class="detail-view-column span_3_of_8 main-display"></div>

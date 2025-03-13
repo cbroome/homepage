@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	// import { CareerGraph } from './CareerGraph';
 
+	let expWork: IExperienceWorkModel[];
 	onMount(() => {
 		const options: ICareerGraphOptions = {
 			expProjects: [],
@@ -17,6 +18,17 @@
 				}
 			]
 		};
+
+		expWork = [
+			{
+				title: 'work 1',
+				description: 'test description',
+				skills: ['javascript', 'typescript'],
+				dateStart: new Date(),
+				dateEnd: new Date(),
+				options: { selected: false, stroke: '#000' }
+			}
+		];
 
 		// const careerGraph = new CareerGraph(options);
 		// careerGraph.render();
@@ -65,4 +77,8 @@
         ]]>
 		</style>
 	</defs>
+
+	{#each expWork as work}
+		<text>Test</text>
+	{/each}
 </svg>
