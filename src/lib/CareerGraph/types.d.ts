@@ -62,6 +62,12 @@ interface ISkillModel {
 
 	id: string;
 
+	xPos?: number;
+
+	yPos?: number;
+
+	type: string;
+
 	options: {
 		/**
 		 * @property    {String}    type

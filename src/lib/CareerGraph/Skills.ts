@@ -15,7 +15,7 @@ export class Skills {
 	/**
 	 * @property	{Array}	skills
 	 */
-	skills: [] = [];
+	skills: ISkillModel[] = [];
 
 	/**
 	 * @property	{d3}	svg
@@ -80,6 +80,8 @@ export class Skills {
 	constructor(jobs: IExperienceWorkModel[], projects: IExperienceProjectModel[]) {
 		this.jobs = jobs;
 		this.projects = projects;
+
+		this.initialize();
 	}
 
 	/**
@@ -108,20 +110,27 @@ export class Skills {
 	 * @returns	{view.Skills}
 	 */
 	render(windowWidth: number) {
-		const sortedSkills: Record<string, string[]> = {};
-		const orderedKeys: string[] = this.sortOrder || keys(this.sortOrder);
-		// const getY = bind( this._getY, this, this.heightLine );
+		const sortedSkills: Record<string, Set<string>> = {};
+		const orderedKeys: string[] = keys(this.sortOrder);
+		// const getY = bind(this.getY, this, this.heightLine);
 
 		this.xComputed = windowWidth - this.width;
 
 		this.cursorY = this.startY;
 
 		this.cursorY = this.startY;
+
 		this.group.selectAll('text.skill-label').remove();
 
+		console.log({ orderedKeys });
+
 		orderedKeys.forEach((type) => {
-			sortedSkills[type] = [];
+			if (!sortedSkills[type]) {
+				sortedSkills[type] = new Set();
+			}
 		});
+
+		// orderedKeys.map()
 
 		/*
 
@@ -140,6 +149,26 @@ export class Skills {
 			},
 		);
         */
+
+		this.jobs.forEach((job) => {
+			/*
+            			var type =
+										(orderedKeys.indexOf(skill.type) >= 0 
+                                        ? skill.type : 'misc';
+									sortedSkills[type].push(skill);
+            */
+			job.skills.forEach((skill) => {
+				sortedSkills[skill].add(skill);
+			});
+		});
+
+		Object.keys(sortedSkills).forEach((skill) => {
+			console.log({ skill });
+			this.createHeader(skill);
+			sortedSkills[skill].forEach((skill) => {
+				// this.createSkill(skill);
+			});
+		});
 
 		return this;
 	}
@@ -177,15 +206,13 @@ export class Skills {
 			.attr('x', x)
 			.attr('y', y);
 
-		/*
-                skill.set( {
-                    xPos:  x,
-                    yPos: y
-                } );
-                 */
+		skill = {
+			...skill,
+			xPos: x,
+			yPos: y
+		};
 
-		this.skills
-			.push
+		this.skills.push(
 			/*
                     new SkillView( {
                         svg: this.svg,
@@ -193,7 +220,8 @@ export class Skills {
                         model: skill
                     } )
                         */
-			();
+			skill
+		);
 	}
 
 	/**

@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	// import { CareerGraph } from './CareerGraph';
+	import { CareerGraph } from './CareerGraph';
+	import { Skills } from './Skills';
+
+	const windowWidth = 1024;
 
 	onMount(() => {
 		const options: ICareerGraphOptions = {
@@ -18,8 +21,11 @@
 			]
 		};
 
-		// const careerGraph = new CareerGraph(options);
-		// careerGraph.render();
+		const careerGraph = new CareerGraph(options);
+		careerGraph.render();
+
+		const skillGraph = new Skills(options.expWork, []);
+		skillGraph.render(windowWidth);
 	});
 </script>
 

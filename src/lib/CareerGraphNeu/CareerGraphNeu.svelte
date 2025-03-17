@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	// import { CareerGraph } from './CareerGraph';
+	import { CareerGraph } from './CareerGraph';
 
 	let expWork: IExperienceWorkModel[];
 	onMount(() => {
@@ -30,8 +30,8 @@
 			}
 		];
 
-		// const careerGraph = new CareerGraph(options);
-		// careerGraph.render();
+		const careerGraph = new CareerGraph(options);
+		careerGraph.render();
 	});
 </script>
 
@@ -79,6 +79,6 @@
 	</defs>
 
 	{#each expWork as work}
-		<text>Test</text>
+		<text>{work.title}</text>
 	{/each}
 </svg>

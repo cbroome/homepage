@@ -27,12 +27,12 @@ export class SelectableView {
 	/**
 	 *
 	 */
-	constructor(d3el: d3, exp: any) {
+	constructor(d3el: d3.Selection, exp: any) {
 		this.d3el = d3el;
 		this.model = exp;
 
 		this.highlighted = false;
-		const onNameClick = throttle(_.bind(this.onNameClick, this), 1000, { trailing: false });
+		const onNameClick = throttle(bind(this.onNameClick, this), 1000, { trailing: false });
 		if ('ontouchstart' in window) {
 			// Touch events
 			this.d3el.on('touchstart', onNameClick);
