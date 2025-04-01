@@ -14,6 +14,8 @@ interface IExperienceModel {
 	 */
 	skills: string[];
 
+	selected?: boolean;
+
 	/**
 	 * @property	{Boolean}	options
 	 */
@@ -54,6 +56,15 @@ interface ICareerGraphOptions {
 	expProjects: IExperienceProjectModel[];
 }
 
+type TSkillType =
+	| 'language'
+	| 'datastore'
+	| 'version control'
+	| 'framework'
+	| 'library'
+	| 'utility'
+	| 'misc';
+
 interface ISkillModel {
 	/**
 	 * @property    {Array}     skills
@@ -66,13 +77,13 @@ interface ISkillModel {
 
 	yPos?: number;
 
-	type: string;
+	type: TSkillType;
 
 	options: {
 		/**
 		 * @property    {String}    type
 		 */
-		type: string;
+		type: TSkillType;
 
 		/**
 		 * @property    {String}    url
@@ -82,6 +93,6 @@ interface ISkillModel {
 		/**
 		 * @property    {Array} related
 		 */
-		related: ISkillModel[];
+		related?: ISkillModel[];
 	};
 }

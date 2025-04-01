@@ -3,9 +3,17 @@
 	import { CareerGraph } from './CareerGraph';
 	import { Skills } from './Skills';
 
-	const windowWidth = 1024;
+	// const windowWidth = 1024;
+	let windowWidth = $state(1024);
 
+	// TODO - debounce
+	const onWindowChange = () => {
+		windowWidth = window.innerWidth;
+	};
 	onMount(() => {
+		window.addEventListener('resize', onWindowChange);
+		onWindowChange();
+
 		const options: ICareerGraphOptions = {
 			expProjects: [],
 
@@ -21,13 +29,30 @@
 			]
 		};
 
+		const skills: ISkillModel[] = [
+			{
+				id: 'javascript',
+				type: 'language',
+				skill: 'javascript',
+				options: { type: 'language', url: '', related: [] }
+			},
+			{
+				id: 'typescript',
+				type: 'language',
+				skill: 'typescript',
+				options: { type: 'language', url: '', related: [] }
+			}
+		];
+
 		const careerGraph = new CareerGraph(options);
 		careerGraph.render();
 
-		const skillGraph = new Skills(options.expWork, []);
+		const skillGraph = new Skills(options.expWork, [], skills);
 		skillGraph.render(windowWidth);
 	});
 </script>
+
+<svelte:window onchange={onWindowChange} />
 
 <svg id="main-svg" height="630" width="100%">
 	<defs>

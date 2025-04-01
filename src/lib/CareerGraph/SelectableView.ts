@@ -1,5 +1,6 @@
 import { throttle, bind } from 'lodash-es';
 import * as d3 from 'd3';
+import { EVENTS } from '$lib/consts';
 
 export class SelectableView {
 	/**
@@ -10,7 +11,7 @@ export class SelectableView {
 	/**
 	 * @property	{model.Experience}	model
 	 */
-	model: undefined;
+	model: IExperienceWorkModel | IExperienceProjectModel;
 
 	/**
 	 * @property	{Boolean}	highlighted
@@ -53,7 +54,7 @@ export class SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onNameClick() {
-		var selected = !this.model.get('selected');
+		const selected = !this.model.selected;
 		this.model.selected = true;
 
 		if (selected) {
@@ -67,7 +68,7 @@ export class SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onMouseover() {
-		this.model.trigger(EVENTS.SKILL.HOVER);
+		// this.model.trigger(EVENTS.SKILL.HOVER);
 		return false;
 	}
 
@@ -76,7 +77,7 @@ export class SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onMouseout() {
-		this.model.trigger(EVENTS.SKILL.HOVER_END);
+		// this.model.trigger(EVENTS.SKILL.HOVER_END);
 		return false;
 	}
 }

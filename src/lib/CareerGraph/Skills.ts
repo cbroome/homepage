@@ -15,7 +15,7 @@ export class Skills {
 	/**
 	 * @property	{Array}	skills
 	 */
-	skills: ISkillModel[] = [];
+	skillModels: ISkillModel[] = [];
 
 	/**
 	 * @property	{d3}	svg
@@ -77,9 +77,14 @@ export class Skills {
 	 */
 	// startY = 14;
 
-	constructor(jobs: IExperienceWorkModel[], projects: IExperienceProjectModel[]) {
+	constructor(
+		jobs: IExperienceWorkModel[],
+		projects: IExperienceProjectModel[],
+		skillModels: ISkillModel[]
+	) {
 		this.jobs = jobs;
 		this.projects = projects;
+		this.skillModels = skillModels;
 
 		this.initialize();
 	}
@@ -92,7 +97,6 @@ export class Skills {
 		this.svg = d3.select('svg');
 
 		this.group = this.svg.append('g').attr('class', 'group-skills');
-		this.skills = [];
 
 		this.sortOrder = {
 			language: 'Languages',
@@ -122,15 +126,11 @@ export class Skills {
 
 		this.group.selectAll('text.skill-label').remove();
 
-		console.log({ orderedKeys });
-
 		orderedKeys.forEach((type) => {
 			if (!sortedSkills[type]) {
 				sortedSkills[type] = new Set();
 			}
 		});
-
-		// orderedKeys.map()
 
 		/*
 
@@ -157,17 +157,23 @@ export class Skills {
                                         ? skill.type : 'misc';
 									sortedSkills[type].push(skill);
             */
+
+			// const type = orderedKeys.indexOf(job.skills)
+
 			job.skills.forEach((skill) => {
-				sortedSkills[skill].add(skill);
+				const type = this.skillModels.find((skillModel) => skillModel.skill === skill)?.type;
+				sortedSkills[type || 'misc'].add(skill);
 			});
 		});
 
-		Object.keys(sortedSkills).forEach((skill) => {
-			console.log({ skill });
-			this.createHeader(skill);
-			sortedSkills[skill].forEach((skill) => {
-				// this.createSkill(skill);
-			});
+		Object.keys(sortedSkills).forEach((sortedSkill) => {
+			if (sortedSkills[sortedSkill].size > 0) {
+				this.createHeader(sortedSkill);
+				sortedSkills[sortedSkill].forEach((skill) => {
+					const model = this.skillModels.find((skillModel) => skillModel.skill === skill);
+					model && this.createSkill(model);
+				});
+			}
 		});
 
 		return this;
@@ -184,7 +190,7 @@ export class Skills {
 
 		obj = this.group
 			.append('text')
-			.text(this.sortOrder[title])
+			.text(this.sortOrder?.title)
 			.attr('class', 'skill-header')
 			.attr('x', this.xComputed)
 			.attr('y', y);
@@ -212,16 +218,17 @@ export class Skills {
 			yPos: y
 		};
 
+		/*
+
 		this.skills.push(
-			/*
                     new SkillView( {
                         svg: this.svg,
                         d3el: obj,
                         model: skill
                     } )
-                        */
 			skill
 		);
+        */
 	}
 
 	/**
