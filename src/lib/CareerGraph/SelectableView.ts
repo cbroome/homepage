@@ -1,6 +1,7 @@
 import { throttle, bind } from 'lodash-es';
 import * as d3 from 'd3';
 import { EVENTS } from '$lib/consts';
+import type { ExperienceModel } from './ExperienceModel';
 
 export class SelectableView {
 	/**
@@ -11,7 +12,7 @@ export class SelectableView {
 	/**
 	 * @property	{model.Experience}	model
 	 */
-	model: IExperienceWorkModel | IExperienceProjectModel;
+	model: ExperienceModel;
 
 	/**
 	 * @property	{Boolean}	highlighted
@@ -28,7 +29,7 @@ export class SelectableView {
 	/**
 	 *
 	 */
-	constructor(d3el: d3.Selection, exp: any) {
+	constructor(d3el: d3.Selection, exp: ExperienceModel) {
 		this.d3el = d3el;
 		this.model = exp;
 
@@ -44,8 +45,7 @@ export class SelectableView {
 			this.d3el.on('mouseout', bind(this.onMouseout, this));
 			this.d3el.on('mousedown', onNameClick);
 		}
-
-		// this.listenTo(this.model, EVENTS.EXPERIENCE.RESELECT, this.onMouseover);
+		this.model.addListener(EVENTS.EXPERIENCE.RESELECT, this.onMouseover);
 	}
 
 	/**
@@ -68,7 +68,7 @@ export class SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onMouseover() {
-		// this.model.trigger(EVENTS.SKILL.HOVER);
+		this.model.trigger(EVENTS.SKILL.HOVER);
 		return false;
 	}
 
@@ -77,7 +77,7 @@ export class SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onMouseout() {
-		// this.model.trigger(EVENTS.SKILL.HOVER_END);
+		this.model.trigger(EVENTS.SKILL.HOVER_END);
 		return false;
 	}
 }

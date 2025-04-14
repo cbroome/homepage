@@ -1,3 +1,6 @@
+import { EVENTS } from '$lib/consts';
+import type { ExperienceModel } from './ExperienceModel';
+
 interface IPositionable {
 	xPos: number;
 	yPos: number;
@@ -29,7 +32,7 @@ export class PathView {
 
 	skill?: IPositionable;
 
-	experience?: IPositionable;
+	experience?: ExperienceModel;
 
 	/**
 	 * @property	{Object}	options
@@ -46,7 +49,9 @@ export class PathView {
 		};
 
 		this.skill = { ...positionable };
-		this.experience = { ...positionable };
+		// this.experience = { ...positionable };
+		this.experience?.addListener(EVENTS.EXPERIENCE.HOVER, this.hoverOn);
+		this.experience?.addListener(EVENTS.EXPERIENCE.HOVER_END, this.hoverOff);
 	}
 
 	initialize() {
@@ -78,5 +83,8 @@ export class PathView {
 			this.options.line.classed('hovered', false);
 		}
         */
+		if (!this.model.get('experience').get('selected')) {
+			this.options.line.classed('hovered', false);
+		}
 	}
 }

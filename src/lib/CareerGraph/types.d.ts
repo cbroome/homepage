@@ -30,6 +30,10 @@ interface IExperienceModel {
 		 */
 		stroke?: string;
 	};
+
+	dateStart: Date;
+
+	dateEnd: Date;
 }
 
 interface IExperienceWorkModel extends IExperienceModel {
@@ -52,8 +56,8 @@ interface IExperienceWorkModel extends IExperienceModel {
 interface IExperienceProjectModel extends IExperienceModel {}
 
 interface ICareerGraphOptions {
-	expWork: IExperienceWorkModel[];
-	expProjects: IExperienceProjectModel[];
+	expWork: ExperienceModel[];
+	expProjects: ExperienceModel[];
 }
 
 type TSkillType =

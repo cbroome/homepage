@@ -34,6 +34,7 @@ export class PathsView {
 	 * @returns	{PathsView}
 	 */
 	render() {
+		// Remove existing paths
 		if (this.paths) {
 			/*
 			_.each(
@@ -48,6 +49,8 @@ export class PathsView {
 		}
 
 		this.paths = [];
+
+		// Create new paths
 
 		const expY = 5;
 		const expX = 10;
@@ -72,8 +75,8 @@ export class PathsView {
 			// Simple lines for now...
 			const skill = path.skill;
 			const experience = path.experience;
-			const startX = experience.xPos + expX;
-			const startY = experience.yPos - expY;
+			const startX = (experience?.xPos || 0) + expX;
+			const startY = (experience?.yPos || 0)- expY;
 			const endX = skill.xPos - skillX;
 			const endY = skill.yPos - skillY;
 			const midX = endX - startX;
@@ -86,11 +89,12 @@ export class PathsView {
 				{ x: endX, y: endY }
 			];
 
-			const line = this.group
-				?.append('path')
+			const line = this.group ?
+				this.group.append('path')
 				.attr('d', lineFunction(lineData))
-				.attr('stroke', experience.get('stroke'))
+				.attr('stroke', experience.stroke)
 				.attr('class', 'line');
+            
 
 			this.paths.push(
 				new PathView({

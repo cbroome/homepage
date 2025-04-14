@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import { bind } from 'lodash-es';
 import { SelectableView } from './SelectableView';
+import type { ExperienceModel } from './ExperienceModel';
 
 export class CareerGraph {
 	/**
@@ -11,12 +12,12 @@ export class CareerGraph {
 	/**
 	 * @property	{collection.Experience.WorkCollection}	expWork
 	 */
-	expWork: IExperienceWorkModel[] = [];
+	expWork: ExperienceModel[] = [];
 
 	/**
 	 * @property	{collection.Experience.ProjectCollection}	expProjects
 	 */
-	expProjects: IExperienceProjectModel[] = [];
+	expProjects: ExperienceModel[] = [];
 
 	/**
 	 * @property	{d3}	svg
@@ -112,12 +113,7 @@ export class CareerGraph {
 	/**
 	 *
 	 */
-	protected renderSection = (
-		collection: IExperienceWorkModel[] | IExperienceProjectModel[],
-		title: string
-	) => {
-		console.log({ collection });
-
+	protected renderSection = (collection: ExperienceModel[], title: string) => {
 		this.renderHeader(title).renderExperience(collection);
 		this.getY(this.spacer);
 		return this;
@@ -146,7 +142,7 @@ export class CareerGraph {
 	 * @param	{Backbone.collection}
 	 * @returns	{view.ExperienceSVG}
 	 */
-	protected renderExperience = (collection: IExperienceWorkModel[] | IExperienceProjectModel[]) => {
+	protected renderExperience = (collection: ExperienceModel[]) => {
 		var data = collection,
 			getY = bind(this.getY, this, this.heightLine);
 
@@ -168,6 +164,9 @@ export class CareerGraph {
 				yPos: y
 			});
             */
+
+			exp.xPos = x;
+			exp.yPos = y;
 
 			this.experienceViews.push(new SelectableView(d3el, exp));
 		});
