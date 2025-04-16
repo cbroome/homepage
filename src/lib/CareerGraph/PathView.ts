@@ -1,5 +1,6 @@
 import { EVENTS } from '$lib/consts';
 import type { ExperienceModel } from './ExperienceModel';
+import type { SkillModel } from './SkillModel';
 
 interface IPositionable {
 	xPos: number;
@@ -30,7 +31,7 @@ export class PathView {
 	 */
 	model: undefined;
 
-	skill?: IPositionable;
+	skill?: SkillModel;
 
 	experience?: ExperienceModel;
 
@@ -39,29 +40,16 @@ export class PathView {
 	 */
 	options: IPathViewOptions;
 
-	constructor(options: IPathViewOptions) {
+	constructor(experience: ExperienceModel, skill: SkillModel, options: IPathViewOptions) {
 		this.options = options;
 
-		const positionable: IPositionable = {
-			xPos: 0,
-			yPos: 0,
-			stroke: undefined
-		};
+		this.experience = experience;
+		this.skill = skill;
 
-		this.skill = { ...positionable };
-		// this.experience = { ...positionable };
 		this.experience?.addListener(EVENTS.EXPERIENCE.HOVER, this.hoverOn);
 		this.experience?.addListener(EVENTS.EXPERIENCE.HOVER_END, this.hoverOff);
-	}
-
-	initialize() {
-		/*
-			this.listenTo(this.model.get('experience'), EVENTS.EXPERIENCE.HOVER, this._hoverOn);
-			this.listenTo(this.model.get('skill'), EVENTS.SKILL.HOVER, this._hoverOn);
-			this.listenTo(this.model.get('experience'), EVENTS.EXPERIENCE.HOVER_END, this._hoverOff);
-			this.listenTo(this.model.get('skill'), EVENTS.SKILL.HOVER_END, this._hoverOff);
-			app.vent.on(EVENTS.PATHS.RESET, _.bind(this._hoverOff, this));
-        */
+		this.skill?.addListener(EVENTS.SKILL.HOVER, this.hoverOn);
+		this.skill?.addListener(EVENTS.SKILL.HOVER_END, this.hoverOff);
 	}
 
 	/**
@@ -69,7 +57,8 @@ export class PathView {
 	 */
 	protected hoverOn() {
 		this.options?.line?.classed('hovered', true);
-		this.options?.line?.attr('stroke', this.model.get('experience').get('stroke'));
+		//this.options?.line?.attr('stroke', this.model.get('experience').get('stroke'));
+		this.options.line.attr('stroke', this.experience?.stroke);
 
 		/* 
 		$(this.options?.line[0]).detach();
@@ -83,8 +72,9 @@ export class PathView {
 			this.options.line.classed('hovered', false);
 		}
         */
-		if (!this.model.get('experience').get('selected')) {
-			this.options.line.classed('hovered', false);
+		if (this.experience && !this.experience.selected) {
+			// this.options.line.classed('hovered', false);
+			console.log('Hovering off ');
 		}
 	}
 }

@@ -1,5 +1,6 @@
 import * as d3 from 'd3';
 import { keys, bind, debounce } from 'lodash-es';
+import type { SkillModel } from './SkillModel';
 
 export class Skills {
 	/**
@@ -15,7 +16,7 @@ export class Skills {
 	/**
 	 * @property	{Array}	skills
 	 */
-	skillModels: ISkillModel[] = [];
+	skillModels: SkillModel[] = [];
 
 	/**
 	 * @property	{d3}	svg
@@ -80,7 +81,7 @@ export class Skills {
 	constructor(
 		jobs: IExperienceWorkModel[],
 		projects: IExperienceProjectModel[],
-		skillModels: ISkillModel[]
+		skillModels: SkillModel[]
 	) {
 		this.jobs = jobs;
 		this.projects = projects;
@@ -200,7 +201,7 @@ export class Skills {
 	 *
 	 * @param   {SkillModel}    skill
 	 */
-	protected createSkill(skill: ISkillModel) {
+	protected createSkill(skill: SkillModel) {
 		var x = this.xComputed,
 			y = this.getY(this.heightLine),
 			obj;
@@ -211,12 +212,16 @@ export class Skills {
 			.attr('class', 'skill-label')
 			.attr('x', x)
 			.attr('y', y);
-
+		/*
 		skill = {
 			...skill,
 			xPos: x,
 			yPos: y
 		};
+        */
+
+		skill.xPos = x;
+		skill.yPos = y;
 
 		/*
 

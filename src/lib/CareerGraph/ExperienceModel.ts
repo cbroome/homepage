@@ -1,13 +1,13 @@
 import * as d3 from 'd3';
+import { ListenerModel } from './ListernerModel';
 
-export class ExperienceModel implements IExperienceModel {
+export class ExperienceModel extends ListenerModel implements IExperienceModel {
 	description: string;
 	selected: boolean | undefined;
 	options: { selected?: boolean; stroke?: string };
 	title: string;
 	skills: string[];
 
-	listeners: Map<string, (() => void)[]>;
 	listen?: () => void;
 	dateStart: Date;
 	dateEnd: Date;
@@ -17,6 +17,8 @@ export class ExperienceModel implements IExperienceModel {
 	_yPos: number = 0;
 
 	constructor(options: IExperienceModel) {
+		super();
+
 		this.description = options.description;
 		this.selected = options.selected;
 		this.options = options.options;
@@ -24,27 +26,6 @@ export class ExperienceModel implements IExperienceModel {
 		this.skills = options.skills;
 		this.dateStart = options.dateStart;
 		this.dateEnd = options.dateEnd;
-		this.listeners = new Map();
-	}
-
-	addListener(event: string, listener: () => void) {
-		const existingListeners = this.listeners.get(event) || [];
-		this.listeners.set(event, [...existingListeners, listener]);
-	}
-
-	removeListener(event: string) {
-		this.listeners.delete(event);
-	}
-
-	reset() {
-		this.listeners.clear();
-	}
-
-	trigger(event: string) {
-		const listeners = this.listeners.get(event);
-		if (listeners) {
-			listeners.forEach((listener) => listener());
-		}
 	}
 
 	get xPos() {

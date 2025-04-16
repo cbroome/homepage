@@ -92,18 +92,23 @@ export class PathsView {
 			const line = this.group ?
 				this.group.append('path')
 				.attr('d', lineFunction(lineData))
-				.attr('stroke', experience.stroke)
+				.attr('stroke', experience?.stroke)
 				.attr('class', 'line');
             
-
-			this.paths.push(
-				new PathView({
+            if( experience && skill )
+ {
+			this.paths?.push(
+				new PathView(
+                    experience,
+                    skill,
+                    {
 					svg: this.svg,
 					group: this.group,
 					model: path,
 					line: line
 				})
 			);
+        }
 		}, this);
 
 		return this;
