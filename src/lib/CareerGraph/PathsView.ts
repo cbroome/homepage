@@ -1,11 +1,12 @@
 import * as d3 from 'd3';
 import { PathView } from './PathView';
+import type { PathModel } from './PathModel';
 
 export class PathsView {
 	/**
 	 * @property	{collection.PathCollection}	collection
 	 */
-	collection: undefined;
+	pathModels: PathModel[];
 
 	/**
 	 * @property	{Array}		paths
@@ -22,7 +23,8 @@ export class PathsView {
 	 */
 	group?: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
 
-	initialize() {
+	constructor() {
+		this.pathModels = [];
 		this.paths = [];
 		this.svg = d3.select('svg#main-svg');
 
@@ -36,15 +38,6 @@ export class PathsView {
 	render() {
 		// Remove existing paths
 		if (this.paths) {
-			/*
-			_.each(
-				this.paths,
-				function (path) {
-					path.remove();
-				},
-				this
-			);
-            */
 			this.paths.forEach((path) => path.remove());
 		}
 
@@ -71,12 +64,12 @@ export class PathsView {
 			})
 			.interpolate('basis');
 
-		this.paths.forEach((path) => {
+		this.pathModels.forEach((pathModel) => {
 			// Simple lines for now...
-			const skill = path.skill;
-			const experience = path.experience;
+			const skill = pathModel.skill;
+			const experience = pathModel.experience;
 			const startX = (experience?.xPos || 0) + expX;
-			const startY = (experience?.yPos || 0)- expY;
+			const startY = (experience?.yPos || 0) - expY;
 			const endX = skill.xPos - skillX;
 			const endY = skill.yPos - skillY;
 			const midX = endX - startX;
@@ -89,26 +82,24 @@ export class PathsView {
 				{ x: endX, y: endY }
 			];
 
-			const line = this.group ?
-				this.group.append('path')
-				.attr('d', lineFunction(lineData))
-				.attr('stroke', experience?.stroke)
-				.attr('class', 'line');
-            
-            if( experience && skill )
- {
-			this.paths?.push(
-				new PathView(
-                    experience,
-                    skill,
-                    {
-					svg: this.svg,
-					group: this.group,
-					model: path,
-					line: line
-				})
-			);
-        }
+			const line = this.group
+				? this.group
+						.append('path')
+						.attr('d', lineFunction(lineData))
+						.attr('stroke', experience?.stroke)
+						.attr('class', 'line')
+				: null;
+
+			if (experience && skill) {
+				this.paths?.push(
+					new PathView(experience, skill, {
+						svg: this.svg,
+						group: this.group,
+						model: path,
+						line: line
+					})
+				);
+			}
 		}, this);
 
 		return this;

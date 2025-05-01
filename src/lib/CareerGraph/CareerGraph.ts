@@ -2,6 +2,12 @@ import * as d3 from 'd3';
 import { bind } from 'lodash-es';
 import { SelectableView } from './SelectableView';
 import type { ExperienceModel } from './ExperienceModel';
+import { Skills } from './Skills';
+import type { ICareerGraphOptions } from './types';
+import type { SkillModel } from './SkillModel';
+import { PathsView } from './PathsView';
+
+const colors = ['#8333E5', '#1700FC', '#CE00FE', '#0B44E5'];
 
 export class CareerGraph {
 	/**
@@ -18,6 +24,8 @@ export class CareerGraph {
 	 * @property	{collection.Experience.ProjectCollection}	expProjects
 	 */
 	expProjects: ExperienceModel[] = [];
+
+	skills: SkillModel[] = [];
 
 	/**
 	 * @property	{d3}	svg
@@ -69,26 +77,31 @@ export class CareerGraph {
 	 */
 	options: ICareerGraphOptions;
 
+	windowWidth: number;
+
+	pathList: { experience: ExperienceModel; skill: SkillModel }[] = [];
+
+	pathsView: PathsView;
+
 	/**
 	 * @property	{Array}		experienceViews
 	 */
 	protected experienceViews: SelectableView[] = [];
 
 	constructor(options: ICareerGraphOptions) {
+		this.windowWidth = options.windowWidth;
 		this.options = {
 			expWork: options.expWork,
 			expProjects: options.expProjects
 		};
-		this.initialize();
-	}
-
-	initialize = () => {
+		this.skills = options.skills;
 		this.svg = d3.select('svg#main-svg');
 		this.group = this.svg.append('g').attr('class', 'group-experience');
 
 		this.expWork = this.options.expWork;
 		this.expProjects = this.options.expProjects;
-	};
+		this.pathsView = new PathsView();
+	}
 
 	/**
 	 * @chainable
@@ -100,15 +113,50 @@ export class CareerGraph {
 
 		this.renderSection(this.expWork, 'Work Experience');
 
+		const skillGraph = new Skills(this.expWork, [], this.skills);
+		skillGraph.render(this.windowWidth);
+
 		/*
 
         TODO - reimplement personal projects
         .renderSection(
 			this.expProjects,
 			'Personal Projects'
+
 		);
         */
+
+		this.buildLists();
+		this.drawViews();
+
+		pathsView.render();
 	};
+
+	/**
+	 *
+	 * @param {*} exp
+	 * @param {*} skill
+	 */
+	protected associateSkillAndExperience(experience: ExperienceModel, skill: SkillModel) {
+		this.pathList.push({
+			skill,
+			experience
+		});
+	}
+
+	protected processExperience(experience: ExperienceModel[]) {
+		experience.forEach((exp) => {
+			const skills = exp.skills;
+			//var associateSkillAndExperience = _.bind(this._associateSkillAndExperience, this, exp);
+			// _.each(skills, associateSkillAndExperience, this);
+			skills.forEach((skill) => {
+				const skillModel = this.skills.find((skillModel) => skillModel.id === skill);
+				if (skillModel) {
+					this.associateSkillAndExperience(exp, skillModel);
+				}
+			});
+		});
+	}
 
 	/**
 	 *
@@ -158,13 +206,6 @@ export class CareerGraph {
 				.attr('x', x)
 				.attr('y', y);
 
-			/*
-			exp.set({
-				xPos: x,
-				yPos: y
-			});
-            */
-
 			exp.xPos = x;
 			exp.yPos = y;
 
@@ -182,4 +223,49 @@ export class CareerGraph {
 		this.cursorY += increment;
 		return rv;
 	};
+
+	buildLists() {
+		const params = {
+			reset: true,
+			success: this.processExperience
+		};
+		// const exps = [this.jobs, this.projects];
+		const exps = this.expWork;
+		let colorIndex = 0;
+
+		/*
+		this.skills.add(require('data/SkillData'));
+		this.jobs.add(require('data/WorkData'));
+		this.projects.add(require('data/ProjectData'));
+        */
+
+		exps.forEach((exp) => (exp.stroke = colors[colorIndex++ % colors.length]));
+
+		console.log({ expWork: this.expWork });
+		this.processExperience(this.expWork);
+		// this._processExperience(this.projects);
+	}
+
+	drawViews() {
+		// var windowWidth = $(window).width();
+		let windowWidth = this.windowWidth;
+
+		if (windowWidth > 2000) {
+			windowWidth = 2000;
+		} else if (windowWidth > 1024) {
+			// for padding...
+			windowWidth -= 50;
+		} else if (windowWidth < 1024) {
+			windowWidth = 1024;
+		}
+
+		// $('.main-display svg').attr('width', windowWidth).find('g').empty();
+
+		/*
+		this.skillView.render(windowWidth);
+		this.experienceSVG.render(windowWidth);
+		// Brief delay to render everything
+		_.delay(_.bind(this.pathsView.render, this.pathsView), 100);
+                */
+	}
 }

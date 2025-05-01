@@ -58,6 +58,8 @@ interface IExperienceProjectModel extends IExperienceModel {}
 interface ICareerGraphOptions {
 	expWork: ExperienceModel[];
 	expProjects: ExperienceModel[];
+	skills: SkillModel[];
+	windowWidth: number;
 }
 
 type TSkillType =

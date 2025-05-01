@@ -9,7 +9,13 @@ export class SkillModel extends ListenerModel implements ISkillModel {
 
 	skill: string;
 
-	constructor() {
+	constructor(options: ISkillModel) {
 		super();
+
+		this.id = options.id;
+		this.xPos = options.xPos || 0;
+		this.yPos = options.yPos || 0;
+		this.type = options.type;
+		this.skill = options.skill;
 	}
 }

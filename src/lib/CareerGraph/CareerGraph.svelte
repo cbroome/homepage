@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { CareerGraph } from './CareerGraph';
-	import { Skills } from './Skills';
 	import { ExperienceModel } from './ExperienceModel';
+	import { PathsView } from './PathsView';
+	import { SkillModel } from './SkillModel';
 
 	// const windowWidth = 1024;
 	let windowWidth = $state(1024);
@@ -14,6 +15,21 @@
 	onMount(() => {
 		window.addEventListener('resize', onWindowChange);
 		onWindowChange();
+
+		const skills: SkillModel[] = [
+			new SkillModel({
+				id: 'javascript',
+				type: 'language',
+				skill: 'javascript',
+				options: { type: 'language', url: '', related: [] }
+			}),
+			new SkillModel({
+				id: 'typescript',
+				type: 'language',
+				skill: 'typescript',
+				options: { type: 'language', url: '', related: [] }
+			})
+		];
 
 		const options: ICareerGraphOptions = {
 			expProjects: [],
@@ -27,29 +43,18 @@
 					dateEnd: new Date(),
 					options: { selected: false, stroke: '#000' }
 				})
-			]
-		};
+			],
 
-		const skills: ISkillModel[] = [
-			{
-				id: 'javascript',
-				type: 'language',
-				skill: 'javascript',
-				options: { type: 'language', url: '', related: [] }
-			},
-			{
-				id: 'typescript',
-				type: 'language',
-				skill: 'typescript',
-				options: { type: 'language', url: '', related: [] }
-			}
-		];
+			skills,
+
+			windowWidth
+		};
 
 		const careerGraph = new CareerGraph(options);
 		careerGraph.render();
 
-		const skillGraph = new Skills(options.expWork, [], skills);
-		skillGraph.render(windowWidth);
+		const pathsView = new PathsView();
+		pathsView.render();
 	});
 </script>
 

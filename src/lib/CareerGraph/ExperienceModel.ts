@@ -12,7 +12,7 @@ export class ExperienceModel extends ListenerModel implements IExperienceModel {
 	dateStart: Date;
 	dateEnd: Date;
 
-	_stroke?: typeof d3;
+	_stroke?: string;
 	_xPos: number = 0;
 	_yPos: number = 0;
 

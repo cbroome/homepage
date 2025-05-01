@@ -12,17 +12,17 @@ interface IPathViewOptions {
 	/**
 	 * @property	{d3}	line
 	 */
-	line: undefined;
+	line: d3;
 
 	/**
 	 * @property	{d3}	svg
 	 */
-	svg: undefined;
+	svg: d3;
 
 	/**
 	 * @property    {d3}    group
 	 */
-	group: undefined;
+	group: d3;
 }
 
 export class PathView {
@@ -77,4 +77,6 @@ export class PathView {
 			console.log('Hovering off ');
 		}
 	}
+
+	remove() {}
 }
