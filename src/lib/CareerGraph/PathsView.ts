@@ -23,8 +23,8 @@ export class PathsView {
 	 */
 	group?: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
 
-	constructor() {
-		this.pathModels = [];
+	constructor(pathModels: PathModel[]) {
+		this.pathModels = pathModels;
 		this.paths = [];
 		this.svg = d3.select('svg#main-svg');
 
@@ -54,6 +54,7 @@ export class PathsView {
 			return end > start ? start + (end - start) / 2 : end + (start - end) / 2;
 		};
 
+		/*
 		const lineFunction = d3.svg
 			.line()
 			.x(function (d) {
@@ -63,6 +64,13 @@ export class PathsView {
 				return d.y;
 			})
 			.interpolate('basis');
+        */
+
+		const lineFunction = d3
+			.line()
+			.x((d) => d[0])
+			.y((d) => d[1]);
+		//.interpolate('basis');
 
 		this.pathModels.forEach((pathModel) => {
 			// Simple lines for now...
@@ -74,12 +82,12 @@ export class PathsView {
 			const endY = skill.yPos - skillY;
 			const midX = endX - startX;
 			const midY = findDiff(endY, startY);
-			const lineData = [
-				{ x: startX, y: startY },
-				{ x: startX + 85, y: startY },
-				{ x: midX, y: midY },
-				{ x: endX - 75, y: endY },
-				{ x: endX, y: endY }
+			const lineData: [number, number][] = [
+				[startX, startY],
+				[startX + 85, startY],
+				[midX, midY],
+				[endX - 75, endY],
+				[endX, endY]
 			];
 
 			const line = this.group
@@ -95,7 +103,6 @@ export class PathsView {
 					new PathView(experience, skill, {
 						svg: this.svg,
 						group: this.group,
-						model: path,
 						line: line
 					})
 				);

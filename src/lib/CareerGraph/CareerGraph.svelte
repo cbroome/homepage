@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import { CareerGraph } from './CareerGraph';
 	import { ExperienceModel } from './ExperienceModel';
-	import { PathsView } from './PathsView';
 	import { SkillModel } from './SkillModel';
 
 	// const windowWidth = 1024;
@@ -52,9 +51,6 @@
 
 		const careerGraph = new CareerGraph(options);
 		careerGraph.render();
-
-		const pathsView = new PathsView();
-		pathsView.render();
 	});
 </script>
 

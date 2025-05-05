@@ -6,6 +6,7 @@ import { Skills } from './Skills';
 import type { ICareerGraphOptions } from './types';
 import type { SkillModel } from './SkillModel';
 import { PathsView } from './PathsView';
+import { PathModel } from './PathModel';
 
 const colors = ['#8333E5', '#1700FC', '#CE00FE', '#0B44E5'];
 
@@ -100,7 +101,19 @@ export class CareerGraph {
 
 		this.expWork = this.options.expWork;
 		this.expProjects = this.options.expProjects;
-		this.pathsView = new PathsView();
+
+		const pathModels: PathModel[] = [];
+		this.expWork.forEach((experienceModel) => {
+			experienceModel.skills.forEach((skill) => {
+				const skillModel = this.skills.find((skillModel) => skillModel.id === skill);
+				if (skillModel) {
+					const pathModel = new PathModel(skillModel, experienceModel);
+					pathModels.push(pathModel);
+				}
+			});
+		});
+
+		this.pathsView = new PathsView(pathModels);
 	}
 
 	/**
@@ -129,7 +142,7 @@ export class CareerGraph {
 		this.buildLists();
 		this.drawViews();
 
-		pathsView.render();
+		this.pathsView.render();
 	};
 
 	/**
