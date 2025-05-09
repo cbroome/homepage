@@ -44,7 +44,6 @@ export class PathsView {
 		this.paths = [];
 
 		// Create new paths
-
 		const expY = 5;
 		const expX = 10;
 		const skillX = 5;
@@ -53,18 +52,6 @@ export class PathsView {
 		const findDiff = (start: number, end: number) => {
 			return end > start ? start + (end - start) / 2 : end + (start - end) / 2;
 		};
-
-		/*
-		const lineFunction = d3.svg
-			.line()
-			.x(function (d) {
-				return d.x;
-			})
-			.y(function (d) {
-				return d.y;
-			})
-			.interpolate('basis');
-        */
 
 		const lineFunction = d3
 			.line()

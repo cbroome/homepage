@@ -1,8 +1,9 @@
 import * as d3 from 'd3';
 import { keys, bind, debounce } from 'lodash-es';
 import type { SkillModel } from './SkillModel';
+import { SkillView } from './SkillView';
 
-export class Skills {
+export class SkillsView {
 	/**
 	 * @property	{Backbone.Collection}	jobs
 	 */
@@ -73,6 +74,8 @@ export class Skills {
 	 */
 	sortOrder?: Record<string, string>;
 
+	skills: SkillView[];
+
 	/**
 	 * @property    {Integer}   startY
 	 */
@@ -86,6 +89,8 @@ export class Skills {
 		this.jobs = jobs;
 		this.projects = projects;
 		this.skillModels = skillModels;
+
+		this.skills = [];
 
 		this.initialize();
 	}
@@ -220,20 +225,10 @@ export class Skills {
 		};
         */
 
-		skill.xPos = x;
-		skill.yPos = y;
+		skill.xPos = x || 0;
+		skill.yPos = y || 0;
 
-		/*
-
-		this.skills.push(
-                    new SkillView( {
-                        svg: this.svg,
-                        d3el: obj,
-                        model: skill
-                    } )
-			skill
-		);
-        */
+		this.skills.push(new SkillView(obj, skill));
 	}
 
 	/**

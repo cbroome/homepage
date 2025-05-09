@@ -23,8 +23,11 @@ export class ListenerModel {
 
 	trigger(event: string) {
 		const listeners = this.listeners.get(event);
+
 		if (listeners) {
-			listeners.forEach((listener) => listener());
+			listeners.forEach((listener) => {
+				listener();
+			});
 		}
 	}
 }

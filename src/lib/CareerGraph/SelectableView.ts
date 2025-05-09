@@ -2,17 +2,13 @@ import { throttle, bind } from 'lodash-es';
 import * as d3 from 'd3';
 import { EVENTS } from '$lib/consts';
 import type { ExperienceModel } from './ExperienceModel';
+import type { SkillModel } from './SkillModel';
 
 export class SelectableView {
 	/**
-	 * @property	{Marionette.Application}	app
-	 */
-	app: undefined;
-
-	/**
 	 * @property	{model.Experience}	model
 	 */
-	model: ExperienceModel;
+	model: ExperienceModel | SkillModel;
 
 	/**
 	 * @property	{Boolean}	highlighted
@@ -29,12 +25,17 @@ export class SelectableView {
 	/**
 	 *
 	 */
-	constructor(d3el: d3.Selection, exp: ExperienceModel) {
+	constructor(d3el: d3.Selection, exp: ExperienceModel | SkillModel) {
 		this.d3el = d3el;
 		this.model = exp;
 
 		this.highlighted = false;
+		this.addListeners();
+	}
+
+	protected addListeners() {
 		const onNameClick = throttle(bind(this.onNameClick, this), 1000, { trailing: false });
+
 		if ('ontouchstart' in window) {
 			// Touch events
 			this.d3el.on('touchstart', onNameClick);
@@ -55,10 +56,11 @@ export class SelectableView {
 	 */
 	onNameClick() {
 		const selected = !this.model.selected;
-		this.model.selected = true;
-
+		this.model.selected = selected;
 		if (selected) {
 			this.onMouseover();
+		} else {
+			this.onMouseout();
 		}
 		return false;
 	}
@@ -68,7 +70,6 @@ export class SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onMouseover() {
-		this.model.trigger(EVENTS.SKILL.HOVER);
 		return false;
 	}
 
@@ -77,7 +78,6 @@ export class SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onMouseout() {
-		this.model.trigger(EVENTS.SKILL.HOVER_END);
 		return false;
 	}
 }

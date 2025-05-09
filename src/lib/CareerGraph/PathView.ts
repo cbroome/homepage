@@ -46,10 +46,10 @@ export class PathView {
 		this.experience = experience;
 		this.skill = skill;
 
-		this.experience?.addListener(EVENTS.EXPERIENCE.HOVER, this.hoverOn);
-		this.experience?.addListener(EVENTS.EXPERIENCE.HOVER_END, this.hoverOff);
-		this.skill?.addListener(EVENTS.SKILL.HOVER, this.hoverOn);
-		this.skill?.addListener(EVENTS.SKILL.HOVER_END, this.hoverOff);
+		this.experience?.addListener(EVENTS.EXPERIENCE.HOVER, this.hoverOn.bind(this));
+		this.experience?.addListener(EVENTS.EXPERIENCE.HOVER_END, this.hoverOff.bind(this));
+		this.skill?.addListener(EVENTS.SKILL.HOVER, this.hoverOn.bind(this));
+		this.skill?.addListener(EVENTS.SKILL.HOVER_END, this.hoverOff.bind(this));
 	}
 
 	/**
@@ -61,6 +61,7 @@ export class PathView {
 		this.options.line.attr('stroke', this.experience?.stroke);
 
 		/* 
+
 		$(this.options?.line[0]).detach();
 		$(this.options.group[0]).append(this.options.line[0]);
         */
@@ -72,9 +73,9 @@ export class PathView {
 			this.options.line.classed('hovered', false);
 		}
         */
+		console.log({ experienceModel: this.experience, selected: this.experience?.selected });
 		if (this.experience && !this.experience.selected) {
-			// this.options.line.classed('hovered', false);
-			console.log('Hovering off ');
+			this.options.line.classed('hovered', false);
 		}
 	}
 

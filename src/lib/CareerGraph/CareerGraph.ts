@@ -2,11 +2,12 @@ import * as d3 from 'd3';
 import { bind } from 'lodash-es';
 import { SelectableView } from './SelectableView';
 import type { ExperienceModel } from './ExperienceModel';
-import { Skills } from './Skills';
+import { SkillsView } from './SkillsView';
 import type { ICareerGraphOptions } from './types';
 import type { SkillModel } from './SkillModel';
 import { PathsView } from './PathsView';
 import { PathModel } from './PathModel';
+import { ExperienceView } from './ExperienceView';
 
 const colors = ['#8333E5', '#1700FC', '#CE00FE', '#0B44E5'];
 
@@ -126,7 +127,7 @@ export class CareerGraph {
 
 		this.renderSection(this.expWork, 'Work Experience');
 
-		const skillGraph = new Skills(this.expWork, [], this.skills);
+		const skillGraph = new SkillsView(this.expWork, [], this.skills);
 		skillGraph.render(this.windowWidth);
 
 		/*
@@ -140,7 +141,6 @@ export class CareerGraph {
         */
 
 		this.buildLists();
-		this.drawViews();
 
 		this.pathsView.render();
 	};
@@ -175,7 +175,8 @@ export class CareerGraph {
 	 *
 	 */
 	protected renderSection = (collection: ExperienceModel[], title: string) => {
-		this.renderHeader(title).renderExperience(collection);
+		this.renderHeader(title);
+		this.renderExperience(collection);
 		this.getY(this.spacer);
 		return this;
 	};
@@ -222,7 +223,7 @@ export class CareerGraph {
 			exp.xPos = x;
 			exp.yPos = y;
 
-			this.experienceViews.push(new SelectableView(d3el, exp));
+			this.experienceViews.push(new ExperienceView(d3el, exp));
 		});
 		return this;
 	};
@@ -246,39 +247,8 @@ export class CareerGraph {
 		const exps = this.expWork;
 		let colorIndex = 0;
 
-		/*
-		this.skills.add(require('data/SkillData'));
-		this.jobs.add(require('data/WorkData'));
-		this.projects.add(require('data/ProjectData'));
-        */
-
 		exps.forEach((exp) => (exp.stroke = colors[colorIndex++ % colors.length]));
-
-		console.log({ expWork: this.expWork });
 		this.processExperience(this.expWork);
 		// this._processExperience(this.projects);
-	}
-
-	drawViews() {
-		// var windowWidth = $(window).width();
-		let windowWidth = this.windowWidth;
-
-		if (windowWidth > 2000) {
-			windowWidth = 2000;
-		} else if (windowWidth > 1024) {
-			// for padding...
-			windowWidth -= 50;
-		} else if (windowWidth < 1024) {
-			windowWidth = 1024;
-		}
-
-		// $('.main-display svg').attr('width', windowWidth).find('g').empty();
-
-		/*
-		this.skillView.render(windowWidth);
-		this.experienceSVG.render(windowWidth);
-		// Brief delay to render everything
-		_.delay(_.bind(this.pathsView.render, this.pathsView), 100);
-                */
 	}
 }

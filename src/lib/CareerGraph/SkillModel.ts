@@ -9,6 +9,8 @@ export class SkillModel extends ListenerModel implements ISkillModel {
 
 	skill: string;
 
+	selected: boolean;
+
 	constructor(options: ISkillModel) {
 		super();
 
@@ -17,5 +19,6 @@ export class SkillModel extends ListenerModel implements ISkillModel {
 		this.yPos = options.yPos || 0;
 		this.type = options.type;
 		this.skill = options.skill;
+		this.selected = false;
 	}
 }
