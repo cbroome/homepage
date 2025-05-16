@@ -1,5 +1,4 @@
 import { throttle, bind } from 'lodash-es';
-import * as d3 from 'd3';
 import { EVENTS } from '$lib/consts';
 import type { ExperienceModel } from './ExperienceModel';
 import type { SkillModel } from './SkillModel';
@@ -18,14 +17,14 @@ export class SelectableView {
 	/**
 	 * @property	{d3}		d3el
 	 */
-	d3el: d3;
+	d3el: any;
 
 	exp: undefined;
 
 	/**
 	 *
 	 */
-	constructor(d3el: d3.Selection, exp: ExperienceModel | SkillModel) {
+	constructor(d3el: any, exp: ExperienceModel | SkillModel) {
 		this.d3el = d3el;
 		this.model = exp;
 

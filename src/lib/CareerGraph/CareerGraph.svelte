@@ -3,18 +3,20 @@
 	import { CareerGraph } from './CareerGraph';
 	import { ExperienceModel } from './ExperienceModel';
 	import { SkillModel } from './SkillModel';
+	import { throttle } from 'lodash-es';
 
 	// const windowWidth = 1024;
 	let windowWidth = $state(1024);
+	let careerGraph: CareerGraph | null;
 
 	// TODO - debounce
 	const onWindowChange = () => {
 		windowWidth = window.innerWidth;
-	};
-	onMount(() => {
-		window.addEventListener('resize', onWindowChange);
-		onWindowChange();
 
+		redrawChart();
+	};
+
+	const redrawChart = () => {
 		const skills: SkillModel[] = [
 			new SkillModel({
 				id: 'javascript',
@@ -49,8 +51,18 @@
 			windowWidth
 		};
 
-		const careerGraph = new CareerGraph(options);
+		if (careerGraph) {
+			//careerGraph.destroy();
+			careerGraph = null;
+		}
+		careerGraph = new CareerGraph(options);
 		careerGraph.render();
+	};
+
+	onMount(() => {
+		const throttledWindowChange = throttle(onWindowChange, 500);
+		window.addEventListener('resize', throttledWindowChange);
+		onWindowChange();
 	});
 </script>
 

@@ -98,7 +98,6 @@ export class CareerGraph {
 		};
 		this.skills = options.skills;
 		this.svg = d3.select('svg#main-svg');
-		this.group = this.svg.append('g').attr('class', 'group-experience');
 
 		this.expWork = this.options.expWork;
 		this.expProjects = this.options.expProjects;
@@ -123,7 +122,13 @@ export class CareerGraph {
 	 */
 	render = () => {
 		this.svg.selectAll('.exp').remove();
+		this.svg.selectAll('.group-experience').selectAll('*').remove();
+		this.svg.selectAll('.group-paths').selectAll('*').remove();
+		this.svg.selectAll('.group-skills').selectAll('*').remove();
+
 		this.cursorY = this.startY;
+
+		this.group = this.svg.append('g').attr('class', 'group-experience');
 
 		this.renderSection(this.expWork, 'Work Experience');
 
@@ -144,6 +149,11 @@ export class CareerGraph {
 
 		this.pathsView.render();
 	};
+
+	destroy = () => {
+		this.svg.remove();
+	};
+	x;
 
 	/**
 	 *
