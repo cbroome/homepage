@@ -138,34 +138,7 @@ export class SkillsView {
 			}
 		});
 
-		/*
-
-		this.collection.each(function (skill) {
-			var type = _.indexOf(orderedKeys, skill.get('type')) >= 0 ? skill.get('type') : 'misc';
-			sortedSkills[type].push(skill);
-		}, this);
-
-		sortedSkills.(
-		
-			 (section: {}, key: string) => {
-				this.createHeader(key);
-				_.each(section, this.createSkill, this);
-
-				this.getY(10);
-			},
-		);
-        */
-
 		this.jobs.forEach((job) => {
-			/*
-            			var type =
-										(orderedKeys.indexOf(skill.type) >= 0 
-                                        ? skill.type : 'misc';
-									sortedSkills[type].push(skill);
-            */
-
-			// const type = orderedKeys.indexOf(job.skills)
-
 			job.skills.forEach((skill) => {
 				const type = this.skillModels.find((skillModel) => skillModel.skill === skill)?.type;
 				sortedSkills[type || 'misc'].add(skill);
@@ -217,13 +190,6 @@ export class SkillsView {
 			.attr('class', 'skill-label')
 			.attr('x', x)
 			.attr('y', y);
-		/*
-		skill = {
-			...skill,
-			xPos: x,
-			yPos: y
-		};
-        */
 
 		skill.xPos = x || 0;
 		skill.yPos = y || 0;

@@ -11,6 +11,7 @@ export class ListenerModel {
 	addListener(event: string, listener: () => void) {
 		const existingListeners = this.listeners.get(event) || [];
 		this.listeners.set(event, [...existingListeners, listener]);
+		return this;
 	}
 
 	removeListener(event: string) {

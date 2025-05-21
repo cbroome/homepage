@@ -10,7 +10,11 @@ export class SkillView extends SelectableView {
 
 	onMouseout() {
 		this.model.trigger(EVENTS.SKILL.HOVER_END);
-		// this.app.vent.trigger(EVENTS.SKILL.HOVER_END, this.model);
 		return false;
+	}
+
+	protected addListeners(): void {
+		super.addListeners();
+		this.model.addListener(EVENTS.SKILL.CLICK, this.onMouseover);
 	}
 }

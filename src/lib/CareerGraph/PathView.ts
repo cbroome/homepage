@@ -12,17 +12,17 @@ interface IPathViewOptions {
 	/**
 	 * @property	{d3}	line
 	 */
-	line: d3;
+	line: any;
 
 	/**
 	 * @property	{d3}	svg
 	 */
-	svg: d3;
+	svg: any;
 
 	/**
 	 * @property    {d3}    group
 	 */
-	group: d3;
+	group: any;
 }
 
 export class PathView {
@@ -57,24 +57,11 @@ export class PathView {
 	 */
 	protected hoverOn() {
 		this.options?.line?.classed('hovered', true);
-		//this.options?.line?.attr('stroke', this.model.get('experience').get('stroke'));
 		this.options.line.attr('stroke', this.experience?.stroke);
-
-		/* 
-
-		$(this.options?.line[0]).detach();
-		$(this.options.group[0]).append(this.options.line[0]);
-        */
 	}
 
 	protected hoverOff() {
-		/*
-		if (!this.model.get('experience').get('selected')) {
-			this.options.line.classed('hovered', false);
-		}
-        */
-		console.log({ experienceModel: this.experience, selected: this.experience?.selected });
-		if (this.experience && !this.experience.selected) {
+		if (this.experience && !this.experience.selected && !this.skill?.selected) {
 			this.options.line.classed('hovered', false);
 		}
 	}

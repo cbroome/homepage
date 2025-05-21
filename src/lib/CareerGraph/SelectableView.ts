@@ -45,7 +45,6 @@ export class SelectableView {
 			this.d3el.on('mouseout', bind(this.onMouseout, this));
 			this.d3el.on('mousedown', onNameClick);
 		}
-		this.model.addListener(EVENTS.EXPERIENCE.RESELECT, this.onMouseover);
 	}
 
 	/**
@@ -56,6 +55,7 @@ export class SelectableView {
 	onNameClick() {
 		const selected = !this.model.selected;
 		this.model.selected = selected;
+
 		if (selected) {
 			this.onMouseover();
 		} else {

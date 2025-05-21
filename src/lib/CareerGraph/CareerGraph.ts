@@ -153,7 +153,6 @@ export class CareerGraph {
 	destroy = () => {
 		this.svg.remove();
 	};
-	x;
 
 	/**
 	 *
@@ -170,8 +169,6 @@ export class CareerGraph {
 	protected processExperience(experience: ExperienceModel[]) {
 		experience.forEach((exp) => {
 			const skills = exp.skills;
-			//var associateSkillAndExperience = _.bind(this._associateSkillAndExperience, this, exp);
-			// _.each(skills, associateSkillAndExperience, this);
 			skills.forEach((skill) => {
 				const skillModel = this.skills.find((skillModel) => skillModel.id === skill);
 				if (skillModel) {
@@ -253,7 +250,6 @@ export class CareerGraph {
 			reset: true,
 			success: this.processExperience
 		};
-		// const exps = [this.jobs, this.projects];
 		const exps = this.expWork;
 		let colorIndex = 0;
 
