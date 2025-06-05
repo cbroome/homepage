@@ -8,6 +8,8 @@ import type { SkillModel } from './SkillModel';
 import { PathsView } from './PathsView';
 import { PathModel } from './PathModel';
 import { ExperienceView } from './ExperienceView';
+import { EVENTS } from '$lib/consts';
+import type { ListenerModel } from './ListernerModel';
 
 const colors = ['#8333E5', '#1700FC', '#CE00FE', '#0B44E5'];
 
@@ -27,7 +29,7 @@ export class CareerGraph {
 	 */
 	expProjects: ExperienceModel[] = [];
 
-	skills: SkillModel[] = [];
+	skillModels: SkillModel[] = [];
 
 	/**
 	 * @property	{d3}	svg
@@ -42,7 +44,7 @@ export class CareerGraph {
 	/**
 	 * @property    {Integer}   startY
 	 */
-	startY = 5;
+	startY = 50;
 
 	/**
 	 * @property	{Integer}	cursorY		Keep track of current height
@@ -62,7 +64,7 @@ export class CareerGraph {
 	/**
 	 * @property	{Integer}	xRegular
 	 */
-	xHeader = 270;
+	xHeader = 60;
 
 	/**
 	 * @property	{Integer}	xRegular
@@ -96,17 +98,22 @@ export class CareerGraph {
 			expWork: options.expWork,
 			expProjects: options.expProjects
 		};
-		this.skills = options.skills;
+		this.skillModels = options.skills;
 		this.svg = d3.select('svg#main-svg');
 
 		this.expWork = this.options.expWork;
 		this.expProjects = this.options.expProjects;
 
 		const pathModels: PathModel[] = [];
+
 		this.expWork.forEach((experienceModel) => {
+			const clearSelections = this.clearSelections.bind(this, experienceModel);
+			experienceModel.addListener(EVENTS.PATHS.RESET, clearSelections);
+
 			experienceModel.skills.forEach((skill) => {
-				const skillModel = this.skills.find((skillModel) => skillModel.id === skill);
+				const skillModel = this.skillModels.find((skillModel) => skillModel.id === skill);
 				if (skillModel) {
+					skillModel.addListener(EVENTS.PATHS.RESET, clearSelections);
 					const pathModel = new PathModel(skillModel, experienceModel);
 					pathModels.push(pathModel);
 				}
@@ -132,7 +139,7 @@ export class CareerGraph {
 
 		this.renderSection(this.expWork, 'Work Experience');
 
-		const skillGraph = new SkillsView(this.expWork, [], this.skills);
+		const skillGraph = new SkillsView(this.expWork, [], this.skillModels);
 		skillGraph.render(this.windowWidth);
 
 		/*
@@ -170,7 +177,7 @@ export class CareerGraph {
 		experience.forEach((exp) => {
 			const skills = exp.skills;
 			skills.forEach((skill) => {
-				const skillModel = this.skills.find((skillModel) => skillModel.id === skill);
+				const skillModel = this.skillModels.find((skillModel) => skillModel.id === skill);
 				if (skillModel) {
 					this.associateSkillAndExperience(exp, skillModel);
 				}
@@ -198,7 +205,7 @@ export class CareerGraph {
 		this.group
 			?.append('text')
 			.text(title)
-			.attr('class', 'header exp')
+			.attr('class', 'svg-header exp')
 			.attr('x', this.xHeader)
 			.attr('y', getY);
 
@@ -211,11 +218,10 @@ export class CareerGraph {
 	 * @param	{Backbone.collection}
 	 * @returns	{view.ExperienceSVG}
 	 */
-	protected renderExperience = (collection: ExperienceModel[]) => {
-		var data = collection,
-			getY = bind(this.getY, this, this.heightLine);
+	protected renderExperience = (models: ExperienceModel[]) => {
+		const getY = bind(this.getY, this, this.heightLine);
 
-		data.forEach((exp) => {
+		models.forEach((exp) => {
 			const x = this.xRegular;
 			const y = getY();
 			const d3el = this.group
@@ -240,7 +246,7 @@ export class CareerGraph {
 	 * @returns	{Integer}
 	 */
 	protected getY = (increment: number) => {
-		var rv = this.cursorY;
+		let rv = this.cursorY;
 		this.cursorY += increment;
 		return rv;
 	};
@@ -256,5 +262,24 @@ export class CareerGraph {
 		exps.forEach((exp) => (exp.stroke = colors[colorIndex++ % colors.length]));
 		this.processExperience(this.expWork);
 		// this._processExperience(this.projects);
+	}
+
+	/**
+	 *
+	 * @param model
+	 */
+	clearSelections(model: ListenerModel) {
+		this.expWork.forEach((exp) => {
+			if (exp !== model) {
+				exp.selected = false;
+				exp.trigger(EVENTS.EXPERIENCE.HOVER_END);
+			}
+		});
+		this.skillModels.forEach((skill) => {
+			if (skill !== model) {
+				skill.selected = false;
+				skill.trigger(EVENTS.SKILL.HOVER_END);
+			}
+		});
 	}
 }

@@ -12,7 +12,6 @@
 	// TODO - debounce
 	const onWindowChange = () => {
 		windowWidth = window.innerWidth;
-
 		redrawChart();
 	};
 
@@ -83,13 +82,15 @@
             
             .skill-header {
                 font-size: .48em;
-                font-family: 'Lane - Narrow';
+                font-family: 'Lane - Narrow';                
+				text-anchor: end;
             }
             
-            .header {
+            .svg-header {
                 font-family: 'Lane - Narrow';
                 font-size: .85em;
-                text-anchor: end;
+				font-weight: bold;
+                /*text-anchor: end;*/
             }
 
             .experience {

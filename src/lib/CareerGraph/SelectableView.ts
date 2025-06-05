@@ -33,7 +33,7 @@ export class SelectableView {
 	}
 
 	protected addListeners() {
-		const onNameClick = throttle(bind(this.onNameClick, this), 1000, { trailing: false });
+		const onNameClick = throttle(bind(this.onNameClick, this), 500, { trailing: false });
 
 		if ('ontouchstart' in window) {
 			// Touch events
@@ -53,6 +53,8 @@ export class SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onNameClick() {
+		this.model.trigger(EVENTS.PATHS.RESET);
+
 		const selected = !this.model.selected;
 		this.model.selected = selected;
 
@@ -61,6 +63,7 @@ export class SelectableView {
 		} else {
 			this.onMouseout();
 		}
+
 		return false;
 	}
 

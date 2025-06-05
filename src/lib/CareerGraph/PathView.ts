@@ -61,7 +61,13 @@ export class PathView {
 	}
 
 	protected hoverOff() {
-		if (this.experience && !this.experience.selected && !this.skill?.selected) {
+		console.log({
+			experienceSelected: this.experience?.selected,
+			skill: this.skill?.id,
+			skillSelected: this.skill?.selected
+		});
+
+		if (!this.experience?.selected && !this.skill?.selected) {
 			this.options.line.classed('hovered', false);
 		}
 	}

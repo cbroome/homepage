@@ -1,14 +1,16 @@
+type TListenerCallback = (model?: ListenerModel) => void;
+
 /**
  * Backbone-type model that can listen to events.
  */
 export class ListenerModel {
-	listeners: Map<string, (() => void)[]>;
+	listeners: Map<string, TListenerCallback[]>;
 
 	constructor() {
 		this.listeners = new Map();
 	}
 
-	addListener(event: string, listener: () => void) {
+	addListener(event: string, listener: TListenerCallback) {
 		const existingListeners = this.listeners.get(event) || [];
 		this.listeners.set(event, [...existingListeners, listener]);
 		return this;
@@ -27,7 +29,7 @@ export class ListenerModel {
 
 		if (listeners) {
 			listeners.forEach((listener) => {
-				listener();
+				listener(this);
 			});
 		}
 	}
