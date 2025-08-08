@@ -32,7 +32,7 @@ export class SkillsView {
 	/**
 	 * @property    {Integer}   startY
 	 */
-	startY = 5;
+	startY = 25;
 
 	/**
 	 * @property	{Integer}	cursorY
@@ -106,8 +106,8 @@ export class SkillsView {
 
 		this.sortOrder = {
 			language: 'Languages',
-			datastore: 'Datastores',
-			'version control': 'Version Control',
+			database: 'Datastores',
+			version_control: 'Version Control',
 			framework: 'Frameworks',
 			library: 'Libraries',
 			utility: 'Utilities',
@@ -138,12 +138,16 @@ export class SkillsView {
 			}
 		});
 
+		console.log({ skillModes: this.skillModels });
+
 		this.jobs.forEach((job) => {
 			job.skills.forEach((skill) => {
 				const type = this.skillModels.find((skillModel) => skillModel.skill === skill)?.type;
 				sortedSkills[type || 'misc'].add(skill);
 			});
 		});
+
+		console.log({ sortedSkills });
 
 		Object.keys(sortedSkills).forEach((sortedSkill) => {
 			if (sortedSkills[sortedSkill].size > 0) {
@@ -163,13 +167,12 @@ export class SkillsView {
 	 * @param   {String}    title
 	 */
 	protected createHeader(title: string) {
-		var x = this.xComputed,
-			y = this.getY(this.heightHeader),
-			obj;
+		const x = this.xComputed;
+		const y = this.getY(this.heightHeader);
 
-		obj = this.group
+		this.group
 			.append('text')
-			.text(this.sortOrder?.title)
+			.text(this.sortOrder?.[title])
 			.attr('class', 'skill-header')
 			.attr('x', this.xComputed)
 			.attr('y', y);

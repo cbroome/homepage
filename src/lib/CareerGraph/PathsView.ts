@@ -56,8 +56,8 @@ export class PathsView {
 		const lineFunction = d3
 			.line()
 			.x((d) => d[0])
-			.y((d) => d[1]);
-		//.interpolate('basis');
+			.y((d) => d[1])
+			.curve(d3.curveMonotoneX);
 
 		this.pathModels.forEach((pathModel) => {
 			// Simple lines for now...

@@ -9,51 +9,26 @@
 	let windowWidth = $state(1024);
 	let careerGraph: CareerGraph | null;
 
+	const options: ICareerGraphOptions = {
+		expProjects: [],
+		expWork: [],
+		skills: [],
+		windowWidth
+	};
+
 	// TODO - debounce
 	const onWindowChange = () => {
 		windowWidth = window.innerWidth;
-		redrawChart();
+
+		options.windowWidth = windowWidth;
+		redrawChart(options);
 	};
 
-	const redrawChart = () => {
-		const skills: SkillModel[] = [
-			new SkillModel({
-				id: 'javascript',
-				type: 'language',
-				skill: 'javascript',
-				options: { type: 'language', url: '', related: [] }
-			}),
-			new SkillModel({
-				id: 'typescript',
-				type: 'language',
-				skill: 'typescript',
-				options: { type: 'language', url: '', related: [] }
-			})
-		];
-
-		const options: ICareerGraphOptions = {
-			expProjects: [],
-
-			expWork: [
-				new ExperienceModel({
-					title: 'work 1',
-					description: 'test description',
-					skills: ['javascript', 'typescript'],
-					dateStart: new Date(),
-					dateEnd: new Date(),
-					options: { selected: false, stroke: '#000' }
-				})
-			],
-
-			skills,
-
-			windowWidth
-		};
-
+	const redrawChart = (options: ICareerGraphOptions) => {
 		if (careerGraph) {
-			//careerGraph.destroy();
 			careerGraph = null;
 		}
+
 		careerGraph = new CareerGraph(options);
 		careerGraph.render();
 	};
@@ -61,7 +36,57 @@
 	onMount(() => {
 		const throttledWindowChange = throttle(onWindowChange, 500);
 		window.addEventListener('resize', throttledWindowChange);
-		onWindowChange();
+
+		(async () => {
+			const result = await fetch('https://st0ra.com/experience');
+			const experiences = await result.json();
+
+			const experienceMap = new Map<string, ExperienceModel>();
+
+			experiences.forEach((experience) => {
+				experienceMap.set(
+					experience.id,
+					new ExperienceModel({
+						title: experience.company_name,
+						description: experience.description,
+						skills: [],
+						dateStart: new Date(Date.parse(experience.start_date)),
+						dateEnd: new Date(Date.parse(experience.end_date)),
+						options: { selected: false, stroke: '#000' }
+					})
+				);
+			});
+
+			const experienceSkillResult = await fetch('https://st0ra.com/experience_skill');
+			const experienceSkills = await experienceSkillResult.json();
+
+			experienceSkills.forEach((experienceSkill) => {
+				experienceMap.get(experienceSkill.experience_id)?.skills.push(experienceSkill.skill);
+			});
+
+			experienceMap.forEach((experienceModel) => options.expWork.push(experienceModel));
+
+			options.expWork.sort(
+				(a: ExperienceModel, b: ExperienceModel) => b.dateStart.getTime() - a.dateStart.getTime()
+			);
+
+			const skillResult = await fetch('https://st0ra.com/skills');
+			const skills = await skillResult.json();
+
+			skills.forEach((skill) => {
+				options.skills.push(
+					new SkillModel({
+						id: skill.id,
+						type: skill.skill_category,
+						// skill: skill.name,
+						skill: skill.id,
+						options: { type: skill.skill_category, url: '', related: [] }
+					})
+				);
+			});
+
+			onWindowChange();
+		})();
 	});
 </script>
 

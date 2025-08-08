@@ -112,6 +112,8 @@ export class CareerGraph {
 
 			experienceModel.skills.forEach((skill) => {
 				const skillModel = this.skillModels.find((skillModel) => skillModel.id === skill);
+
+				console.log({ skillModel });
 				if (skillModel) {
 					skillModel.addListener(EVENTS.PATHS.RESET, clearSelections);
 					const pathModel = new PathModel(skillModel, experienceModel);
@@ -220,7 +222,7 @@ export class CareerGraph {
 	 */
 	protected renderExperience = (models: ExperienceModel[]) => {
 		const getY = bind(this.getY, this, this.heightLine);
-
+		console.log({ models });
 		models.forEach((exp) => {
 			const x = this.xRegular;
 			const y = getY();

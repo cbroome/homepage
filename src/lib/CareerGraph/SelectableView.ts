@@ -72,6 +72,7 @@ export class SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onMouseover() {
+		this.d3el.classed('hovered', true);
 		return false;
 	}
 
@@ -80,6 +81,8 @@ export class SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onMouseout() {
+		this.d3el.classed('hovered', false);
+
 		return false;
 	}
 }

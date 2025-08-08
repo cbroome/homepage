@@ -2,12 +2,6 @@ import { EVENTS } from '$lib/consts';
 import type { ExperienceModel } from './ExperienceModel';
 import type { SkillModel } from './SkillModel';
 
-interface IPositionable {
-	xPos: number;
-	yPos: number;
-	stroke?: {};
-}
-
 interface IPathViewOptions {
 	/**
 	 * @property	{d3}	line
@@ -61,12 +55,6 @@ export class PathView {
 	}
 
 	protected hoverOff() {
-		console.log({
-			experienceSelected: this.experience?.selected,
-			skill: this.skill?.id,
-			skillSelected: this.skill?.selected
-		});
-
 		if (!this.experience?.selected && !this.skill?.selected) {
 			this.options.line.classed('hovered', false);
 		}
