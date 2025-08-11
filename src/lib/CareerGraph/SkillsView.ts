@@ -106,6 +106,7 @@ export class SkillsView {
 
 		this.sortOrder = {
 			language: 'Languages',
+			cloud: 'Cloud',
 			database: 'Datastores',
 			version_control: 'Version Control',
 			framework: 'Frameworks',
