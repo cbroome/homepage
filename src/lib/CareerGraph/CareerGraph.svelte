@@ -5,14 +5,19 @@
 	import { SkillModel } from './SkillModel';
 	import { throttle } from 'lodash-es';
 
-	// const windowWidth = 1024;
 	let windowWidth = $state(1024);
 	let careerGraph: CareerGraph | null;
+
+	/**
+	 * If window width is less than the minWidth, don't render.
+	 */
+	const minWidth = 1024;
 
 	const options: ICareerGraphOptions = {
 		expProjects: [],
 		expWork: [],
 		skills: [],
+		skillCategories: [],
 		windowWidth
 	};
 
@@ -26,11 +31,14 @@
 
 	const redrawChart = (options: ICareerGraphOptions) => {
 		if (careerGraph) {
+			careerGraph.destroy();
 			careerGraph = null;
 		}
 
-		careerGraph = new CareerGraph(options);
-		careerGraph.render();
+		if (windowWidth >= minWidth) {
+			careerGraph = new CareerGraph(options);
+			careerGraph.render();
+		}
 	};
 
 	onMount(() => {
@@ -43,7 +51,7 @@
 
 			const experienceMap = new Map<string, ExperienceModel>();
 
-			experiences.forEach((experience) => {
+			experiences.forEach((experience: IExperienceREST) => {
 				experienceMap.set(
 					experience.id,
 					new ExperienceModel({
@@ -73,17 +81,20 @@
 			const skillResult = await fetch('https://st0ra.com/skills');
 			const skills = await skillResult.json();
 
-			skills.forEach((skill) => {
-				options.skills.push(
+			skills.forEach((skill: ISkillREST) => {
+				options.skills?.push(
 					new SkillModel({
 						id: skill.id,
 						type: skill.skill_category,
-						// skill: skill.name,
-						skill: skill.id,
+						skill: skill.name,
 						options: { type: skill.skill_category, url: '', related: [] }
 					})
 				);
 			});
+
+			const skillCategoriesResult = await fetch('https://st0ra.com/skill_categories');
+			const skillCategories = await skillCategoriesResult.json();
+			options.skillCategories = skillCategories;
 
 			onWindowChange();
 		})();
@@ -103,25 +114,25 @@
             .skill-label {
                 font-size: .38em;
                 cursor: pointer;
+				opacity: .75;
             }
             
             .skill-header {
                 font-size: .48em;
                 font-family: 'Lane - Narrow';                
-				text-anchor: end;
             }
             
             .svg-header {
                 font-family: 'Lane - Narrow';
                 font-size: .85em;
 				font-weight: bold;
-                /*text-anchor: end;*/
             }
 
             .experience {
                 font-size: .6em;
                 cursor: pointer;
                 text-anchor:end;
+				opacity: .75;
             }
 
             .line {
@@ -133,6 +144,10 @@
             path.hovered {
                 stroke-opacity: .75;
             }
+
+			text.hovered {
+				opacity: 1;
+			}
         ]]>
 		</style>
 	</defs>

@@ -82,7 +82,6 @@ export class SelectableView {
 	 */
 	onMouseout() {
 		this.d3el.classed('hovered', false);
-
 		return false;
 	}
 }

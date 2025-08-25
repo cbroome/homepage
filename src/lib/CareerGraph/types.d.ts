@@ -55,11 +55,18 @@ interface IExperienceWorkModel extends IExperienceModel {
 
 interface IExperienceProjectModel extends IExperienceModel {}
 
+interface ISkillCateogry {
+	id: string;
+	name: string;
+	sort_order: number;
+}
+
 interface ICareerGraphOptions {
 	expWork: ExperienceModel[];
 	expProjects: ExperienceModel[];
-	skills: SkillModel[];
-	windowWidth: number;
+	skills?: SkillModel[];
+	skillCategories: ISkillCateogry[];
+	windowWidth?: number;
 }
 
 type TSkillType =
@@ -101,4 +108,21 @@ interface ISkillModel {
 		 */
 		related?: ISkillModel[];
 	};
+}
+
+interface IExperienceREST {
+	id: string;
+	company_name: string;
+	description: string;
+	start_date: string;
+	end_date: string;
+}
+
+interface ISkillREST {
+	id: string;
+	name: string;
+	description: string;
+	created_at: string;
+	modified_at: string;
+	skill_category: TSkillType;
 }

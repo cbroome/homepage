@@ -70,11 +70,18 @@ export class SkillsView {
 	xComputed?: number;
 
 	/**
+	 * @property	{number}	xPadding	padding from the right of the screen
+	 */
+	xPadding = 150;
+
+	/**
 	 * @property    {Array} sortOrder
 	 */
 	sortOrder?: Record<string, string>;
 
 	skills: SkillView[];
+
+	skillCategories: ISkillCateogry[];
 
 	/**
 	 * @property    {Integer}   startY
@@ -84,14 +91,14 @@ export class SkillsView {
 	constructor(
 		jobs: IExperienceWorkModel[],
 		projects: IExperienceProjectModel[],
-		skillModels: SkillModel[]
+		skillModels: SkillModel[],
+		skillCategories: ISkillCateogry[]
 	) {
 		this.jobs = jobs;
 		this.projects = projects;
 		this.skillModels = skillModels;
-
+		this.skillCategories = skillCategories;
 		this.skills = [];
-
 		this.initialize();
 	}
 
@@ -104,16 +111,12 @@ export class SkillsView {
 
 		this.group = this.svg.append('g').attr('class', 'group-skills');
 
-		this.sortOrder = {
-			language: 'Languages',
-			cloud: 'Cloud',
-			database: 'Datastores',
-			version_control: 'Version Control',
-			framework: 'Frameworks',
-			library: 'Libraries',
-			utility: 'Utilities',
-			misc: 'Miscellaneous'
-		};
+		this.skillCategories.sort((a, b) => a.sort_order - b.sort_order);
+
+		this.sortOrder = this.skillCategories.reduce((acc, skillCategory) => {
+			acc[skillCategory.id] = skillCategory.name;
+			return acc;
+		}, {});
 	}
 
 	/**
@@ -123,9 +126,7 @@ export class SkillsView {
 	render(windowWidth: number) {
 		const sortedSkills: Record<string, Set<string>> = {};
 		const orderedKeys: string[] = keys(this.sortOrder);
-		// const getY = bind(this.getY, this, this.heightLine);
-
-		this.xComputed = windowWidth - this.width;
+		this.xComputed = windowWidth - this.xPadding;
 
 		this.cursorY = this.startY;
 
@@ -139,24 +140,23 @@ export class SkillsView {
 			}
 		});
 
-		console.log({ skillModes: this.skillModels });
-
 		this.jobs.forEach((job) => {
 			job.skills.forEach((skill) => {
-				const type = this.skillModels.find((skillModel) => skillModel.skill === skill)?.type;
+				const type = this.skillModels.find((skillModel) => skillModel.id === skill)?.type;
 				sortedSkills[type || 'misc'].add(skill);
 			});
 		});
-
-		console.log({ sortedSkills });
 
 		Object.keys(sortedSkills).forEach((sortedSkill) => {
 			if (sortedSkills[sortedSkill].size > 0) {
 				this.createHeader(sortedSkill);
 				sortedSkills[sortedSkill].forEach((skill) => {
-					const model = this.skillModels.find((skillModel) => skillModel.skill === skill);
+					const model = this.skillModels.find((skillModel) => skillModel.id === skill);
 					model && this.createSkill(model);
 				});
+
+				// Add some padding beneath the section
+				this.getY(5);
 			}
 		});
 
@@ -190,11 +190,10 @@ export class SkillsView {
 
 		obj = this.group
 			?.append('text')
-			.text(skill.id)
+			.text(skill.skill)
 			.attr('class', 'skill-label')
 			.attr('x', x)
 			.attr('y', y);
-
 		skill.xPos = x || 0;
 		skill.yPos = y || 0;
 

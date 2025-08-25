@@ -7,6 +7,7 @@ export class ExperienceView extends SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onMouseover() {
+		super.onMouseover();
 		this.model.trigger(EVENTS.EXPERIENCE.HOVER);
 		return false;
 	}
@@ -16,12 +17,9 @@ export class ExperienceView extends SelectableView {
 	 * @returns  {Boolean}   always false
 	 */
 	onMouseout() {
+		super.onMouseout();
 		this.model.trigger(EVENTS.EXPERIENCE.HOVER_END);
-		return false;
-	}
 
-	protected addListeners(): void {
-		super.addListeners();
-		// this.model.addListener(EVENTS.EXPERIENCE.RESELECT, this.onMouseover);
+		return false;
 	}
 }

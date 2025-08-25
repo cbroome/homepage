@@ -71,9 +71,9 @@ export class PathsView {
 			const midY = findDiff(endY, startY);
 			const lineData: [number, number][] = [
 				[startX, startY],
-				[startX + 85, startY],
+				[startX + 45, startY],
 				[midX, midY],
-				[endX - 75, endY],
+				[endX - 25, endY],
 				[endX, endY]
 			];
 

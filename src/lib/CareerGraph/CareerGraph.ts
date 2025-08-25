@@ -3,7 +3,6 @@ import { bind } from 'lodash-es';
 import { SelectableView } from './SelectableView';
 import type { ExperienceModel } from './ExperienceModel';
 import { SkillsView } from './SkillsView';
-import type { ICareerGraphOptions } from './types';
 import type { SkillModel } from './SkillModel';
 import { PathsView } from './PathsView';
 import { PathModel } from './PathModel';
@@ -87,18 +86,22 @@ export class CareerGraph {
 
 	pathsView: PathsView;
 
+	skillCategories: ISkillCateogry[];
+
 	/**
 	 * @property	{Array}		experienceViews
 	 */
 	protected experienceViews: SelectableView[] = [];
 
 	constructor(options: ICareerGraphOptions) {
-		this.windowWidth = options.windowWidth;
+		this.windowWidth = options.windowWidth || 0;
 		this.options = {
 			expWork: options.expWork,
 			expProjects: options.expProjects
 		};
-		this.skillModels = options.skills;
+
+		this.skillCategories = options.skillCategories || [];
+		this.skillModels = options.skills || [];
 		this.svg = d3.select('svg#main-svg');
 
 		this.expWork = this.options.expWork;
@@ -113,7 +116,6 @@ export class CareerGraph {
 			experienceModel.skills.forEach((skill) => {
 				const skillModel = this.skillModels.find((skillModel) => skillModel.id === skill);
 
-				console.log({ skillModel });
 				if (skillModel) {
 					skillModel.addListener(EVENTS.PATHS.RESET, clearSelections);
 					const pathModel = new PathModel(skillModel, experienceModel);
@@ -141,7 +143,7 @@ export class CareerGraph {
 
 		this.renderSection(this.expWork, 'Work Experience');
 
-		const skillGraph = new SkillsView(this.expWork, [], this.skillModels);
+		const skillGraph = new SkillsView(this.expWork, [], this.skillModels, this.skillCategories);
 		skillGraph.render(this.windowWidth);
 
 		/*
@@ -159,8 +161,11 @@ export class CareerGraph {
 		this.pathsView.render();
 	};
 
+	/**
+	 * Remove the paths, experiences, and skills but not the svg or defs.
+	 */
 	destroy = () => {
-		this.svg.remove();
+		this.svg.selectAll('g').remove();
 	};
 
 	/**
@@ -222,7 +227,6 @@ export class CareerGraph {
 	 */
 	protected renderExperience = (models: ExperienceModel[]) => {
 		const getY = bind(this.getY, this, this.heightLine);
-		console.log({ models });
 		models.forEach((exp) => {
 			const x = this.xRegular;
 			const y = getY();

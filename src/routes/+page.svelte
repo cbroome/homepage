@@ -1,8 +1,13 @@
-<script>
+<script lang="ts">
 	import CareerGraph from '$lib/CareerGraph/CareerGraph.svelte';
+	import HeroHeader from '$lib/HeroHeader/HeroHeader.svelte';
+	import PostList from '$lib/Posts/PostList.svelte';
+	import List from '$lib/Posts/PostList.svelte';
+
+	let { data } = $props();
 </script>
 
-<section>
+<section class="svg-section">
 	<div class="main-section">
 		<div class="col span_8_of_8 main-display">
 			<CareerGraph />
@@ -12,40 +17,19 @@
 	</div>
 </section>
 
-<section>
-	<div class="section header">
-		<div class="portrait head">
-			<div class="divider"></div>
-
-			<div class="portrait-image">
-				<img src="./imgs/portrait-comp.png" alt="Profile" />
-			</div>
-
-			<div class="divider"></div>
-		</div>
-
-		<h1 class="head heading-color">Christopher Broome</h1>
-
-		<div class="scant-bio heading-font">Full Stack Web Developer / Baltimore, MD</div>
-
-		<ul class="social-buttons heading-font">
-			<li>
-				<a href="http://www.linkedin.com/pub/chris-broome/1b/154/251" target="_blank">
-					<img src="imgs/linkedin.png" alt="LinkedIn" />
-				</a>
-			</li>
-
-			<li>
-				<a href="https://github.com/cbroome" target="_blank">
-					<img src="imgs/github.png" alt="GitHub" />
-				</a>
-			</li>
-		</ul>
-
-		<div class="footer">
-			&copy; 2025 |
-
-			<a href="https://github.com/cbroome/homepage" target="_blank">Source Code</a>
-		</div>
+<section class="site-content-section">
+	<HeroHeader />
+	<div class="posts">
+		<PostList posts={data?.posts} />
 	</div>
 </section>
+
+<style lang="scss">
+	.site-content-section {
+		margin-top: calc(100vh - 375px);
+	}
+	.posts {
+		margin: 0 auto;
+		width: 500px;
+	}
+</style>

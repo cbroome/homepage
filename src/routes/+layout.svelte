@@ -1,5 +1,11 @@
 <slot />
 
+<div class="footer">
+	&copy; 2025 |
+
+	<a href="https://github.com/cbroome/homepage" target="_blank">Source Code</a>
+</div>
+
 <style lang="scss">
 	:global {
 		/**
@@ -29,8 +35,11 @@
 			margin: 0;
 			padding: 0;
 			color: #81616a;
-			/* background: rgb(245, 247, 255); */
 			background: #fffcee;
+
+			background-size: 150% 150%;
+
+			background: radial-gradient(circle, rgba(255, 252, 238, 1) 43%, rgb(255, 248, 223) 88%);
 		}
 
 		.section {
@@ -184,7 +193,7 @@
 
 		.main-section {
 			position: relative;
-			height: 480px;
+			height: 0;
 			overflow: visible;
 			text-align: center;
 		}
