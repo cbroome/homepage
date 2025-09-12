@@ -13,6 +13,10 @@
 </ul>
 
 <style lang="scss">
+	h2 {
+		font-size: 25px;
+	}
+
 	ul.post-list {
 		list-style: none;
 		padding: 0;
@@ -24,7 +28,8 @@
 	}
 
 	.title {
-		font-size: 0.7em;
+		font-size: 18px;
+		border-bottom: 2px dotted;
 	}
 
 	.description {

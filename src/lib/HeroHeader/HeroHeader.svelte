@@ -1,4 +1,8 @@
-<div class="section header hero-header">
+<script lang="ts">
+	let { fixed = false } = $props();
+</script>
+
+<div class={`section header hero-header ${fixed ? 'fixed-header' : ''}`}>
 	<div class="portrait head">
 		<div class="divider"></div>
 
@@ -32,22 +36,11 @@
 	.hero-header {
 		text-align: center;
 		left: 50%;
-		transform: translateX(-50%);
-		position: sticky;
 		top: 0px;
 		width: 500px;
 
 		margin-bottom: 25px;
 		padding: 25px;
-		border-radius: 50px;
-		backdrop-filter: blur(3px) saturate(80%);
-		border-top: 1px solid rgba(255, 255, 255, 0.5);
-		border-right: 1px solid rgba(255, 255, 255, 0.5);
-		box-shadow:
-			inset 10px 10px 20px rgba(250, 255, 153, 0.1),
-			inset 2px 2px 5px rgba(195, 231, 255, 0.2),
-			inset -10px -10px 20px rgba(190, 237, 253, 0.1),
-			inset -2px -2px 30px rgba(226, 248, 255, 0.2);
 	}
 
 	/* portrait
@@ -97,10 +90,23 @@
 	.header {
 		text-align: center;
 		left: 50%;
-		transform: translateX(-50%);
-		position: sticky;
 		top: 0px;
 		width: 500px;
+	}
+
+	// Header for the home page only
+	.fixed-header {
+		position: sticky;
+		transform: translateX(-50%);
+		border-radius: 50px;
+		backdrop-filter: blur(3px) saturate(80%);
+		border-top: 1px solid rgba(255, 255, 255, 0.5);
+		border-right: 1px solid rgba(255, 255, 255, 0.5);
+		box-shadow:
+			inset 10px 10px 20px rgba(250, 255, 153, 0.1),
+			inset 2px 2px 5px rgba(195, 231, 255, 0.2),
+			inset -10px -10px 20px rgba(190, 237, 253, 0.1),
+			inset -2px -2px 30px rgba(226, 248, 255, 0.2);
 	}
 
 	.header .scant-bio {

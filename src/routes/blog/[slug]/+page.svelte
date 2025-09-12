@@ -23,8 +23,9 @@
 	article {
 		max-inline-size: var(--size-content-3);
 		margin-inline: auto;
+		padding: 10px;
 
-		width: 500px;
+		max-width: 768px;
 		margin: 0 auto;
 
 		font-size: 0.9em;

@@ -2,7 +2,6 @@
 	import CareerGraph from '$lib/CareerGraph/CareerGraph.svelte';
 	import HeroHeader from '$lib/HeroHeader/HeroHeader.svelte';
 	import PostList from '$lib/Posts/PostList.svelte';
-	import List from '$lib/Posts/PostList.svelte';
 
 	let { data } = $props();
 </script>
@@ -18,7 +17,7 @@
 </section>
 
 <section class="site-content-section">
-	<HeroHeader />
+	<HeroHeader fixed={true} />
 	<div class="posts">
 		<PostList posts={data?.posts} />
 	</div>
@@ -29,7 +28,7 @@
 		margin-top: calc(100vh - 375px);
 	}
 	.posts {
-		margin: 0 auto;
-		width: 500px;
+		margin: 0 auto 200px;
+		width: 768px;
 	}
 </style>

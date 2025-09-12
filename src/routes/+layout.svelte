@@ -39,7 +39,11 @@
 
 			background-size: 150% 150%;
 
-			background: radial-gradient(circle, rgba(255, 252, 238, 1) 43%, rgb(255, 248, 223) 88%);
+			background: linear-gradient(
+				to left rgb(255, 248, 223),
+				rgb(252, 250, 241),
+				rgb(255, 248, 223)
+			);
 		}
 
 		.section {
@@ -143,15 +147,6 @@
 
 		/* Header
  * ================================================= */
-
-		.header {
-			text-align: center;
-			padding-bottom: 0px;
-			position: fixed;
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-		}
 
 		.header .scant-bio {
 			font-size: 0.75em;
