@@ -1,20 +1,30 @@
 ---
 title: AI in Interviewing
-description: Impressions of interviewing for a tech job in the first half of 2025
+description: AI is everywhere in a job hunt, just not in center stage
 date: '2025-09-08'
 categories:
 published: true
 ---
 
-It must have been an auto update. Apple had turned on Apple Intelligence, their flavor of AI, sometime in the early Spring, and my laptop started summarizing emails. It happened just in time for my first official rejection letter during this most recent job search.
+It must have been an auto update. Apple Intelligence, Apple's flavor of AI, was suddenly installed and enabled on my MacBook. In place of regular email subjects were terse summaries. It happened just in time for my first official rejection letter during this most recent job search.
 
 Through the magic of modern technology the four sentences of polite rejection were summarized into two.
 
-It may sound like a strange thing, but rejection letters are a kindness. Most companies and recruiters and even candidates would rather ghost each other. Feedback of any kind was rare, and meaningful feedback the rarest still.
+> Thank you for taking the time to interview with the team and your patience in allowing us some time getting back to you. We enjoyed getting to know you throughout the process. However, we have decided that it's not a good fit at this time.
+>
+> I really appreciate the time you've taken so far meeting with the team and on the take home. We wish you the best of luck in your job search.
 
-I couldn’t decide whether Apple Intelligence was adding insult to injury. I never opted in for AI summaries and after a while took some pains to turn off as many of the Apple Intelligence features as I was aware. For emails in particular I found the original subject lines and summaries to be much more useful than what the AI coughed up.
+Became
 
-Now more than two years into the AI hype bubble, AI was indeed bleeding into all corners and crevices of the tech industry. I could feel its presence even when otherwise absent.
+> _Company_ has decided it is not a good fit at this time. Best of luck in your job search
+
+It may sound like a strange thing, but rejection letters are a kindness. Most companies, recruiters, and even candidates would rather ghost each other. Feedback of any kind was rare, and meaningful feedback the rarest still. I appreciate every rejection letter for the closure they provide, and I respect the effort and character it takes to send them.
+
+I couldn’t decide whether Apple Intelligence was adding insult to injury. I never opted in for AI summaries and after a while took some pains to turn off as many of the Apple Intelligence features as I was aware. For emails in particular I found the original subject lines and summaries to be much more useful than their generated counterparts.
+
+This was indicative of AI factored into my job search in early 2025.
+
+Now more than two years into the AI hype bubble, AI was indeed bleeding into all corners and crevices of the tech industry. Even though it did not directly appear at any stage of interviewing, it was always on the periphery.
 
 ## AI was everywhere in the job hunt, just not where you’d think.
 
@@ -28,7 +38,7 @@ So far as the tooling… There were apps that recorded me performing coding chal
 
 At a couple companies I applied to I was offered the option of getting my resume screened by a human or by an AI. On one I chose the human, and on the other I chose the AI. Neither called me in for additional interviews.
 
-I absorbed this climate and started to modulate my behavior. Some videos of interviewers catching phony candidates on vid calls made its way onto my feed. “Your video looks weird. Can you do me a favor and just wave your hand in front of your face?” The interviewer asks. The interviewee immediately gets flustered and ultimately ends the interview himself. So I made it a point on live interviews to always adjust my glasses a few times.
+I absorbed this climate and started to modulate my behavior. [Some videos of interviewers catching phony candidates on vid calls made its way onto my feed](https://www.linkedin.com/posts/dawid-moczadlo_wtf-developer-used-ai-to-alter-his-appearance-activity-7292604406464671744-T_Nw?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAAQdbV0BmZXw-KhnEauMmIInbS4OeP-uz2Q). “Your video looks weird. Can you do me a favor and just wave your hand in front of your face?” The interviewer asks. The interviewee immediately gets flustered and refuses to comply. So I made it a point on live interviews to always adjust my glasses a few times.
 
 In prepping for an interview, a recruiter told me “if you struggle during the coding challenge, just remember to talk to them about what you’re thinking. Ask questions.” This is good time-worn advice, but she followed it up with a new one: “one candidate was struggling then went off camera briefly. When he came back on he suddenly was able to finish the challenge easily. The team assumed he just punched the problem into an AI, and they passed on him.”
 
