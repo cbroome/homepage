@@ -65,3 +65,5 @@ Right now the interviewing process is hostile to AI, but that’s due in large p
 I don’t know what’s going on in the typical College or High School, but there’s plenty of fear-stoking reporting that AI is largely propping up the entire enterprise. Students are apparently using AI to write all their papers, and code all their coursework.
 
 Eventually those kids will be the ones doing the interviewing. At that point I anticipate attitudes towards AI will flip 180 degrees. Suddenly it’ll be looked at as odd if I don’t use an AI to solve some portion of the coding assessment, hell maybe that will be the whole coding assessment.
+
+Based on my experiences we're nowhere near that yat, but this is all changing rapidly.

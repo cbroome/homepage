@@ -1,14 +1,17 @@
 <script lang="ts">
+	import Navigation from '$lib/Navigation/Navigation.svelte';
 	import './style.scss';
 
 	let { data } = $props();
 </script>
 
 <svelte:head>
-	<title>{data.meta.title}</title>
+	<title>{data.meta.title} - Christopher Broome</title>
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={data.meta.title} />
 </svelte:head>
+
+<Navigation breadcrumbs={[{ anchor: '/blog', label: 'Blogs' }, { label: data.meta.title }]} />
 
 <article>
 	<hgroup>

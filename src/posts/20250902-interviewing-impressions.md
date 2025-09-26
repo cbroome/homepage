@@ -12,7 +12,7 @@ That meant that I was caught up with the mass firings of probationary federal em
 
 So back on the job market! Not just that, in the unenviable position of needing a job, any job. I started applying everywhere and to everything.
 
-Eventually I was able to land a couple offers after a couple months of searching. I’ve read a lot of things about the state of the job market, what follows are my first-hand impressions. I’m breaking this up into two blogs, one for standard interviewing, and another that just focuses on AI as I encountered it.
+Eventually I was able to land a couple offers after a couple months of searching. I’ve read a lot of things about the state of the job market, what follows are my first-hand impressions. I’m breaking this up into two blogs, one for standard interviewing, and another that [focuses on AI as I encountered it](/blog/20250908-ai-in-interviewing).
 
 If you’re on the market, hopefully this will be valuable.
 

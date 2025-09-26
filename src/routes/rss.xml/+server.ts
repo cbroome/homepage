@@ -1,13 +1,12 @@
-// import { name, website } from '$lib/info';
+import { getPosts } from '$lib/Posts/Posts.js';
+
+export const prerender = true;
 
 const name = 'Christopher Broome';
 const website = 'https://www.christopherbroome.com';
 
 export async function GET({ fetch }) {
-	const postFetch = await fetch('/api/posts');
-	const postData = await postFetch.json();
-
-	// console.log({ postData });
+	const postData = await getPosts();
 
 	const headers = {
 		'Cache-Control': 'max-age=0, s-maxage=3600',

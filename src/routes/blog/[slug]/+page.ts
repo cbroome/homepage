@@ -1,4 +1,11 @@
 import { error } from '@sveltejs/kit';
+import type { EntryGenerator } from './$types';
+import { getPosts } from '$lib/Posts/Posts';
+
+export const entries: EntryGenerator = async () => {
+	const posts = await getPosts();
+	return posts.map((post) => ({ slug: post.slug }));
+};
 
 export async function load({ params }) {
 	try {

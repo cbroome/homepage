@@ -2,18 +2,24 @@
 	// import { formatDate } from '$lib/utils';
 	// import * as config from '$lib/config';
 
+	import Navigation from '$lib/Navigation/Navigation.svelte';
+
 	let { data } = $props();
 </script>
 
 <svelte:head>
-	<title></title>
+	<title>Blogs - Christopher Broome</title>
 </svelte:head>
 
 <section>
+	<Navigation breadcrumbs={[{ label: 'Blogs' }]} />
+
+	<h1>Blogs</h1>
+
 	<ul class="posts">
 		{#each data.posts as post}
 			<li class="post">
-				<a href={`/blog/${post.slug}`} class="title">{post.title}</a>
+				<h2><a href={`/blog/${post.slug}`} class="title">{post.title}</a></h2>
 				<p class="date">{post.date}</p>
 				<p class="description">{post.description}</p>
 			</li>
@@ -22,30 +28,36 @@
 </section>
 
 <style>
+	section {
+		margin: 15px auto;
+		max-width: 768px;
+		padding: 0 5px;
+	}
+
+	h1 {
+		margin: 20px 0 30px;
+	}
+
+	h2 {
+		border-bottom: 1px dotted;
+	}
+
 	.posts {
-		display: grid;
-		gap: var(--size-7);
+		list-style: none;
+		padding: none;
+		font-size: 22px;
+	}
 
-		.post {
-			max-inline-size: var(--size-content-3);
+	.date {
+		font-size: 16px;
+		margin: 5px 0;
+	}
 
-			&:not(:last-child) {
-				border-bottom: 1px solid var(--border);
-				padding-bottom: var(--size-7);
-			}
+	.post {
+		margin-bottom: 50px;
+	}
 
-			.title {
-				font-size: var(--font-size-fluid-3);
-				text-transform: capitalize;
-			}
-
-			.date {
-				color: var(--text-2);
-			}
-
-			.description {
-				margin-top: var(--size-3);
-			}
-		}
+	.description {
+		font-style: italic;
 	}
 </style>

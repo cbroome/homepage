@@ -1,3 +1,7 @@
+<script lang="ts">
+	export const prerender = true;
+</script>
+
 <slot />
 
 <div class="footer">
@@ -9,13 +13,13 @@
 <style lang="scss">
 	:global {
 		/**
- * http://colorschemedesigner.com/#3u21TeJiO-5ZC
- * https://kuler.adobe.com/Clustered-color-theme-3230414/
- */
+		* http://colorschemedesigner.com/#3u21TeJiO-5ZC
+		* https://kuler.adobe.com/Clustered-color-theme-3230414/
+		*/
 
 		/**
- * http://www.fontsquirrel.com/fonts/Lane
- */
+		* http://www.fontsquirrel.com/fonts/Lane
+		*/
 
 		@font-face {
 			font-family: 'Lane - Narrow';
