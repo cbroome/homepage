@@ -1,0 +1,34 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run_pull:
+    name: run pull
+    runs-on: ubuntu-latest
+    environment: digitalocean
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install ssh keys
+        # check this thread to understand why its needed:
+        # https://stackoverflow.com/a/70447517
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ env.SSH_HOST }} > ~/.ssh/known_hosts
+
+      - name: Build
+        run: |
+          npm i
+          npm run build
+
+      - name: Copy files
+        run: |
+          scp -r build/ ${{ env.SSH_USER }}@${{ env.SSH_HOST }}:${{ env.WORK_DIR }}
+
+      - name: cleanup
+        run: rm -rf ~/.ssh

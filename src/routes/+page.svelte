@@ -6,6 +6,12 @@
 	let { data } = $props();
 </script>
 
+<svelte:head>
+	<title>Christopher Broome</title>
+	<meta property="og:type" content="website" />
+	<meta property="og:description" content="Full Stack Web Developer" />
+</svelte:head>
+
 <section class="svg-section">
 	<div class="main-section">
 		<div class="col span_8_of_8 main-display">
