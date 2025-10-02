@@ -28,7 +28,11 @@ jobs:
 
       - name: Copy files
         run: |
-          scp -r build/ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.WORK_DIR }}
+          TIMESTAMP="$(date +%s)"
+          scp -r build/ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.WORK_DIR }}/$TIMESTAMP
+
+          ssh ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} rm -rf ${{ vars.WORK_DIR }}/current
+          ssh ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} ln -s ${{ vars.WORK_DIR }}/$TIMESTAMP ${{ vars.WORK_DIR }}/current
 
       - name: cleanup
         run: rm -rf ~/.ssh
