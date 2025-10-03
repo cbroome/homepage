@@ -28,9 +28,9 @@ jobs:
 
       - name: Copy files
         run: |
-          TIMESTAMP="$(date +%s)"
+          TIMESTAMP="$(date +"%Y%m%d%H%M%S")"
+          ssh ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} ls -t | tail -n +21 | xargs rm
           scp -r build/ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ vars.WORK_DIR }}/$TIMESTAMP
-
           ssh ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} rm -rf ${{ vars.WORK_DIR }}/current
           ssh ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} ln -s ${{ vars.WORK_DIR }}/$TIMESTAMP ${{ vars.WORK_DIR }}/current
 
