@@ -15,7 +15,9 @@ const config = {
 	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+			fallback: '200.html'
+		})
 	}
 };
 
