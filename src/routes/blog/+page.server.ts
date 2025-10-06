@@ -1,7 +1,8 @@
+import { getPosts } from '$lib/Posts/Posts.js';
+
 export const prerender = true;
 
-export async function load({ fetch }) {
-	const response = await fetch('/api/posts');
-	const posts: Post[] = await response.json();
+export async function load() {
+	const posts = await getPosts();
 	return { posts };
 }
