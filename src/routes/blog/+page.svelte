@@ -1,6 +1,5 @@
 <script lang="ts">
-	// import { formatDate } from '$lib/utils';
-	// import * as config from '$lib/config';
+	export const prerender = true;
 
 	import Navigation from '$lib/Navigation/Navigation.svelte';
 
