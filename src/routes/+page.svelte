@@ -37,4 +37,15 @@
 		margin: 0 auto 200px;
 		width: 768px;
 	}
+
+	@media (max-width: 768px) {
+		.site-content-section {
+			margin-top: 0;
+		}
+
+		.posts {
+			width: auto;
+			padding: 15px;
+		}
+	}
 </style>

@@ -4,7 +4,9 @@
 
 <nav>
 	<ul>
-		<li><a href="/">Christopher Broome</a></li>
+		<li>
+			<a href="/">Home</a>
+		</li>
 		{#each breadcrumbs as breadcrumb}
 			<li>
 				{#if breadcrumb.anchor}
@@ -30,12 +32,26 @@
 		list-style: none;
 	}
 
-	li::after {
+	li::before {
 		margin: 0 15px;
 		content: '>';
 	}
 
-	li:last-child::after {
+	li:first-child::before {
 		content: '';
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		nav {
+			padding: 0 10px;
+		}
+
+		li {
+			max-width: 120px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
 	}
 </style>

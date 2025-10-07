@@ -145,4 +145,24 @@
 			filter: saturate(120%);
 		}
 	}
+
+	@media (max-width: 768px) {
+		.header {
+			width: 100%;
+		}
+
+		.hero-header {
+			padding: 25px 0;
+		}
+
+		.portrait {
+			.divider {
+				display: none;
+			}
+		}
+
+		.fixed-header {
+			transform: translateX(0%);
+		}
+	}
 </style>

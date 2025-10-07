@@ -103,9 +103,10 @@
 
 <svelte:window onchange={onWindowChange} />
 
-<svg id="main-svg" height="630" width="100%">
-	<defs>
-		<style type="text/css">
+<div class="svg-wrapper">
+	<svg id="main-svg" height="630" width="100%">
+		<defs>
+			<style type="text/css">
 <![CDATA[       
             text {
                 fill: #81616a ;
@@ -149,6 +150,15 @@
 				opacity: 1;
 			}
         ]]>
-		</style>
-	</defs>
-</svg>
+			</style>
+		</defs>
+	</svg>
+</div>
+
+<style lang="scss">
+	@media (max-width: 768px) {
+		.svg-wrapper {
+			display: none;
+		}
+	}
+</style>
