@@ -72,7 +72,7 @@ Thankfully no one asked me to do any Binary Search Tree algorithms this go-round
 
 In most of the larger companies I interviewed with coding assessments were done live. Only a handful asked for coding assessments remotely. The tools for these varied. I never used the same platform twice. The one I’m most familiar with, HackerRank, didn’t even come up at all.
 
-The challenges themselves were no different than the past, and a fact of life. I'm willing to spend up to two hours on them and no company
+The challenges themselves were no different than the past, and a fact of life. I'm willing to spend up to two hours on them and no company this go-round presented anything that would have taken longer.
 
 # A note about demographics
 
@@ -84,7 +84,7 @@ I am not a junior developer. I’m going on 20 years in the industry. At this po
 
 Up until this point I’ve done better with startups.
 
-Of the two offers I got, both were publicly traded, large companies. Startups and smaller companies showed little interest in me this go-round although I did make it to the final round with a few.
+Of the two offers I got, both were publicly traded, large companies. Startups and smaller companies showed little interest in me this go-round although I did make it to the "final round" (per recruiters) with a few.
 
 I have heard anecdotally that large companies are not doing much direct hiring in this market, favoring instead long term contracts or contracts to hire. Those couple offers were of that variety. Some developers wouldn’t consider anything other than a direct hire, but my advice is to reconsider.
 
