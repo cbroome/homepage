@@ -8,6 +8,7 @@
 
 <svelte:head>
 	<title>Christopher Broome</title>
+	<meta name="description" content="Full Stack Web Developer" />
 	<meta property="og:type" content="website" />
 	<meta property="og:description" content="Full Stack Web Developer" />
 </svelte:head>
