@@ -5,6 +5,7 @@
 	let { data } = $props();
 
 	export const prerender = true;
+	export const csr = false;
 </script>
 
 <Navigation breadcrumbs={[{ anchor: '/blog', label: 'Blogs' }, { label: data.meta.title }]} />
