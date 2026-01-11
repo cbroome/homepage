@@ -3,6 +3,8 @@
 	import './style.scss';
 
 	let { data } = $props();
+
+	export const prerender = true;
 </script>
 
 <Navigation breadcrumbs={[{ anchor: '/blog', label: 'Blogs' }, { label: data.meta.title }]} />
