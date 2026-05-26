@@ -1,6 +1,5 @@
 <script lang="ts">
 	import CareerGraph from '$lib/CareerGraph/CareerGraph.svelte';
-	import CareerList from '$lib/CareerList/CareerList.svelte';
 	import HeroHeader from '$lib/HeroHeader/HeroHeader.svelte';
 	import PostList from '$lib/Posts/PostList.svelte';
 
@@ -26,9 +25,6 @@
 
 <section class="site-content-section">
 	<HeroHeader fixed={true} />
-
-	<CareerList />
-
 	<div class="posts">
 		<PostList posts={data?.posts} />
 	</div>

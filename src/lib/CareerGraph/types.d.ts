@@ -126,14 +126,3 @@ interface ISkillREST {
 	modified_at: string;
 	skill_category: TSkillType;
 }
-
-interface IExperienceSkillREST {
-	skill_id: string;
-	experience_id: string;
-}
-
-interface ISkillCategoryREST {
-	id: string;
-	name: string;
-	sort_order: number;
-}
