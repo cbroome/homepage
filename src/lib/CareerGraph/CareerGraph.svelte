@@ -4,6 +4,7 @@
 	import { ExperienceModel } from './ExperienceModel';
 	import { SkillModel } from './SkillModel';
 	import { throttle } from 'lodash-es';
+	import { fetchJobData } from '../job-data';
 
 	let windowWidth = $state(1024);
 	let careerGraph: CareerGraph | null;
@@ -46,8 +47,7 @@
 		window.addEventListener('resize', throttledWindowChange);
 
 		(async () => {
-			const result = await fetch('https://st0ra.com/experience');
-			const experiences = await result.json();
+			const { experiences, skills, experienceSkills, skillCategories } = await fetchJobData();
 
 			const experienceMap = new Map<string, ExperienceModel>();
 
@@ -65,9 +65,6 @@
 				);
 			});
 
-			const experienceSkillResult = await fetch('https://st0ra.com/experience_skill');
-			const experienceSkills = await experienceSkillResult.json();
-
 			experienceSkills.forEach((experienceSkill) => {
 				experienceMap.get(experienceSkill.experience_id)?.skills.push(experienceSkill.skill);
 			});
@@ -77,9 +74,6 @@
 			options.expWork.sort(
 				(a: ExperienceModel, b: ExperienceModel) => b.dateStart.getTime() - a.dateStart.getTime()
 			);
-
-			const skillResult = await fetch('https://st0ra.com/skills');
-			const skills = await skillResult.json();
 
 			skills.forEach((skill: ISkillREST) => {
 				options.skills?.push(
@@ -92,8 +86,6 @@
 				);
 			});
 
-			const skillCategoriesResult = await fetch('https://st0ra.com/skill_categories');
-			const skillCategories = await skillCategoriesResult.json();
 			options.skillCategories = skillCategories;
 
 			onWindowChange();
