@@ -53,6 +53,7 @@ interface IExperienceWorkModel extends IExperienceModel {
 	urlRoot?: 'service/work';
 }
 
+// TODO
 interface IExperienceProjectModel extends IExperienceModel {}
 
 interface ISkillCateogry {
@@ -128,7 +129,7 @@ interface ISkillREST {
 }
 
 interface IExperienceSkillREST {
-	skill_id: string;
+	skill: string;
 	experience_id: string;
 }
 
