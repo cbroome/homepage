@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fetchJobData } from '../../lib/job-data';
+	import { format } from 'date-fns';
 
 	interface IModifiedExperienceREST extends IExperienceREST {
 		skills: string[];
@@ -14,6 +15,8 @@
 	let selectedExperiences: string[] = $state([]);
 
 	onMount(async () => {
+		const { default: Masonry } = await import('masonry-layout');
+
 		// Code to run after the component is mounted
 		// fetch the career data
 		const {
@@ -31,6 +34,17 @@
 			);
 			experience.skills = allSkills?.map((skill) => skill.skill) || [];
 		});
+
+		experiences?.sort((a, b) => b.start_date.localeCompare(a.start_date));
+
+		/*
+		const masonry = new Masonry('.skills', {
+			itemSelector: '.grid-item',
+			fitWidth: true,
+			horizontalOrder: true,
+			columnWidth: 150
+		});
+		*/
 	});
 
 	const onSkillClick = (skill: ISkillREST) => {
@@ -56,39 +70,45 @@
 	const getSkillClass = (skill: ISkillREST) => {
 		return selectedSkills?.includes(skill.id) ? 'selected' : '';
 	};
+
+	const formatDate = (date: string) => {
+		return format(new Date(date), 'yyyy');
+	};
 </script>
 
 <!-- Mobile View -->
 <div class="career-list">
-	<h2>Career History</h2>
+	<div class="listing">
+		<ul class="experiences">
+			{#each experiences as experience (experience.id)}
+				<li class="grid-item experience">
+					<button
+						type="button"
+						class={getExperienceClass(experience)}
+						onclick={() => onExperienceClick(experience)}
+					>
+						<div class="company-name">
+							{experience.company_name}
+						</div>
 
-	{#key selectedSkills}
+						<div class="dates">
+							{formatDate(experience.start_date)} - {formatDate(experience.end_date)}
+						</div>
+					</button>
+				</li>
+			{/each}
+		</ul>
+
 		<ul class="skills">
 			{#each skills as skill (skill.id)}
-				<li class="skill">
+				<li class="grid-item skill">
 					<button type="button" onclick={() => onSkillClick(skill)} class={getSkillClass(skill)}>
 						{skill.name}
 					</button>
 				</li>
 			{/each}
 		</ul>
-	{/key}
-
-	{#key selectedExperiences}
-		<ul>
-			{#each experiences as experience (experience.id)}
-				<li class="experience">
-					<button
-						type="button"
-						class={getExperienceClass(experience)}
-						onclick={() => onExperienceClick(experience)}
-					>
-						<h2>{experience.company_name}</h2>
-					</button>
-				</li>
-			{/each}
-		</ul>
-	{/key}
+	</div>
 </div>
 
 <style lang="scss" type="text/css">
@@ -97,41 +117,78 @@
 	}
 
 	h2 {
-		font-size: 25px;
+		font-size: 35px;
+		writing-mode: sideways-lr;
+		text-orientation: sideways;
+	}
+
+	.listing {
+		display: flex;
 	}
 
 	ul {
 		font-size: 16px;
+		padding: 20px;
+	}
+
+	ul.experiences {
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap;
+		justify-content: space-around;
 	}
 
 	li.experience {
-		margin: 25px 0;
+		list-style: none;
+		display: inline-block;
+		width: 150px;
 
 		button {
-			padding: 15px;
+			padding: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			width: 100%;
+		}
+
+		.dates {
+			font-size: 12px;
+			font-style: italic;
 		}
 	}
 
 	.dates {
 		font-size: 13px;
+		text-align: right;
 	}
 
-	.skills {
+	ul.skills {
 		list-style: none;
-		padding: 0;
 		display: flex;
+		gap: 10px;
 		flex-wrap: wrap;
 	}
 
 	.skill {
-		background-color: #eeefe6;
-		border-radius: 5px;
-		padding: 5px 10px;
-		margin: 5px;
+		list-style: none;
 		display: inline-block;
+		button {
+			padding: 5px;
+		}
+	}
+
+	button {
+		font-family: 'Lane - Narrow', Tahoma, sans-serif;
+
+		border: 1px solid rgba(129, 194, 237, 0.9);
+		border-radius: 5px;
+		color: rgb(4, 47, 76);
+		background: radial-gradient(ellipse at top, rgba(129, 194, 237, 0.5), white);
+		transition: background-color 1s ease;
 	}
 
 	button.selected {
-		background: blue;
+		background: radial-gradient(ellipse at top, rgba(3, 84, 138, 0.9), rgba(25, 159, 249, 0.9));
+		color: rgb(246, 249, 255);
+		border-color: white;
 	}
 </style>

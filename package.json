@@ -26,6 +26,7 @@
 		"@types/d3": "^7.4.3",
 		"@types/lodash": "^4.17.16",
 		"@types/lodash-es": "^4.17.12",
+		"@types/masonry-layout": "^4.2.8",
 		"eslint": "^9.18.0",
 		"eslint-config-prettier": "^10.0.1",
 		"eslint-plugin-svelte": "^3.0.0",
@@ -44,6 +45,8 @@
 	},
 	"dependencies": {
 		"d3": "^7.9.0",
-		"lodash-es": "^4.17.21"
+		"date-fns": "^4.4.0",
+		"lodash-es": "^4.17.21",
+		"masonry-layout": "^4.2.2"
 	}
 }
