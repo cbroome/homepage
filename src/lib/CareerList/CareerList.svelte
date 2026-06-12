@@ -15,8 +15,6 @@
 	let selectedExperiences: string[] = $state([]);
 
 	onMount(async () => {
-		const { default: Masonry } = await import('masonry-layout');
-
 		// Code to run after the component is mounted
 		// fetch the career data
 		const {
@@ -36,15 +34,6 @@
 		});
 
 		experiences?.sort((a, b) => b.start_date.localeCompare(a.start_date));
-
-		/*
-		const masonry = new Masonry('.skills', {
-			itemSelector: '.grid-item',
-			fitWidth: true,
-			horizontalOrder: true,
-			columnWidth: 150
-		});
-		*/
 	});
 
 	const onSkillClick = (skill: ISkillREST) => {
@@ -78,6 +67,7 @@
 
 <!-- Mobile View -->
 <div class="career-list">
+	<h2>Career Summary</h2>
 	<div class="listing">
 		<ul class="experiences">
 			{#each experiences as experience (experience.id)}
@@ -113,22 +103,22 @@
 
 <style lang="scss" type="text/css">
 	.career-list {
-		width: 100%;
+		padding: 15px;
+		display: none;
 	}
 
 	h2 {
-		font-size: 35px;
-		writing-mode: sideways-lr;
-		text-orientation: sideways;
+		font-size: 25px;
+		margin-bottom: 25px;
 	}
 
 	.listing {
 		display: flex;
+		gap: 25px;
 	}
 
 	ul {
 		font-size: 16px;
-		padding: 20px;
 	}
 
 	ul.experiences {
@@ -142,6 +132,7 @@
 		list-style: none;
 		display: inline-block;
 		width: 150px;
+		opacity: 1;
 
 		button {
 			padding: 10px;
@@ -164,15 +155,16 @@
 	ul.skills {
 		list-style: none;
 		display: flex;
-		gap: 10px;
 		flex-wrap: wrap;
+		justify-content: right;
+		gap: 5px;
 	}
 
 	.skill {
 		list-style: none;
 		display: inline-block;
 		button {
-			padding: 5px;
+			padding: 8px;
 		}
 	}
 
@@ -190,5 +182,11 @@
 		background: radial-gradient(ellipse at top, rgba(3, 84, 138, 0.9), rgba(25, 159, 249, 0.9));
 		color: rgb(246, 249, 255);
 		border-color: white;
+	}
+
+	@media (max-width: 768px) {
+		.career-list {
+			display: block;
+		}
 	}
 </style>

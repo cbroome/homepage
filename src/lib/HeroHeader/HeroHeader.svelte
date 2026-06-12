@@ -163,6 +163,8 @@
 
 		.fixed-header {
 			transform: translateX(0%);
+			position: static;
+			height: auto;
 		}
 	}
 </style>
