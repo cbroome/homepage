@@ -115,6 +115,7 @@
 	.listing {
 		display: flex;
 		gap: 25px;
+		align-items: flex-start;
 	}
 
 	ul {
@@ -131,7 +132,7 @@
 	li.experience {
 		list-style: none;
 		display: inline-block;
-		width: 150px;
+		width: 160px;
 		opacity: 1;
 
 		button {
@@ -165,6 +166,7 @@
 		display: inline-block;
 		button {
 			padding: 8px;
+			font-size: 15px;
 		}
 	}
 
