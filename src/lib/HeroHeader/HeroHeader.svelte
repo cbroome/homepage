@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { faBluesky, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+  import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome'
+
 	let { fixed = false } = $props();
 </script>
 
@@ -19,14 +22,19 @@
 
 	<ul class="social-buttons heading-font">
 		<li>
-			<a href="http://www.linkedin.com/pub/chris-broome/1b/154/251" target="_blank">
-				<img src="/imgs/linkedin.png" alt="LinkedIn" />
+			<a href="http://www.linkedin.com/pub/chris-broome/1b/154/251" target="_blank" aria-label="LinkedIn">
+				<FontAwesomeIcon icon={faLinkedin} />
 			</a>
 		</li>
 
 		<li>
-			<a href="https://github.com/cbroome" target="_blank">
-				<img src="/imgs/github.png" alt="GitHub" />
+			<a href="https://bsky.app/profile/christopherbroome.com" target="_blank" aria-label="Bluesky">
+				<FontAwesomeIcon icon={faBluesky} />
+		</li>
+
+		<li>
+			<a href="https://github.com/cbroome" target="_blank" aria-label="GitHub">
+				<FontAwesomeIcon icon={faGithub} />
 			</a>
 		</li>
 	</ul>

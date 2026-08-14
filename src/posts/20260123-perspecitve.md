@@ -3,7 +3,7 @@ title: Perspective
 description: Every five years there's a new end to software development
 date: '2026-01-23'
 categories:
-published: true
+draft: false
 ---
 
 When I just started college the dot-com bubble burst. News anchors cautioned that there wouldn’t be any more web development work. Many of my class switched majors.

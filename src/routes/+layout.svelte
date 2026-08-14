@@ -2,6 +2,10 @@
 	export const prerender = true;
 </script>
 
+<svelte:head>
+	<link rel="site.standard.document" href="at://">
+</svelte:head>
+
 <slot />
 
 <div class="footer">

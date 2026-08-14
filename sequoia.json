@@ -1,0 +1,16 @@
+{
+  "$schema": "https://tangled.org/stevedylan.dev/sequoia/raw/main/sequoia.schema.json",
+  "siteUrl": "https://www.christopherbroome.com",
+  "contentDir": "./src/posts",
+  "publicDir": "./static",
+  "outputDir": "./build",
+  "pathPrefix": "/blog",
+  "publicationUri": "at://did:plc:eyzzcmlcbxsil637pzxurefj/site.standard.publication/3msypszqdn72v",
+  "pdsUrl": "https://phellinus.us-west.host.bsky.network",
+  "frontmatter": {
+    "publishDate": "date",
+    "coverImage": "image",
+    "draft": "draft"
+  },
+  "publishContent": true
+}

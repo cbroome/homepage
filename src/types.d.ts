@@ -6,5 +6,5 @@ type Post = {
 	description: string;
 	date: string;
 	categories: Categories[];
-	published: boolean;
+	draft: boolean;
 };

@@ -3,7 +3,7 @@ title: On Interviewing For a Tech Job in 2025
 description: Impressions of interviewing for a tech job in the first half of 2025
 date: '2025-09-02'
 categories:
-published: true
+draft: false
 ---
 
 After a career in the private sector I decided to switch to the public sector for the second half of my career. After years of searching I found a great opportunity in the Federal space, political headwinds be damned I had to accept. I started in December of 2024.
