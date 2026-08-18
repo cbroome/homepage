@@ -4,6 +4,7 @@ description: A Svelte AT Protocol Starter Project
 date: '2026-05-11'
 categories:
 draft: false
+atUri: "at://did:plc:eyzzcmlcbxsil637pzxurefj/site.standard.document/3mtfbaerhci2n"
 ---
 
 I like BlueSky, but I _really_ like the idea of the AT Protocol. The idea of a federated web, a new protocol to ground applications in. The promise of users being able to move their data between apps, and for apps to leverage a rich set of functionality, seems like this is fertile ground for the next generation of platforms.

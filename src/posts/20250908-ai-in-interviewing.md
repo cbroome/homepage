@@ -4,6 +4,7 @@ description: AI is everywhere in a job hunt, just not in center stage
 date: '2025-09-08'
 categories:
 draft: false
+atUri: "at://did:plc:eyzzcmlcbxsil637pzxurefj/site.standard.document/3mtfbaewt2l2k"
 ---
 
 It must have been an auto update. Apple Intelligence, Apple's flavor of AI, was suddenly installed and enabled on my MacBook. In place of regular email subjects were terse summaries. It happened just in time for my first official rejection letter during this most recent job search.

@@ -4,6 +4,7 @@ description: Impressions of interviewing for a tech job in the first half of 202
 date: '2025-09-02'
 categories:
 draft: false
+atUri: "at://did:plc:eyzzcmlcbxsil637pzxurefj/site.standard.document/3mtfbaezjrv2w"
 ---
 
 After a career in the private sector I decided to switch to the public sector for the second half of my career. After years of searching I found a great opportunity in the Federal space, political headwinds be damned I had to accept. I started in December of 2024.
