@@ -52,6 +52,11 @@
 		"d3": "^7.9.0",
 		"date-fns": "^4.4.0",
 		"lodash-es": "^4.17.21",
+		"sequoia": "^0.0.1",
 		"svelte-fontawesome": "^0.0.3"
+	},
+	"allowScripts": {
+		"esbuild@0.25.0": true,
+		"fsevents@2.3.3": true
 	}
 }
