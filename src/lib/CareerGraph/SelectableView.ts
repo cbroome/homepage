@@ -17,6 +17,7 @@ export class SelectableView {
 	/**
 	 * @property	{d3}		d3el
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	d3el: any;
 
 	exp: undefined;
@@ -24,6 +25,7 @@ export class SelectableView {
 	/**
 	 *
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	constructor(d3el: any, exp: ExperienceModel | SkillModel) {
 		this.d3el = d3el;
 		this.model = exp;

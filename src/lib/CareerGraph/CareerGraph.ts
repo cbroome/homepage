@@ -38,6 +38,7 @@ export class CareerGraph {
 	/**
 	 * @property    {d3}    group
 	 */
+	/* eslint-disable @typescript-eslint/no-explicit-any */
 	group: any;
 
 	/**
@@ -208,7 +209,7 @@ export class CareerGraph {
 	 * @returns	{view.ExperienceSVG}
 	 */
 	protected renderHeader = (title: string) => {
-		var getY = this.getY(this.heightHeader);
+		const getY = this.getY(this.heightHeader);
 		this.group
 			?.append('text')
 			.text(title)
@@ -252,16 +253,12 @@ export class CareerGraph {
 	 * @returns	{Integer}
 	 */
 	protected getY = (increment: number) => {
-		let rv = this.cursorY;
+		const rv = this.cursorY;
 		this.cursorY += increment;
 		return rv;
 	};
 
 	buildLists() {
-		const params = {
-			reset: true,
-			success: this.processExperience
-		};
 		const exps = this.expWork;
 		let colorIndex = 0;
 

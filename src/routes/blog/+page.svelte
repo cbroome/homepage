@@ -1,4 +1,5 @@
 <script lang="ts">
+	// eslint-disable-next-line svelte/valid-prop-names-in-kit-pages
 	export const prerender = true;
 
 	import Navigation from '$lib/Navigation/Navigation.svelte';
@@ -16,7 +17,7 @@
 	<h1>Blogs</h1>
 
 	<ul class="posts">
-		{#each data.posts as post}
+		{#each data.posts as post (post.slug)}
 			<li class="post">
 				<h2><a href={`/blog/${post.slug}`} class="title">{post.title}</a></h2>
 				<p class="date">{post.date}</p>

@@ -11,9 +11,11 @@
     {
         "key": "css",
         "type": "language"
+    },
     {
         "key": "html5",
         "type": "language"
+    },
     {
         "key": "mysql",
         "type": "datastore",
@@ -21,7 +23,7 @@
     },
     {
         "key": "jquery",
-        "type": "library"
+        "type": "library",
         "related": [ "javascript" ]
     },
     {

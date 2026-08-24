@@ -25,10 +25,6 @@ jobs:
         run: |
           npm i
           npm run build
-      
-      - name: Standard Site
-        run: |
-          npm run sequoia:publish
 
       - name: Copy files
         run: |

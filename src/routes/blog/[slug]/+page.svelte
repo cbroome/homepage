@@ -1,4 +1,5 @@
 <script lang="ts">
+	/* eslint-disable svelte/valid-prop-names-in-kit-pages */
 	import Navigation from '$lib/Navigation/Navigation.svelte';
 	import './style.scss';
 

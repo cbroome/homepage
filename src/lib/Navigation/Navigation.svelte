@@ -7,7 +7,7 @@
 		<li>
 			<a href="/">Home</a>
 		</li>
-		{#each breadcrumbs as breadcrumb}
+		{#each breadcrumbs as breadcrumb (breadcrumb.label)	}
 			<li>
 				{#if breadcrumb.anchor}
 					<a href={breadcrumb.anchor}>{breadcrumb.label}</a>

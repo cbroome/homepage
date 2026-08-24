@@ -16,11 +16,13 @@ export class PathsView {
 	/**
 	 * @property	{d3}		svg
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	svg?: d3.Selection<d3.BaseType, unknown, HTMLElement, any>;
 
 	/**
 	 * @property    {d3}        group
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	group?: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
 
 	constructor(pathModels: PathModel[]) {

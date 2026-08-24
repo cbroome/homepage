@@ -4,7 +4,7 @@
 
 <h2>Posts</h2>
 <ul class="post-list">
-	{#each posts as post}
+	{#each posts as post (post.slug)}
 		<li class="post">
 			<div class="title"><a href={`/blog/${post.slug}`}>{post.title}</a></div>
 			<div class="description">{post.description}</div>

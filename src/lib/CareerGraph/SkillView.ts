@@ -1,6 +1,5 @@
 import { EVENTS } from '$lib/consts';
 import { SelectableView } from './SelectableView';
-import * as d3 from 'd3';
 
 export class SkillView extends SelectableView {
 	onMouseover() {

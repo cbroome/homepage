@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { keys, bind, debounce } from 'lodash-es';
+import { keys } from 'lodash-es';
 import type { SkillModel } from './SkillModel';
 import { SkillView } from './SkillView';
 
@@ -152,7 +152,9 @@ export class SkillsView {
 				this.createHeader(sortedSkill);
 				sortedSkills[sortedSkill].forEach((skill) => {
 					const model = this.skillModels.find((skillModel) => skillModel.id === skill);
-					model && this.createSkill(model);
+					if(model) { 
+						this.createSkill(model); 
+					}
 				});
 
 				// Add some padding beneath the section
@@ -168,7 +170,6 @@ export class SkillsView {
 	 * @param   {String}    title
 	 */
 	protected createHeader(title: string) {
-		const x = this.xComputed;
 		const y = this.getY(this.heightHeader);
 
 		this.group
@@ -184,11 +185,10 @@ export class SkillsView {
 	 * @param   {SkillModel}    skill
 	 */
 	protected createSkill(skill: SkillModel) {
-		var x = this.xComputed,
-			y = this.getY(this.heightLine),
-			obj;
+		const x = this.xComputed;
+		const y = this.getY(this.heightLine);
 
-		obj = this.group
+		const obj = this.group
 			?.append('text')
 			.text(skill.skill)
 			.attr('class', 'skill-label')
@@ -205,7 +205,7 @@ export class SkillsView {
 	 * @returns	{Integer}
 	 */
 	protected getY(increment: number) {
-		var rv = this.cursorY;
+		const rv = this.cursorY;
 		if (!this.cursorY) {
 			this.cursorY = increment;
 		} else {

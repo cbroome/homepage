@@ -1,10 +1,12 @@
 <script lang="ts">
+
 	import { onMount } from 'svelte';
 	import { CareerGraph } from './CareerGraph';
 	import { ExperienceModel } from './ExperienceModel';
 	import { SkillModel } from './SkillModel';
 	import { throttle } from 'lodash-es';
 	import { fetchJobData } from '../job-data';
+
 
 	let windowWidth = $state(1024);
 	let careerGraph: CareerGraph | null;
@@ -99,7 +101,6 @@
 	<svg id="main-svg" height="630" width="100%">
 		<defs>
 			<style type="text/css">
-<![CDATA[       
             text {
                 fill: #81616a ;
             }
@@ -141,7 +142,6 @@
 			text.hovered {
 				opacity: 1;
 			}
-        ]]>
 			</style>
 		</defs>
 	</svg>

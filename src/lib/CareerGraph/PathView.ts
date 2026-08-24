@@ -6,16 +6,19 @@ interface IPathViewOptions {
 	/**
 	 * @property	{d3}	line
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	line: any;
 
 	/**
 	 * @property	{d3}	svg
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	svg: any;
 
 	/**
 	 * @property    {d3}    group
 	 */
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	group: any;
 }
 

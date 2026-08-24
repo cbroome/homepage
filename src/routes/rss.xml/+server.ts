@@ -5,13 +5,8 @@ export const prerender = true;
 const name = 'Christopher Broome';
 const website = 'https://www.christopherbroome.com';
 
-export async function GET({ fetch }) {
+export async function GET() {
 	const postData = await getPosts();
-
-	const headers = {
-		'Cache-Control': 'max-age=0, s-maxage=3600',
-		'Content-Type': 'application/xml'
-	};
 
 	const posts = postData.map((post) => {
 		return `

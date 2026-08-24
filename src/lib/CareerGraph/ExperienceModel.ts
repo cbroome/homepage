@@ -1,4 +1,3 @@
-import * as d3 from 'd3';
 import { ListenerModel } from './ListernerModel';
 
 export class ExperienceModel extends ListenerModel implements IExperienceModel {
@@ -42,7 +41,9 @@ export class ExperienceModel extends ListenerModel implements IExperienceModel {
 
 	set yPos(position: number) {
 		this._yPos = position;
-		this.listen && this.listen();
+		if(this.listen) {
+			this.listen();
+		}
 	}
 
 	get stroke() {

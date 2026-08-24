@@ -54,6 +54,7 @@ interface IExperienceWorkModel extends IExperienceModel {
 }
 
 // TODO
+// eslint-disable-next-line
 interface IExperienceProjectModel extends IExperienceModel {}
 
 interface ISkillCateogry {
@@ -137,4 +138,12 @@ interface ISkillCategoryREST {
 	id: string;
 	name: string;
 	sort_order: number;
+}
+
+interface ICareerGraphOptions {
+	expProjects: ExperienceModel[];
+	expWork: ExperienceModel[];
+	skills: SkillModel[];
+	skillCategories: string[];
+	windowWidth: number;
 }
