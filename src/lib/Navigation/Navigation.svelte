@@ -1,11 +1,13 @@
 <script lang="ts">
+import { resolveRoute } from '$app/paths';
+
 	let { breadcrumbs }: { breadcrumbs: { anchor?: string; label: string }[] } = $props();
 </script>
 
 <nav>
 	<ul>
 		<li>
-			<a href="/">Home</a>
+			<a href={resolveRoute('/', {})}>Home</a>
 		</li>
 		{#each breadcrumbs as breadcrumb (breadcrumb.label)	}
 			<li>

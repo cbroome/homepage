@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { faBluesky, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
   import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome'
+  import { resolveRoute } from '$app/paths';
+
 
 	let { fixed = false } = $props();
 </script>
@@ -16,7 +18,7 @@
 		<div class="divider"></div>
 	</div>
 
-	<h1 class="head heading-color"><a href="/">Christopher Broome</a></h1>
+	<h1 class="head heading-color"><a href={resolveRoute('/', {})}>Christopher Broome</a></h1>
 
 	<div class="scant-bio heading-font">Full Stack Web Developer / Baltimore, MD</div>
 

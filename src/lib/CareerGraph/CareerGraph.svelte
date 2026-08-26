@@ -51,6 +51,7 @@
 		(async () => {
 			const { experiences, skills, experienceSkills, skillCategories } = await fetchJobData();
 
+			/* eslint-disable svelte/prefer-svelte-reactivity */
 			const experienceMap = new Map<string, ExperienceModel>();
 
 			experiences.forEach((experience: IExperienceREST) => {
