@@ -58,5 +58,12 @@
 				border-radius: var(--radius-round);
 			}
 		}
+
+		code {
+			font-size: 14px;
+		}
+		
 	}
+
+
 </style>
