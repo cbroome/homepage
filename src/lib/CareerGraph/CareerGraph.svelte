@@ -1,12 +1,10 @@
 <script lang="ts">
-
 	import { onMount } from 'svelte';
 	import { CareerGraph } from './CareerGraph';
 	import { ExperienceModel } from './ExperienceModel';
 	import { SkillModel } from './SkillModel';
 	import { throttle } from 'lodash-es';
 	import { fetchJobData } from '../job-data';
-
 
 	let windowWidth = $state(1024);
 	let careerGraph: CareerGraph | null;
@@ -102,47 +100,47 @@
 	<svg id="main-svg" height="630" width="100%">
 		<defs>
 			<style type="text/css">
-            text {
-                fill: #81616a ;
-            }
-            
-            .skill-label {
-                font-size: .38em;
-                cursor: pointer;
-				opacity: .75;
-            }
-            
-            .skill-header {
-                font-size: .48em;
-                font-family: 'Lane - Narrow';                
-            }
-            
-            .svg-header {
-                font-family: 'Lane - Narrow';
-                font-size: .85em;
-				font-weight: bold;
-            }
+				text {
+					fill: #81616a;
+				}
 
-            .experience {
-                font-size: .6em;
-                cursor: pointer;
-                text-anchor:end;
-				opacity: .75;
-            }
+				.skill-label {
+					font-size: 0.38em;
+					cursor: pointer;
+					opacity: 0.75;
+				}
 
-            .line {
-                stroke-width: .5;
-                stroke-opacity: .07;
-                fill: none;
-            }
+				.skill-header {
+					font-size: 0.48em;
+					font-family: 'Lane - Narrow';
+				}
 
-            path.hovered {
-                stroke-opacity: .75;
-            }
+				.svg-header {
+					font-family: 'Lane - Narrow';
+					font-size: 0.85em;
+					font-weight: bold;
+				}
 
-			text.hovered {
-				opacity: 1;
-			}
+				.experience {
+					font-size: 0.6em;
+					cursor: pointer;
+					text-anchor: end;
+					opacity: 0.75;
+				}
+
+				.line {
+					stroke-width: 0.5;
+					stroke-opacity: 0.07;
+					fill: none;
+				}
+
+				path.hovered {
+					stroke-opacity: 0.75;
+				}
+
+				text.hovered {
+					opacity: 1;
+				}
 			</style>
 		</defs>
 	</svg>

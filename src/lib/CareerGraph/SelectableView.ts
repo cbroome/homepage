@@ -1,5 +1,5 @@
 import { throttle, bind } from 'lodash-es';
-import { EVENTS } from '$lib/consts';
+import { EVENTS } from '#lib/consts.js';
 import type { ExperienceModel } from './ExperienceModel';
 import type { SkillModel } from './SkillModel';
 

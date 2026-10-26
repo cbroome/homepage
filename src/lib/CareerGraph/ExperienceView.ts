@@ -1,5 +1,5 @@
 import { SelectableView } from './SelectableView';
-import { EVENTS } from '$lib/consts';
+import { EVENTS } from '#lib/consts.js';
 
 export class ExperienceView extends SelectableView {
 	/**

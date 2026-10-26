@@ -1,4 +1,4 @@
-import { getPosts } from '$lib/Posts/Posts.js';
+import { getPosts } from '#lib/Posts/Posts.js';
 
 export const prerender = true;
 export const csr = false;

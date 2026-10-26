@@ -41,7 +41,7 @@ export class ExperienceModel extends ListenerModel implements IExperienceModel {
 
 	set yPos(position: number) {
 		this._yPos = position;
-		if(this.listen) {
+		if (this.listen) {
 			this.listen();
 		}
 	}

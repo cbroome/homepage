@@ -2,7 +2,7 @@
 	// eslint-disable-next-line svelte/valid-prop-names-in-kit-pages
 	export const prerender = true;
 
-	import Navigation from '$lib/Navigation/Navigation.svelte';
+	import Navigation from '#lib/Navigation/Navigation.svelte';
 
 	let { data } = $props();
 </script>

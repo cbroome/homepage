@@ -152,8 +152,8 @@ export class SkillsView {
 				this.createHeader(sortedSkill);
 				sortedSkills[sortedSkill].forEach((skill) => {
 					const model = this.skillModels.find((skillModel) => skillModel.id === skill);
-					if(model) { 
-						this.createSkill(model); 
+					if (model) {
+						this.createSkill(model);
 					}
 				});
 

@@ -7,7 +7,7 @@ import type { SkillModel } from './SkillModel';
 import { PathsView } from './PathsView';
 import { PathModel } from './PathModel';
 import { ExperienceView } from './ExperienceView';
-import { EVENTS } from '$lib/consts';
+import { EVENTS } from '#lib/consts.js';
 import type { ListenerModel } from './ListernerModel';
 
 const colors = ['#8333E5', '#1700FC', '#CE00FE', '#0B44E5'];

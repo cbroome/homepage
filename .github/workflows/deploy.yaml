@@ -23,7 +23,7 @@ jobs:
 
       - name: Build
         run: |
-          npm i
+          npm install --legacy-peer-deps
           npm run build
 
       - name: Copy files

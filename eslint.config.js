@@ -1,22 +1,26 @@
 import prettier from 'eslint-config-prettier';
 import js from '@eslint/js';
-import { includeIgnoreFile } from '@eslint/compat';
+import { includeIgnoreFile } from '@eslint/config-helpers';
 import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript-eslint';
-import svelteConfig from './svelte.config.js';
+import { loadConfig } from '@sveltejs/load-config';
+import { defineConfig } from 'eslint/config';
+
+
+const svelteConfig = (await loadConfig('./', { traverse: false }))?.config;
 
 const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
-export default ts.config(
+export default defineConfig([
 	includeIgnoreFile(gitignorePath),
 	js.configs.recommended,
 	...ts.configs.recommended,
 	...svelte.configs.recommended,
 	svelte.configs.prettier,
 	prettier,
-	...svelte.configs['flat/prettier'],
+	...svelte.configs['flat/prettier'],	
 	{
 		languageOptions: { globals: { ...globals.browser, ...globals.node } }
 	},
@@ -39,7 +43,7 @@ export default ts.config(
 	{
 		files: ['**/*.ts', '**/*.svelte'],
 		rules: {
-		'no-undef': 'off' // Disable because TypeScript handles this natively
+			'no-undef': 'off' // Disable because TypeScript handles this natively
+		}
 	}
-  }
-);
+]);

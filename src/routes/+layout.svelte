@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<link rel="site.standard.document" href="at://">
+	<link rel="site.standard.document" href="at://" />
 </svelte:head>
 
 <slot />

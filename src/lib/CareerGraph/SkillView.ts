@@ -1,4 +1,4 @@
-import { EVENTS } from '$lib/consts';
+import { EVENTS } from '#lib/consts.js';
 import { SelectableView } from './SelectableView';
 
 export class SkillView extends SelectableView {

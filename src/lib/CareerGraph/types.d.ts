@@ -72,13 +72,7 @@ interface ICareerGraphOptions {
 }
 
 type TSkillType =
-	| 'language'
-	| 'datastore'
-	| 'version control'
-	| 'framework'
-	| 'library'
-	| 'utility'
-	| 'misc';
+	'language' | 'datastore' | 'version control' | 'framework' | 'library' | 'utility' | 'misc';
 
 interface ISkillModel {
 	/**

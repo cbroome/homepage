@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { faBluesky, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-  import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome'
-  import { resolveRoute } from '$app/paths';
-
+	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
+	import { resolve } from '$app/paths';
 
 	let { fixed = false } = $props();
 </script>
@@ -18,20 +17,25 @@
 		<div class="divider"></div>
 	</div>
 
-	<h1 class="head heading-color"><a href={resolveRoute('/', {})}>Christopher Broome</a></h1>
+	<h1 class="head heading-color"><a href={resolve('/', {})}>Christopher Broome</a></h1>
 
 	<div class="scant-bio heading-font">Full Stack Web Developer / Baltimore, MD</div>
 
 	<ul class="social-buttons heading-font">
 		<li>
-			<a href="http://www.linkedin.com/pub/chris-broome/1b/154/251" target="_blank" aria-label="LinkedIn">
+			<a
+				href="http://www.linkedin.com/pub/chris-broome/1b/154/251"
+				target="_blank"
+				aria-label="LinkedIn"
+			>
 				<FontAwesomeIcon icon={faLinkedin} />
 			</a>
 		</li>
 
 		<li>
-			<a href="https://bsky.app/profile/christopherbroome.com" target="_blank" aria-label="Bluesky">
-				<FontAwesomeIcon icon={faBluesky} />
+			<a href="https://bsky.app/profile/christopherbroome.com" target="_blank" aria-label="Bluesky"
+				><FontAwesomeIcon icon={faBluesky} /></a
+			>
 		</li>
 
 		<li>

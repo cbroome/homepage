@@ -10,7 +10,7 @@ export async function getPosts(): Promise<Post[]> {
 		if (file && typeof file === 'object' && 'metadata' in file && slug) {
 			const metadata = file.metadata as Omit<Post, 'slug'>;
 			const post = { ...metadata, slug } satisfies Post;
-			if(post.draft === false) {
+			if (post.draft === false) {
 				posts.push(post);
 			}
 		}
